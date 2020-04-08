@@ -1,156 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
-
-    <pl.droidsonroids.gif.GifImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/particles"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        android:fitsSystemWindows="true">
 
-    <TextView
-        android:id="@+id/txtLastUpdatedLabel"
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <include layout="@layout/toolbar" />
+
+        </com.google.android.material.appbar.AppBarLayout>
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:id="@+id/drlHome"
+        android:layout_marginTop="?attr/actionBarSize"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        tools:context=".ui.MainActivity"
+        tools:openDrawer="start">
+
+
+    <FrameLayout
+            android:id="@+id/fmlHomeContainer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="48dp" />
+
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/ngvHome"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Last Updated At : "
-        android:layout_margin="16dp"
-        android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginTop="20dp"
+        android:background="@color/white"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:itemTextColor="@color/colorPrimary"
+app:itemIconTint="@color/colorPrimary"
+        android:fitsSystemWindows="true"
+        app:menu="@menu/drawermenu" />
 
-    <TextView
-        android:id="@+id/txtLastUpdated"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="TextView"
-
-        android:textSize="30sp"
-        app:layout_constraintStart_toStartOf="@+id/txtLastUpdatedLabel"
-        app:layout_constraintTop_toBottomOf="@+id/txtLastUpdatedLabel" />
-
-    <TextView
-        android:id="@+id/txtWorldWide"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="WorldWide"
-        android:textSize="60sp"
-
-
-        android:layout_marginTop="64dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtLastUpdated" />
-
-    <TextView
-        android:id="@+id/txtTotalCasesLabel"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:text="Total Cases : "
-
-        android:background="#0077D6"
-        android:textSize="30sp"
-        android:padding="8dp"
-
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="64dp"
-
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtWorldWide" />
-
-    <TextView
-        android:id="@+id/txtTotalCases"
-        android:layout_width="0dp"
-        android:background="#0077D6"
-        android:padding="8dp"
-
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="64dp"
-        android:layout_marginEnd="8dp"
-
-        android:text="Total"
-        android:textSize="30sp"
-
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/txtTotalCasesLabel"
-        app:layout_constraintTop_toBottomOf="@+id/txtWorldWide" />
-
-    <TextView
-        android:id="@+id/txtDeathsLabel"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:text="Deaths         : "
-        android:textSize="30sp"
-        android:padding="8dp"
-        android:background="#F9032D"
-
-
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
-
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtTotalCasesLabel" />
-
-    <TextView
-        android:id="@+id/txtDeaths"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
-        android:background="#F9032D"
-        android:padding="8dp"
-
-        android:text="Deaths"
-        android:textSize="30sp"
-        android:layout_marginEnd="8dp"
-
-
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/txtDeathsLabel"
-        app:layout_constraintTop_toBottomOf="@+id/txtTotalCasesLabel" />
-
-    <TextView
-        android:id="@+id/txtRecoveredLabel"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:text="Recovered   : "
-        android:textSize="30sp"
-
-        android:background="#02BFAD"
-        android:padding="8dp"
-
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
-
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtDeathsLabel" />
-
-    <TextView
-        android:id="@+id/txtRecovered"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
-        android:background="#02BFAD"
-        android:padding="8dp"
-
-
-        android:text="Recovered"
-        android:textSize="30sp"
-
-        android:layout_marginEnd="8dp"
-
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/txtRecoveredLabel"
-        app:layout_constraintTop_toBottomOf="@+id/txtDeaths" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.drawerlayout.widget.DrawerLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
