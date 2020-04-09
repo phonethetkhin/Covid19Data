@@ -3,17 +3,35 @@ package com.example.covid19data.models
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
+
 data class SummaryModel(
-    @SerializedName("Global")
-    @Expose
-    val globalModel : GlobalModel,
 
-    @SerializedName("Countries")
+    @SerializedName("confirmed")
     @Expose
-    val countryModellist : List<CountryModel>,
+    val confirmedModel: ConfirmedModel,
 
-    @SerializedName("Date")
+    @SerializedName("recovered")
     @Expose
-    val date : String
+    val recoveredModel: RecoveredModel,
+
+    @SerializedName("deaths")
+    @Expose
+    val deathsModel: DeathsModel,
+
+    @SerializedName("image")
+    @Expose
+    val image : String,
+
+    @SerializedName("lastUpdate")
+    @Expose
+    val lastestUpdate : String
+
+
+
 
 )
+
+
+
+
+

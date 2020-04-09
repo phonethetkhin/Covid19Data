@@ -5,8 +5,6 @@ import retrofit2.Response
 import retrofit2.http.GET
 
 interface Apiservice {
-    @GET("summary")
+    @GET("api")
     suspend fun getSummary() : Response<SummaryModel>
-
-
 }
