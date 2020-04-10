@@ -43,10 +43,10 @@ lateinit var fragmentToActivity: FragmentToActivity
         val vModel = ViewModelProviders.of(activity!!).get(CountryViewModel::class.java)
         vModel.getCountryDBLiveData()
 
-
+val flags = getFlags(activity!!.applicationContext)
         vModel.countryDBLiveData.observe(activity!!, Observer {
             it?.let {
-                v.rcvCountriesList.adapter = CountriesAdapter(it.countrieslist, getFlags(activity!!.applicationContext))
+                v.rcvCountriesList.adapter = CountriesAdapter(it.countrieslist, flags)
             }
         })
 

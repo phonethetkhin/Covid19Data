@@ -15,7 +15,6 @@ import com.example.covid19data.fragments.CountriesFragment
 import com.example.covid19data.fragments.HomeFragment
 import com.example.covid19data.utils.fragmentAttach
 import com.example.covid19data.utils.setFragment
-import com.example.covid19data.utils.setFragmentbyBundle
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(),

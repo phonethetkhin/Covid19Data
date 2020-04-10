@@ -6,24 +6,22 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.covid19data.R
 import com.example.covid19data.models.CountryDetailModel
-import com.example.covid19data.models.CountryModel
-import com.example.covid19data.utils.checkNullorNot
-import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.countrieslistitem.view.*
 
-class CountriesAdapter(private val countrieslist: List<CountryDetailModel>, val flaglist : List<Drawable>) : RecyclerView.Adapter<CountriesAdapter.ViewHolder>() {
-    inner class ViewHolder(v : View) : RecyclerView.ViewHolder(v)
-    {
+class CountriesAdapter(
+    private val countrieslist: List<CountryDetailModel>,
+    val flaglist: List<Drawable>
+) : RecyclerView.Adapter<CountriesAdapter.ViewHolder>() {
+    inner class ViewHolder(v: View) : RecyclerView.ViewHolder(v) {
         val imgCountryFlag: ImageView = v.findViewById<ImageView>(R.id.imgCountryFlag)
         val txtCountryName: TextView = v.findViewById<TextView>(R.id.txtCountryName)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val v= LayoutInflater.from(parent.context).inflate(R.layout.countrieslistitem,parent,false)
+        val v =
+            LayoutInflater.from(parent.context).inflate(R.layout.countrieslistitem, parent, false)
         return ViewHolder(v)
     }
 
@@ -33,20 +31,20 @@ class CountriesAdapter(private val countrieslist: List<CountryDetailModel>, val 
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
-        var space:String? = null
-        space = if(countrieslist[position].iso2.isNullOrBlank()) {
+        var space: String? = null
+        space = if (countrieslist[position].iso2.isNullOrBlank()) {
 
-            "( "+ ")"
+            "( " + ")"
 
-        } else{
+        } else {
             "( " + countrieslist[position].iso2 + " )"
         }
 
 
-            holder.txtCountryName.text =
-                countrieslist[position].name +" "+ space
+        holder.txtCountryName.text =
+            countrieslist[position].name + " " + space
 
-            holder.imgCountryFlag.setImageDrawable(flaglist[position])
+        holder.imgCountryFlag.setImageDrawable(flaglist[position])
 
     }
 }
