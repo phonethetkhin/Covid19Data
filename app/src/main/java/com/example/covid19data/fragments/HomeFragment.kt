@@ -57,7 +57,7 @@ this.fragmentToActivity= listener
 
                     val formatedDate = print.format(formatted)
                     val stringBuilder = StringBuilder(formatedDate)
-                   val final =  stringBuilder.insert(24,"(").insert(34,")")
+                   val final =  stringBuilder.insert(24,"(").insert(35," ").insert(36, ")")
 
 
 

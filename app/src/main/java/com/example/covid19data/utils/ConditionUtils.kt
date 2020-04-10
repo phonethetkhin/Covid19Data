@@ -1,11 +1,14 @@
 package com.example.covid19data.utils
 
+import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import com.example.covid19data.interfaces.FragmentToActivity
 import com.example.covid19data.fragments.CountriesFragment
 import com.example.covid19data.fragments.HomeFragment
+import com.example.covid19data.models.CountryDetailModel
+import com.example.covid19data.models.CountryModel
 
 fun fragmentAttach(
     fragment: Fragment,

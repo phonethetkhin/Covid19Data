@@ -15,6 +15,7 @@ import com.example.covid19data.fragments.CountriesFragment
 import com.example.covid19data.fragments.HomeFragment
 import com.example.covid19data.utils.fragmentAttach
 import com.example.covid19data.utils.setFragment
+import com.example.covid19data.utils.setFragmentbyBundle
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(),
@@ -39,7 +40,6 @@ class MainActivity : AppCompatActivity(),
             toggle.drawerArrowDrawable.color = resources.getColor(R.color.white)
                 drlHome.setDrawerListener(toggle)
                 toggle.syncState()
-
 val transaction:FragmentTransaction = supportFragmentManager.beginTransaction()
         val fragment = HomeFragment()
         transaction.replace(R.id.fmlHomeContainer,fragment).commit()
