@@ -4,7 +4,7 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.covid19data.repo.CountryRepo
-import com.example.covid19data.room.CountriesEntity
+import com.example.covid19data.room.entities.CountriesEntity
 import kotlinx.coroutines.launch
 
 class CountryViewModel(application: Application) : AndroidViewModel(application) {

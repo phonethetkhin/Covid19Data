@@ -5,11 +5,12 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import com.example.covid19data.utils.DataConverter
-import java.util.stream.IntStream
+import com.example.covid19data.room.dao.CountriesDao
+import com.example.covid19data.room.entities.CountriesEntity
+import com.example.covid19data.room.typeconverters.ObjectConverter
 
 @Database(entities = [CountriesEntity::class], version = 1, exportSchema = false)
-@TypeConverters(DataConverter::class)
+@TypeConverters(ObjectConverter::class)
 
 abstract class Covid19DataDatabase : RoomDatabase(){
     abstract fun countriesDao() : CountriesDao
@@ -17,7 +18,7 @@ abstract class Covid19DataDatabase : RoomDatabase(){
     companion object{
         @Volatile
         var Instance : Covid19DataDatabase? = null
-        fun getFAMSDB(context: Context) : Covid19DataDatabase?
+        fun getCovid19DB(context: Context) : Covid19DataDatabase?
         {
             if(Instance == null)
             {

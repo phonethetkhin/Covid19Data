@@ -1,8 +1,7 @@
-package com.example.covid19data.room
+package com.example.covid19data.room.entities
 
 import androidx.room.*
 import com.example.covid19data.models.CountryDetailModel
-import com.example.covid19data.utils.DataConverter
 
 @Entity(tableName = "tbl_countries")
 data class CountriesEntity(

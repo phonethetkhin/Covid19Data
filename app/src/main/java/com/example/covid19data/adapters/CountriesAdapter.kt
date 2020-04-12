@@ -12,7 +12,7 @@ import com.example.covid19data.models.CountryDetailModel
 
 class CountriesAdapter(
     private val countrieslist: List<CountryDetailModel>,
-    val flaglist: List<Drawable>
+    val flaglist: List<Drawable>?
 ) : RecyclerView.Adapter<CountriesAdapter.ViewHolder>() {
     inner class ViewHolder(v: View) : RecyclerView.ViewHolder(v) {
         val imgCountryFlag: ImageView = v.findViewById<ImageView>(R.id.imgCountryFlag)
@@ -44,7 +44,7 @@ class CountriesAdapter(
         holder.txtCountryName.text =
             countrieslist[position].name + " " + space
 
-        holder.imgCountryFlag.setImageDrawable(flaglist[position])
+        holder.imgCountryFlag.setImageDrawable(flaglist?.get(position))
 
     }
 }

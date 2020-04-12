@@ -1,6 +1,5 @@
 package com.example.covid19data.fragments
 
-import android.graphics.drawable.Drawable
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -17,8 +16,6 @@ import com.example.covid19data.adapters.CountriesAdapter
 import com.example.covid19data.utils.getFlags
 import com.example.covid19data.vModel.CountryViewModel
 import kotlinx.android.synthetic.main.fragment_countries.view.*
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 
 /**
  * A simple [Fragment] subclass.
@@ -41,14 +38,19 @@ lateinit var fragmentToActivity: FragmentToActivity
             v.rcvCountriesList.layoutManager = LinearLayoutManager(activity!!,RecyclerView.VERTICAL,false)
         v.rcvCountriesList.setHasFixedSize(true)
         val vModel = ViewModelProviders.of(activity!!).get(CountryViewModel::class.java)
+
         vModel.getCountryDBLiveData()
 
-val flags = getFlags(activity!!.applicationContext)
+val flag = getFlags(activity!!)
+
         vModel.countryDBLiveData.observe(activity!!, Observer {
             it?.let {
-                v.rcvCountriesList.adapter = CountriesAdapter(it.countrieslist, flags)
+
+                v.rcvCountriesList.adapter = CountriesAdapter(it.countrieslist,flag)
             }
         })
+
+
 
         return  v
     }

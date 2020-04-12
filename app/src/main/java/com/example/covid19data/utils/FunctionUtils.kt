@@ -5,7 +5,7 @@ import android.graphics.drawable.Drawable
 import com.example.covid19data.R
 
 @Suppress("DEPRECATION")
-fun getFlags(context: Context): List<Drawable> {
+ fun getFlags(context: Context): List<Drawable> {
     var flaglist: MutableList<Drawable> = mutableListOf()
 
     flaglist.add(0, context.resources.getDrawable(R.drawable.afghanistan))

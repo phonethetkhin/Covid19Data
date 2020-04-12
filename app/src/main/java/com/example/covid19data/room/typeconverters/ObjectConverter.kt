@@ -1,4 +1,4 @@
-package com.example.covid19data.utils
+package com.example.covid19data.room.typeconverters
 
 import androidx.room.TypeConverter
 import androidx.room.TypeConverters
@@ -8,7 +8,7 @@ import com.google.gson.reflect.TypeToken
 import java.lang.reflect.Type
 
 
-class DataConverter {
+class ObjectConverter {
         @TypeConverter
         fun fromCountryLangList(countryLang: List<CountryDetailModel?>?): String? {
             if (countryLang == null) {

@@ -3,13 +3,12 @@ package com.example.covid19data.repo
 import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import com.example.covid19data.models.CountryModel
-import com.example.covid19data.retrofit.Apiservice
 import com.example.covid19data.retrofit.RetrofitObj
-import com.example.covid19data.room.CountriesEntity
+import com.example.covid19data.room.entities.CountriesEntity
 import com.example.covid19data.room.Covid19DataDatabase
 
 class CountryRepo(context: Context) {
-    val countryDao = Covid19DataDatabase.getFAMSDB(context)!!.countriesDao()
+    val countryDao = Covid19DataDatabase.getCovid19DB(context)!!.countriesDao()
 
     val apiservice = RetrofitObj.apiservice
     val countryAPILiveData = MutableLiveData<CountryModel>()

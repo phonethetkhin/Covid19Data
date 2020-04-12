@@ -1,6 +1,7 @@
-package com.example.covid19data.room
+package com.example.covid19data.room.dao
 
 import androidx.room.*
+import com.example.covid19data.room.entities.CountriesEntity
 
 @Dao
 interface CountriesDao {
