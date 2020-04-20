@@ -7,7 +7,11 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:textColor">@color/white</item>
-        <item name="navigationIcon">@color/white</item>
+        <item name="toolbarStyle">@style/Widget.MaterialComponents.Toolbar</item>
+
+    </style>
+    <style name="TextSize" parent="TextAppearance.AppCompat.Title">
+        <item name="android:textSize">25sp</item>
     </style>
 
 </resources>

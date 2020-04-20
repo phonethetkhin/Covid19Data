@@ -1,11 +1,9 @@
 package com.example.covid19data.ui
 
-import android.app.AlertDialog
-import android.app.ProgressDialog
-import android.content.Intent
-import android.os.Build
 import android.os.Bundle
+import android.os.Handler
 import android.text.Html
+import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -16,21 +14,27 @@ import androidx.fragment.app.FragmentTransaction
 import com.example.covid19data.R
 import com.example.covid19data.fragments.CountriesFragment
 import com.example.covid19data.fragments.HomeFragment
+import com.example.covid19data.fragments.NewsFragment
 import com.example.covid19data.interfaces.FragmentToActivity
 import com.example.covid19data.utils.fragmentAttach
 import com.example.covid19data.utils.setFragment
+import com.example.covid19data.utils.setFragmentByBundle
+import com.example.covid19data.utils.setToast
+import com.labters.lottiealertdialoglibrary.ClickListener
 import com.labters.lottiealertdialoglibrary.DialogTypes
 import com.labters.lottiealertdialoglibrary.LottieAlertDialog
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-
+import android.os.Process
 
 class MainActivity : AppCompatActivity(),
     FragmentToActivity {
     lateinit var toggle: ActionBarDrawerToggle
 lateinit var alertDialog : LottieAlertDialog
+     var isSecond : Boolean = false
+
     override fun onAttachFragment(fragment: Fragment)
     {
         fragmentAttach(fragment,this)
@@ -48,7 +52,7 @@ lateinit var alertDialog : LottieAlertDialog
                 R.string.close
             )
             toggle.drawerArrowDrawable.color = resources.getColor(R.color.white)
-                drlHome.setDrawerListener(toggle)
+        drlHome.setDrawerListener(toggle)
                 toggle.syncState()
 val transaction:FragmentTransaction = supportFragmentManager.beginTransaction()
         val fragment = HomeFragment()
@@ -60,29 +64,30 @@ val transaction:FragmentTransaction = supportFragmentManager.beginTransaction()
                 {
                     closeDrawer(drlHome)
                     setFragment(supportFragmentManager,HomeFragment(),false,
-                        R.id.fmlHomeContainer
+                    R.id.fmlHomeContainer
                     )
                 }
                 R.id.nav_countries ->
                 {
-
                     closeDrawer(drlHome)
                     showProgressLottieDialog()
+                    setFragment(supportFragmentManager,CountriesFragment(),false,
+                        R.id.fmlHomeContainer)
 
                     GlobalScope.launch {
 
 
                         delay(2000L)
+
                         alertDialog.dismiss()
-                        setFragment(supportFragmentManager,CountriesFragment(),false,
-                            R.id.fmlHomeContainer)
+
 
                     }
-
-
-
-
-
+                }
+                R.id.nav_news ->
+                {
+                    closeDrawer(drlHome)
+                    chooserLottieDialog()
                 }
 
             }
@@ -111,7 +116,7 @@ val transaction:FragmentTransaction = supportFragmentManager.beginTransaction()
         ngvHome.setCheckedItem(checkId)
     }
 
-    fun showProgressLottieDialog()
+    private fun showProgressLottieDialog()
     {
 
          alertDialog= LottieAlertDialog.Builder(this, DialogTypes.TYPE_LOADING)
@@ -122,6 +127,92 @@ val transaction:FragmentTransaction = supportFragmentManager.beginTransaction()
         alertDialog.setCancelable(false)
         alertDialog.show()
     }
+    private fun chooserLottieDialog()
+    {
+                alertDialog=LottieAlertDialog.Builder(this@MainActivity,DialogTypes.TYPE_QUESTION)
+            .setTitle("Choose Language")
+            .setDescription("Would you like to see news in ?")
+            .setPositiveText("English")
+            .setNegativeText("Myanmar")
+            .setPositiveButtonColor(resources.getColor(R.color.blue))
+            .setPositiveTextColor(resources.getColor(R.color.white))
+            .setNegativeButtonColor(resources.getColor(R.color.colorPrimary))
+            .setNegativeTextColor(resources.getColor(R.color.white))
+            // Error View
+            .setPositiveListener(object: ClickListener {
+                override fun onClick(dialog: LottieAlertDialog) {
+                    // This is the usage same instance of view
+                        alertDialog.changeDialog(LottieAlertDialog.Builder(this@MainActivity,DialogTypes.TYPE_LOADING)
+                            .setTitle("News in English")
+                        )
+                        val bundle = Bundle()
+                        bundle.putString("url","https://www.mmtimes.com/")
+                        setFragmentByBundle(supportFragmentManager,NewsFragment(),false,R.id.fmlHomeContainer,bundle)
+                    GlobalScope.launch {
+                        delay(2000L)
+                        alertDialog.dismiss()
+                    }
+                    }
+            })
+            // Warning View
+            .setNegativeListener(object : ClickListener
+            {
+                override fun onClick(dialog: LottieAlertDialog) {
+                    // This is the usage same instance of view
+                    alertDialog.changeDialog(LottieAlertDialog.Builder(this@MainActivity,DialogTypes.TYPE_LOADING)
+                        .setTitle("News in Myanmar")
+                    )
+                    val bundle = Bundle()
+                    bundle.putString("url","https://myanmar.mmtimes.com/")
+                    setFragmentByBundle(supportFragmentManager,NewsFragment(),false,R.id.fmlHomeContainer,bundle)
+                    GlobalScope.launch {
 
- 
+                        delay(2000L)
+
+                        alertDialog.dismiss()
+
+                    }
+
+                }
+            })
+
+        .build()
+                   alertDialog.show()
+
+
+
+    }
+
+    override fun onBackPressed() {
+        val fragment : NewsFragment =
+            supportFragmentManager.findFragmentById(R.id.fmlHomeContainer) as NewsFragment
+        if (fragment.canGoBack()) {
+            fragment.goBack()
+        } else {
+            doubleTapToExit()
+        }
+    }
+
+
+    private fun doubleTapToExit()
+
+    {
+
+        setToast(this,"Press Again to Exit !!!",Toast.LENGTH_SHORT)
+
+        if (isSecond) {
+
+            finishAffinity()
+
+            Process.killProcess(Process.myPid())
+
+        }
+        isSecond = true
+
+        Handler().postDelayed({ isSecond = false }, 1000)
+
+    }
+
+
+
 }

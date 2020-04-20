@@ -18,10 +18,6 @@ data class SummaryModel(
     @Expose
     val deathsModel: DeathsModel,
 
-    @SerializedName("image")
-    @Expose
-    val image : String,
-
     @SerializedName("lastUpdate")
     @Expose
     val lastestUpdate : String

@@ -2,7 +2,11 @@ package com.example.covid19data.utils
 
 import android.content.Context
 import android.graphics.drawable.Drawable
+import android.widget.Toast
 import com.example.covid19data.R
+import java.lang.StringBuilder
+import java.text.SimpleDateFormat
+import java.util.*
 
 @Suppress("DEPRECATION")
  fun getFlags(context: Context): List<Drawable> {
@@ -235,3 +239,32 @@ import com.example.covid19data.R
 
     return flaglist
 }
+
+fun getTimeZone(oldDate:String) : String
+{
+   val date = (oldDate)
+   val df =
+      SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
+   df.timeZone = TimeZone.getTimeZone("PDT")
+
+   val formatted: Date? = df.parse(date)
+
+
+
+   val print =
+      SimpleDateFormat("MMM d, yyyy hh:mm:ss a z")
+   print.timeZone = TimeZone.getTimeZone("Asia/Rangoon")
+
+   val formatedDate = print.format(formatted)
+   val stringBuilder = StringBuilder(formatedDate)
+   val final =  stringBuilder.insert(24,"(").insert(35," ").insert(36, ")")
+
+   return final.toString()
+}
+
+fun setToast(context: Context, text: String?, length: Int) {
+
+   Toast.makeText(context, text, length).show()
+
+}
+
