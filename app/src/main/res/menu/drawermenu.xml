@@ -3,8 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view"
-
     >
+    <item android:id="@+id/mitemMainLinks"
+        android:title="Main Links"
+        >
+        <menu>
     <group
 
         android:checkableBehavior="single">
@@ -28,4 +31,35 @@
             app:showAsAction="always"
             />
     </group>
+    </menu>
+    </item>
+    <item android:id="@+id/mitemTutorials"
+        android:title="Tutorials">
+        <menu>
+            <group android:checkableBehavior="single"
+                >
+                <item
+                    android:id="@+id/nav_washhand"
+                    android:title="Wash Hands"
+                    android:icon="@drawable/ic_hand_wash"
+                    app:showAsAction="always"
+                    />
+                <item
+                    android:id="@+id/nav_facemask"
+                    app:showAsAction="always"
+                    android:icon="@drawable/ic_face_mask"
+                    android:title="Making Cloth Face Mask(DIY)"/>
+                <item
+                    android:id="@+id/nav_dodont"
+                    app:showAsAction="always"
+                    android:icon="@drawable/ic_list"
+                    android:title="Do and Don't For Covid 19"
+                    />
+
+
+            </group>
+
+        </menu>
+
+    </item>
 </menu>

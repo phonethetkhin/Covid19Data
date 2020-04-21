@@ -28,6 +28,7 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import android.os.Process
+import com.example.covid19data.fragments.FaceMaskFragment
 
 class MainActivity : AppCompatActivity(),
     FragmentToActivity {
@@ -89,6 +90,11 @@ val transaction:FragmentTransaction = supportFragmentManager.beginTransaction()
                     closeDrawer(drlHome)
                     chooserLottieDialog()
                 }
+                R.id.nav_facemask ->
+                {
+                    closeDrawer(drlHome)
+                    setFragment(supportFragmentManager,FaceMaskFragment(),false,R.id.fmlHomeContainer)
+                }
 
             }
             false
@@ -135,10 +141,7 @@ val transaction:FragmentTransaction = supportFragmentManager.beginTransaction()
             .setPositiveText("English")
             .setNegativeText("Myanmar")
             .setPositiveButtonColor(resources.getColor(R.color.blue))
-            .setPositiveTextColor(resources.getColor(R.color.white))
             .setNegativeButtonColor(resources.getColor(R.color.colorPrimary))
-            .setNegativeTextColor(resources.getColor(R.color.white))
-            // Error View
             .setPositiveListener(object: ClickListener {
                 override fun onClick(dialog: LottieAlertDialog) {
                     // This is the usage same instance of view

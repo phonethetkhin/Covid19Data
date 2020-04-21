@@ -1,5 +1,6 @@
 package com.example.covid19data.fragments
 
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -16,12 +17,14 @@ import com.example.covid19data.adapters.CountriesAdapter
 import com.example.covid19data.utils.getFlags
 import com.example.covid19data.vModel.CountryViewModel
 import kotlinx.android.synthetic.main.fragment_countries.view.*
+import kotlinx.coroutines.*
 
 /**
  * A simple [Fragment] subclass.
  */
-class CountriesFragment : Fragment() {
+class CountriesFragment : Fragment(){
 lateinit var fragmentToActivity: FragmentToActivity
+    lateinit var flag : List<Drawable>
     fun setfragmenttoactivity(listener : FragmentToActivity)
     {
         this.fragmentToActivity = listener
@@ -41,7 +44,10 @@ lateinit var fragmentToActivity: FragmentToActivity
 
         vModel.getCountryDBLiveData()
 
-val flag = getFlags(activity!!)
+GlobalScope.launch {
+flagInMain()
+
+}
 
         vModel.countryDBLiveData.observe(activity!!, Observer {
             it?.let {
@@ -54,5 +60,21 @@ val flag = getFlags(activity!!)
 
         return  v
     }
+    suspend fun flagInMain()
+    {
+        return withContext(Dispatchers.Main)
+        {
+            flag =flagGetInBackGround()
+        }
+    }
+
+
+   suspend fun flagGetInBackGround() : List<Drawable>
+   {
+       return withContext(Dispatchers.IO)
+       {
+           return@withContext getFlags(activity!!)
+       }
+   }
 
 }

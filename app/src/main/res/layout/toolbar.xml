@@ -6,6 +6,6 @@ android:background="@color/colorPrimary"
     android:layout_width="match_parent"
     android:layout_height="?attr/actionBarSize"
 app:titleTextAppearance="@style/TextSize"
-    app:contentInsetStart="150dp"
+    app:contentInsetStart="100dp"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto" />

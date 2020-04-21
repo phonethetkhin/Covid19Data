@@ -9,7 +9,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 @Suppress("DEPRECATION")
- fun getFlags(context: Context): List<Drawable> {
+ suspend fun getFlags(context: Context): List<Drawable> {
     var flaglist: MutableList<Drawable> = mutableListOf()
 
     flaglist.add(0, context.resources.getDrawable(R.drawable.afghanistan))
@@ -35,6 +35,7 @@ import java.util.*
     flaglist.add(17,context.resources.getDrawable(R.drawable.belize))            ///////////////////////////////////////////////////////////   4
     flaglist.add(18,context.resources.getDrawable(R.drawable.benin))
     flaglist.add(19,context.resources.getDrawable(R.drawable.bhutan))
+
 
     flaglist.add(20,context.resources.getDrawable(R.drawable.bolivia))
     flaglist.add(21,context.resources.getDrawable(R.drawable.bosniaandherzegovina))
