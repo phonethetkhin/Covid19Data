@@ -1,5 +1,6 @@
 package com.example.covid19data.ui
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.text.Html
@@ -28,7 +29,6 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import android.os.Process
-import com.example.covid19data.fragments.FaceMaskFragment
 
 class MainActivity : AppCompatActivity(),
     FragmentToActivity {
@@ -90,10 +90,10 @@ val transaction:FragmentTransaction = supportFragmentManager.beginTransaction()
                     closeDrawer(drlHome)
                     chooserLottieDialog()
                 }
-                R.id.nav_facemask ->
+                R.id.nav_tutorial ->
                 {
                     closeDrawer(drlHome)
-                    setFragment(supportFragmentManager,FaceMaskFragment(),false,R.id.fmlHomeContainer)
+                    startActivity(Intent(this,TutorialVideosActivity::class.java))
                 }
 
             }

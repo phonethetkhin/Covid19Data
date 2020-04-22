@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <include
+        android:id="@+id/include"
+
+        layout="@layout/toolbar" />
+<androidx.cardview.widget.CardView
+    android:id="@+id/crvTutorialsLink"
+    android:layout_below="@+id/include"
+    android:layout_height="wrap_content" android:layout_width="match_parent"
+    android:layout_margin="16dp"
+    android:background="@android:color/holo_green_dark"
+  >
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/holo_green_dark"
+
+
+    tools:context=".ui.TutorialVideosActivity">
+
+    <TextView
+        android:id="@+id/txtWashHand"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+       android:clickable="true"
+
+        android:text="@string/how_to_wash_hand_effectively"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:focusable="true" />
+
+    <TextView
+        android:id="@+id/txtClothFaceMask"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:textColorLink="@android:color/holo_blue_bright"
+
+
+        android:text="@string/how_to_make_cloth_face_mask_fast"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtWashHand" />
+
+    <TextView
+        android:id="@+id/txtDoDont"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+
+        android:textColorLink="@android:color/holo_blue_bright"
+
+
+        android:text="@string/do_and_don_t_for_covid_19"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtClothFaceMask" />
+</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>
+
+    <VideoView
+        android:id="@+id/vdvTutorials"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/crvTutorialsLink"
+        />
+
+
+</RelativeLayout>

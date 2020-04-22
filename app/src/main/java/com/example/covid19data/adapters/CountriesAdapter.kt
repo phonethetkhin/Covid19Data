@@ -15,12 +15,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.covid19data.R
 import com.example.covid19data.models.CountryDetailModel
 import com.example.covid19data.ui.CountryDetailActivity
+import com.squareup.picasso.Picasso
 import java.io.ByteArrayOutputStream
 
 
 class CountriesAdapter(
     private val countrieslist: List<CountryDetailModel>,
-    val flaglist: List<Drawable>?
+    val flaglist: List<String>
 ) : RecyclerView.Adapter<CountriesAdapter.ViewHolder>() {
     inner class ViewHolder(v: View) : RecyclerView.ViewHolder(v) {
         val crvCountrieslist = v.findViewById<CardView>(R.id.crvCountriesList)
@@ -40,7 +41,7 @@ class CountriesAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
-        var space: String? = null
+        val space: String?
         space = if (countrieslist[position].iso2.isNullOrBlank()) {
 
             "( " + ")"
@@ -52,9 +53,8 @@ class CountriesAdapter(
 
         holder.txtCountryName.text =
             countrieslist[position].name + " " + space
-
-        holder.imgCountryFlag.setImageDrawable(flaglist?.get(position))
-        holder.crvCountrieslist.setOnClickListener {
+        Picasso.get().load(flaglist!![position]).into(holder.imgCountryFlag)
+       /* holder.crvCountrieslist.setOnClickListener {
 
 
             val bitmap = (flaglist?.get(position) as BitmapDrawable).bitmap
@@ -71,7 +71,7 @@ class CountriesAdapter(
             it.context.startActivity(intent)
 
 
-        }
+        }*/
 
     }
 }

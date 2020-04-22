@@ -7,6 +7,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.covid19data.R
 import com.example.covid19data.room.entities.CountriesEntity
+import com.example.covid19data.utils.getFlags
 import com.example.covid19data.vModel.CountryViewModel
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
@@ -26,6 +27,7 @@ class SplashActivity : AppCompatActivity() {
                     CountriesEntity(
                         0,
                         it.countrylist
+                    , getFlags()
                     )
                 vModel.insertCountries(countryEntity)
             }

@@ -31,5 +31,28 @@ class ObjectConverter {
             return gson.fromJson(countryLangString, type)
         }
 
+    @TypeConverter
+    fun fromListToString(countryLang: List<String?>?): String? {
+        if (countryLang == null) {
+            return null
+        }
+        val gson = Gson()
+        val type: Type =
+            object : TypeToken<List<String?>?>() {}.type
+        return gson.toJson(countryLang, type)
+    }
+
+    @TypeConverter
+    fun toListToString(countryLangString: String?): List<String>? {
+        if (countryLangString == null) {
+            return null
+        }
+        val gson = Gson()
+        val type: Type =
+            object : TypeToken<List<String?>?>() {}.type
+        return gson.fromJson(countryLangString, type)
+    }
+
+
 
 }

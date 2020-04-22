@@ -9,7 +9,10 @@ data class CountriesEntity(
     @ColumnInfo(name = "country_id")
     val countryID: Int,
 
-  @ColumnInfo(name = "countries_list")
-    val countrieslist : List<CountryDetailModel>
+    @ColumnInfo(name = "countries_list")
+    val countriesList : List<CountryDetailModel>,
+
+    @ColumnInfo(name = "flags_list")
+    val flagList : List<String>
 
 )
