@@ -5,18 +5,21 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.webkit.WebView
-import android.webkit.WebViewClient
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.covid19data.R
+import com.example.covid19data.adapters.NewsAdapter
 import com.example.covid19data.interfaces.FragmentToActivity
+import com.example.covid19data.vModel.NewsViewModel
+import kotlinx.android.synthetic.main.fragment_news.view.*
 
 
 class NewsFragment : Fragment() {
-    lateinit var webview : WebView
     lateinit var fragmentToActivity: FragmentToActivity
-    fun setfragmenttoactivity(listener : FragmentToActivity)
-    {
+    fun setfragmenttoactivity(listener: FragmentToActivity) {
         this.fragmentToActivity = listener
     }
 
@@ -29,35 +32,22 @@ class NewsFragment : Fragment() {
         fragmentToActivity.setCheckListener(R.id.nav_news)
         // Inflate the layout for this fragment
         val v = inflater.inflate(R.layout.fragment_news, container, false)
-         webview = v.findViewById<WebView>(R.id.wbvNews)
+        v.rcvNews.layoutManager = LinearLayoutManager(activity!!,RecyclerView.VERTICAL,false)
+        v.rcvNews.setHasFixedSize(true)
 
-        val url: String? = arguments!!.getString("url")
+        val vModel = ViewModelProviders.of(activity!!).get(NewsViewModel::class.java)
+
+        vModel.getNewsLiveDataVM()
+        vModel.newsLiveData.observe(activity!!, Observer {
+            it?.let {
+                v.rcvNews.adapter = NewsAdapter(it.articles)
+            }
+        })
 
 
-        webview.webViewClient = MyWebViewClient()
-
-
-        webview.settings.javaScriptEnabled = true
-        webview.loadUrl(url) // load the url on the web view
 
         return v
 
-    }
-
-
-    private class MyWebViewClient : WebViewClient() {
-        override fun shouldOverrideUrlLoading(view: WebView, url: String?): Boolean {
-            view.loadUrl(url) // load the url
-            return true
-        }
-    }
-
-    fun canGoBack(): Boolean {
-        return webview.canGoBack()
-    }
-
-    fun goBack() {
-        webview.goBack()
     }
 
 

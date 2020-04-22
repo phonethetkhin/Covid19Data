@@ -1,10 +1,6 @@
 package com.example.covid19data.adapters
 
 import android.content.Intent
-import android.graphics.Bitmap
-import android.graphics.drawable.BitmapDrawable
-import android.graphics.drawable.Drawable
-import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,7 +12,7 @@ import com.example.covid19data.R
 import com.example.covid19data.models.CountryDetailModel
 import com.example.covid19data.ui.CountryDetailActivity
 import com.squareup.picasso.Picasso
-import java.io.ByteArrayOutputStream
+import kotlin.math.acos
 
 
 class CountriesAdapter(
@@ -54,24 +50,12 @@ class CountriesAdapter(
         holder.txtCountryName.text =
             countrieslist[position].name + " " + space
         Picasso.get().load(flaglist!![position]).into(holder.imgCountryFlag)
-       /* holder.crvCountrieslist.setOnClickListener {
+         holder.crvCountrieslist.setOnClickListener {
 
-
-            val bitmap = (flaglist?.get(position) as BitmapDrawable).bitmap
-
-            val baos = ByteArrayOutputStream()
-            bitmap.compress(Bitmap.CompressFormat.PNG, 100, baos)
-            val b: ByteArray = baos.toByteArray()
-
-
-            val intent = Intent(it.context, CountryDetailActivity::class.java)
-            intent.putExtra("name", countrieslist[position].name)
-            intent.putExtra("flag",b)
-
-            it.context.startActivity(intent)
-
-
-        }*/
+             val intent = Intent(it.context,CountryDetailActivity::class.java)
+             intent.putExtra("flag",flaglist[position])
+             it.context.startActivity(intent)
+         }
 
     }
 }

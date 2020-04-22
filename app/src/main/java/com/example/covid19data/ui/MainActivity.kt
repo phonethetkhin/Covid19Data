@@ -88,7 +88,7 @@ val transaction:FragmentTransaction = supportFragmentManager.beginTransaction()
                 R.id.nav_news ->
                 {
                     closeDrawer(drlHome)
-                    chooserLottieDialog()
+                    setFragment(supportFragmentManager,NewsFragment(),false,R.id.fmlHomeContainer)
                 }
                 R.id.nav_tutorial ->
                 {
@@ -133,67 +133,11 @@ val transaction:FragmentTransaction = supportFragmentManager.beginTransaction()
         alertDialog.setCancelable(false)
         alertDialog.show()
     }
-    private fun chooserLottieDialog()
-    {
-                alertDialog=LottieAlertDialog.Builder(this@MainActivity,DialogTypes.TYPE_QUESTION)
-            .setTitle("Choose Language")
-            .setDescription("Would you like to see news in ?")
-            .setPositiveText("English")
-            .setNegativeText("Myanmar")
-            .setPositiveButtonColor(resources.getColor(R.color.blue))
-            .setNegativeButtonColor(resources.getColor(R.color.colorPrimary))
-            .setPositiveListener(object: ClickListener {
-                override fun onClick(dialog: LottieAlertDialog) {
-                    // This is the usage same instance of view
-                        alertDialog.changeDialog(LottieAlertDialog.Builder(this@MainActivity,DialogTypes.TYPE_LOADING)
-                            .setTitle("News in English")
-                        )
-                        val bundle = Bundle()
-                        bundle.putString("url","https://www.mmtimes.com/")
-                        setFragmentByBundle(supportFragmentManager,NewsFragment(),false,R.id.fmlHomeContainer,bundle)
-                    GlobalScope.launch {
-                        delay(2000L)
-                        alertDialog.dismiss()
-                    }
-                    }
-            })
-            // Warning View
-            .setNegativeListener(object : ClickListener
-            {
-                override fun onClick(dialog: LottieAlertDialog) {
-                    // This is the usage same instance of view
-                    alertDialog.changeDialog(LottieAlertDialog.Builder(this@MainActivity,DialogTypes.TYPE_LOADING)
-                        .setTitle("News in Myanmar")
-                    )
-                    val bundle = Bundle()
-                    bundle.putString("url","https://myanmar.mmtimes.com/")
-                    setFragmentByBundle(supportFragmentManager,NewsFragment(),false,R.id.fmlHomeContainer,bundle)
-                    GlobalScope.launch {
-
-                        delay(2000L)
-
-                        alertDialog.dismiss()
-
-                    }
-
-                }
-            })
-
-        .build()
-                   alertDialog.show()
-
-
-
-    }
 
     override fun onBackPressed() {
-        val fragment : NewsFragment =
-            supportFragmentManager.findFragmentById(R.id.fmlHomeContainer) as NewsFragment
-        if (fragment.canGoBack()) {
-            fragment.goBack()
-        } else {
+
             doubleTapToExit()
-        }
+
     }
 
 

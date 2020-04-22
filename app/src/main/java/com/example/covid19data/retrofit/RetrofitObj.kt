@@ -1,30 +1,27 @@
 package com.example.covid19data.retrofit
 
-import com.example.covid19data.utils.BASE_URL
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-object RetrofitObj {
+class RetrofitObj(BaseURl: String) {
 
-        val apiservice:Apiservice
+    val apiservice: Apiservice
 
-        init {
-            val client= OkHttpClient.Builder().build()
+    init {
+        val client = OkHttpClient.Builder().build()
 
-            apiservice= Retrofit.Builder().baseUrl(BASE_URL)
+        apiservice = Retrofit.Builder().baseUrl(BaseURl)
 
-                .addConverterFactory(GsonConverterFactory.create())
+            .addConverterFactory(GsonConverterFactory.create())
 
-                .client(client)
+            .client(client)
 
-                .build()
+            .build()
 
-                .create(Apiservice::class.java)
+            .create(Apiservice::class.java)
 
-        }
-
-
+    }
 
 
 }
