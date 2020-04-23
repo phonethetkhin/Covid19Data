@@ -13,44 +13,34 @@ import com.example.covid19data.interfaces.FragmentToActivity
 import com.example.covid19data.utils.getTimeZone
 import com.example.covid19data.vModel.SummaryViewModel
 import kotlinx.android.synthetic.main.fragment_home.view.*
-import java.lang.StringBuilder
-import java.text.SimpleDateFormat
-import java.util.*
 
-/**
- * A simple [Fragment] subclass.
- */
+@SuppressLint("SimpleDateFormat")
+
 class HomeFragment : Fragment() {
-   lateinit var fragmentToActivity: FragmentToActivity
-fun setonFragmentActivitycommunication(listener: FragmentToActivity) {
+    private lateinit var fragmentToActivity: FragmentToActivity
+    fun setHomeFragmentToActivityCommunication(listener: FragmentToActivity) {
 
-this.fragmentToActivity= listener
-}
-    @SuppressLint("SimpleDateFormat")
+        this.fragmentToActivity = listener
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         fragmentToActivity.setTitleListener("WorldWide")
         fragmentToActivity.setCheckListener(R.id.nav_home)
-        // Inflate the layout for this fragment
-        val v= inflater.inflate(R.layout.fragment_home, container, false)
+        val v = inflater.inflate(R.layout.fragment_home, container, false)
+
         val vModel = ViewModelProviders.of(activity!!).get(SummaryViewModel::class.java)
         vModel.getSummaryViewModel()
-            vModel.summaryLiveData.observe(activity!!, Observer {
-                it?.let {
-
-
-                    v.txtTotalCases.text = it.confirmedModel.totalCases.toString()
-                    v.txtDeaths.text = it.deathsModel.totalDeaths.toString()
-                    v.txtRecovered.text = it.recoveredModel.totalRecovered.toString()
-
-                    v. txtLastUpdated.text = getTimeZone((it.lastestUpdate))
-                }
-            })
+        vModel.summaryLiveData.observe(activity!!, Observer {
+            it?.let {
+                v.txtTotalCases.text = it.confirmedModel.totalCases.toString()
+                v.txtDeaths.text = it.deathsModel.totalDeaths.toString()
+                v.txtRecovered.text = it.recoveredModel.totalRecovered.toString()
+                v.txtLastUpdated.text = getTimeZone((it.lastestUpdate))
+            }
+        })
         return v
     }
-
-
-
 }

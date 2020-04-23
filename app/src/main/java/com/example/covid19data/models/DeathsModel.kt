@@ -6,6 +6,6 @@ import com.google.gson.annotations.SerializedName
 data class DeathsModel(
     @SerializedName("value")
     @Expose
-    val totalDeaths : Int
+    val totalDeaths: Int
 
 )

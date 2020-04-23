@@ -6,11 +6,11 @@ import com.example.covid19data.retrofit.RetrofitObj
 import com.example.covid19data.utils.NewsBaseURl
 
 class NewsRepo {
-    val apiservice = RetrofitObj(NewsBaseURl).apiservice
+    private val apiService = RetrofitObj(NewsBaseURl).apiService
     val newsLiveData = MutableLiveData<NewsModel>()
 
     suspend fun getApiNewsLiveData() {
-        val response = apiservice.getAllCovidNews("Covid 19", "e6efa7af141a41238111e8a74f730a0c")
+        val response = apiService.getAllCovidNews("Covid 19", "e6efa7af141a41238111e8a74f730a0c")
         if (response.isSuccessful) {
             newsLiveData.postValue(response.body())
         }

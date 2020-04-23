@@ -2,41 +2,39 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:showIn="navigation_view"
-    >
-    <item android:id="@+id/mitemMainLinks"
-        android:title="Main Links"
-        >
+    tools:showIn="navigation_view">
+    <item
+        android:id="@+id/mitemMainLinks"
+        android:title="@string/main_links">
         <menu>
-    <group
+            <group
 
-        android:checkableBehavior="single">
-        <item
+                android:checkableBehavior="single">
+                <item
 
-            android:id="@+id/nav_home"
-            android:icon="@drawable/ic_home_black_24dp"
-            
-            android:title="Home"
-            app:showAsAction="always" />
-        <item
+                    android:id="@+id/nav_home"
+                    android:icon="@drawable/ic_home_black_24dp"
 
-            android:id="@+id/nav_countries"
-            android:icon="@drawable/ic_public_black_24dp"
-            android:title="Countries"
-            app:showAsAction="always" />
-        <item
-            android:id="@+id/nav_news"
-            android:icon="@drawable/ic_assignment_black_24dp"
-            android:title="Latest News"
-            app:showAsAction="always"
-            />
-        <item
-            android:id="@+id/nav_tutorial"
-            android:icon="@drawable/ic_lesson"
-            android:title="Tutorial Videos"
-            app:showAsAction="always"/>
-    </group>
-    </menu>
+                    android:title="@string/home"
+                    app:showAsAction="always" />
+                <item
+
+                    android:id="@+id/nav_countries"
+                    android:icon="@drawable/ic_public_black_24dp"
+                    android:title="@string/countries"
+                    app:showAsAction="always" />
+                <item
+                    android:id="@+id/nav_news"
+                    android:icon="@drawable/ic_assignment_black_24dp"
+                    android:title="@string/latest_covid_19_news"
+                    app:showAsAction="always" />
+                <item
+                    android:id="@+id/nav_tutorial"
+                    android:icon="@drawable/ic_lesson"
+                    android:title="@string/tutorial_videos"
+                    app:showAsAction="always" />
+            </group>
+        </menu>
     </item>
 
 </menu>

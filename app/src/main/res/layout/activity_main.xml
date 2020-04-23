@@ -1,52 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 
-
-    <androidx.coordinatorlayout.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-    tools:context=".ui.MainActivity"
-
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-        android:fitsSystemWindows="true">
 
-        <com.google.android.material.appbar.AppBarLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            >
+    android:fitsSystemWindows="true"
+    tools:context=".ui.MainActivity">
 
-            <include layout="@layout/toolbar" />
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-        </com.google.android.material.appbar.AppBarLayout>
+        <include layout="@layout/toolbar" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
     <androidx.drawerlayout.widget.DrawerLayout
         android:id="@+id/drlHome"
-        android:layout_marginTop="?attr/actionBarSize"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="?attr/actionBarSize"
         android:fitsSystemWindows="true"
         tools:openDrawer="start">
 
 
-    <FrameLayout
+        <FrameLayout
             android:id="@+id/fmlHomeContainer"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="48dp" />
 
 
-    <com.google.android.material.navigation.NavigationView
-        android:id="@+id/ngvHome"
-        android:layout_width="wrap_content"
-        android:layout_marginTop="20dp"
-        android:background="@color/white"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        app:itemTextColor="@color/colorPrimary"
-app:itemIconTint="@color/colorPrimary"
-        android:fitsSystemWindows="true"
-        app:menu="@menu/drawermenu" />
+        <com.google.android.material.navigation.NavigationView
+            android:id="@+id/ngvHome"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:layout_marginTop="20dp"
+            android:background="@color/white"
+            android:fitsSystemWindows="true"
+            app:itemIconTint="@color/colorPrimary"
+            app:itemTextColor="@color/colorPrimary"
+            app:menu="@menu/drawermenu" />
 
-</androidx.drawerlayout.widget.DrawerLayout>
+    </androidx.drawerlayout.widget.DrawerLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

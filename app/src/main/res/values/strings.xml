@@ -1,11 +1,26 @@
 <resources>
     <string name="app_name">Covid 19 Data</string>
+    //drawer status
     <string name="open">Open</string>
     <string name="close">Close</string>
 
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 
+    //tutorial link
     <string name="how_to_wash_hand_effectively">"<u> 1. How to Wash Hand Effectively</u>"</string>
     <string name="how_to_make_cloth_face_mask_fast">"<u> 2. How to make Cloth Face Mask Fast"</u></string>
     <string name="do_and_don_t_for_covid_19">"<u> 3. Do and Don\'t for Covid 19</u>"</string>
+
+    //drawer menu
+    <string name="main_links">"Main Links"</string>
+    <string name="home">Home</string>
+    <string name="countries">Countries</string>
+    <string name="latest_covid_19_news">"Latest Covid 19 News"</string>
+    <string name="tutorial_videos">"Tutorial Videos"</string>
+
+    //country detail + homefragment
+    <string name="last_updated_at">"Last Updated At :"</string>
+    <string name="worldwide">WorldWide</string>
+    <string name="total_cases">"Total Cases :"</string>
+    <string name="deaths">"Deaths          :"</string>
+    <string name="recovered">"Recovered    :"</string>
 </resources>

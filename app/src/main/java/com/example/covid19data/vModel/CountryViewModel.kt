@@ -8,12 +8,12 @@ import com.example.covid19data.room.entities.CountriesEntity
 import kotlinx.coroutines.launch
 
 class CountryViewModel(application: Application) : AndroidViewModel(application) {
-    val countryRepo = CountryRepo(application)
+    private val countryRepo = CountryRepo(application)
     val countryAPILiveData = countryRepo.countryAPILiveData
     val countryDBLiveData = countryRepo.countryDBLiveData
 
     fun getCountryAPILiveData() = viewModelScope.launch {
-        countryRepo.getCountriesfromAPI()
+        countryRepo.getCountriesFromAPI()
 
     }
 
@@ -21,8 +21,7 @@ class CountryViewModel(application: Application) : AndroidViewModel(application)
         countryRepo.getCountriesFromDatabase()
     }
 
-    fun insertCountries(countriesEntity: CountriesEntity)
-    {
+    fun insertCountries(countriesEntity: CountriesEntity) {
         viewModelScope.launch {
             countryRepo.insertCountries(countriesEntity)
         }

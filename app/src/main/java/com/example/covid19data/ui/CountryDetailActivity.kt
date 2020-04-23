@@ -9,7 +9,9 @@ import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.covid19data.R
+import com.example.covid19data.utils.getStringExtra
 import com.example.covid19data.utils.getTimeZone
+import com.example.covid19data.utils.setToolbarTitleAndBackArrow
 import com.example.covid19data.vModel.CountryDetailViewModel
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_country_detail.*
@@ -24,19 +26,13 @@ class CountryDetailActivity : AppCompatActivity() {
 
         setSupportActionBar(toolbar)
 
-        val name: String = intent.getStringExtra("name")
-
-        val flag = intent.getStringExtra("flag")
+        val name = getStringExtra(this,"name")
+        val flag = getStringExtra(this,"flag")
         Picasso.get().load(flag).into(imgCountryFlag)
 
 
+setToolbarTitleAndBackArrow(this,toolbar,name,supportActionBar!!)
 
-        supportActionBar!!.title = Html.fromHtml("<font color='#FFFFFF'>$name </font>")
-        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
-        toolbar.navigationIcon!!.setColorFilter(
-            resources.getColor(R.color.white),
-            PorterDuff.Mode.SRC_ATOP
-        )
 
 
         val vModel = ViewModelProviders.of(this).get(CountryDetailViewModel::class.java)

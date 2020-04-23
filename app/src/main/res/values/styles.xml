@@ -10,6 +10,7 @@
         <item name="toolbarStyle">@style/Widget.MaterialComponents.Toolbar</item>
 
     </style>
+
     <style name="TextSize" parent="TextAppearance.AppCompat.Title">
         <item name="android:textSize">20sp</item>
     </style>

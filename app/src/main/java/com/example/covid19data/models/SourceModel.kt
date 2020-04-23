@@ -7,4 +7,4 @@ data class SourceModel(
     @SerializedName("name")
     @Expose
     val sourceName: String
-    )
+)

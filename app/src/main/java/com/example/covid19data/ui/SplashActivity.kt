@@ -1,8 +1,8 @@
 package com.example.covid19data.ui
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.covid19data.R
@@ -26,8 +26,8 @@ class SplashActivity : AppCompatActivity() {
                 val countryEntity =
                     CountriesEntity(
                         0,
-                        it.countrylist
-                    , getFlags()
+                        it.countryList
+                        , getFlags()
                     )
                 vModel.insertCountries(countryEntity)
             }

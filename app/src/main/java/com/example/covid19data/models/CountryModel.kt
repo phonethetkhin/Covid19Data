@@ -4,8 +4,8 @@ import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
 data class CountryModel(
-@SerializedName("countries")
-@Expose
-val countrylist : List<CountryDetailModel>
+    @SerializedName("countries")
+    @Expose
+    val countryList: List<CountryDetailModel>
 
 )

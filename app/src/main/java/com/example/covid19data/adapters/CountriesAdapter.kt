@@ -1,5 +1,6 @@
 package com.example.covid19data.adapters
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
@@ -12,50 +13,49 @@ import com.example.covid19data.R
 import com.example.covid19data.models.CountryDetailModel
 import com.example.covid19data.ui.CountryDetailActivity
 import com.squareup.picasso.Picasso
-import kotlin.math.acos
 
 
 class CountriesAdapter(
-    private val countrieslist: List<CountryDetailModel>,
-    val flaglist: List<String>
+    private val countriesList: List<CountryDetailModel>,
+    private val flagList: List<String>
 ) : RecyclerView.Adapter<CountriesAdapter.ViewHolder>() {
     inner class ViewHolder(v: View) : RecyclerView.ViewHolder(v) {
-        val crvCountrieslist = v.findViewById<CardView>(R.id.crvCountriesList)
-        val imgCountryFlag: ImageView = v.findViewById<ImageView>(R.id.imgCountryFlag)
-        val txtCountryName: TextView = v.findViewById<TextView>(R.id.txtCountryName)
+        val crvCountriesList: CardView = v.findViewById(R.id.crvCountriesList)
+        val imgCountryFlag: ImageView = v.findViewById(R.id.imgCountryFlag)
+        val txtCountryName: TextView = v.findViewById(R.id.txtCountryName)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val v =
+
             LayoutInflater.from(parent.context).inflate(R.layout.countrieslistitem, parent, false)
         return ViewHolder(v)
     }
 
     override fun getItemCount(): Int {
-        return countrieslist.size
+        return countriesList.size
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
-        val space: String?
-        space = if (countrieslist[position].iso2.isNullOrBlank()) {
+        val space = if (countriesList[position].iso2.isNullOrBlank()) {
 
             "( " + ")"
 
         } else {
-            "( " + countrieslist[position].iso2 + " )"
+            "( ${countriesList[position].iso2} )"
         }
-
-
         holder.txtCountryName.text =
-            countrieslist[position].name + " " + space
-        Picasso.get().load(flaglist!![position]).into(holder.imgCountryFlag)
-         holder.crvCountrieslist.setOnClickListener {
+            countriesList[position].name + " " + space
+        Picasso.get().load(flagList[position]).into(holder.imgCountryFlag)
+        holder.crvCountriesList.setOnClickListener {
 
-             val intent = Intent(it.context,CountryDetailActivity::class.java)
-             intent.putExtra("flag",flaglist[position])
-             it.context.startActivity(intent)
-         }
+            val intent = Intent(it.context, CountryDetailActivity::class.java)
+            intent.putExtra("name", countriesList[position].name)
+            intent.putExtra("flag", flagList[position])
+            it.context.startActivity(intent)
+        }
 
     }
 }

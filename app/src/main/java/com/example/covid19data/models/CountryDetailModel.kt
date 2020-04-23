@@ -4,14 +4,11 @@ import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
 data class CountryDetailModel(
+    @SerializedName("name")
+    @Expose
+    val name: String,
 
-@SerializedName("name")
-@Expose
-val name: String,
-
-@SerializedName("iso2")
-@Expose
-val iso2 : String
-
-
+    @SerializedName("iso2")
+    @Expose
+    val iso2: String
 )

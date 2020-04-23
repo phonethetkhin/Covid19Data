@@ -6,7 +6,7 @@ import com.example.covid19data.repo.NewsRepo
 import kotlinx.coroutines.launch
 
 class NewsViewModel : ViewModel() {
-    val newsRepo = NewsRepo()
+    private val newsRepo = NewsRepo()
     val newsLiveData = newsRepo.newsLiveData
 
     fun getNewsLiveDataVM() = viewModelScope.launch {

@@ -6,6 +6,6 @@ import com.google.gson.annotations.SerializedName
 data class RecoveredModel(
     @SerializedName("value")
     @Expose
-    val totalRecovered : Int
+    val totalRecovered: Int
 
 )

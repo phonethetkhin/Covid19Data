@@ -16,6 +16,10 @@ data class NewsDetailModel(
     @Expose
     val title: String,
 
+    @SerializedName("url")
+    @Expose
+    val URL: String,
+
     @SerializedName("urlToImage")
     @Expose
     val ImageURl: String,
@@ -23,4 +27,4 @@ data class NewsDetailModel(
     @SerializedName("content")
     @Expose
     val content: String
-    )
+)

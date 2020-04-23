@@ -1,6 +1,8 @@
 package com.example.covid19data.room.entities
 
-import androidx.room.*
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.example.covid19data.models.CountryDetailModel
 
 @Entity(tableName = "tbl_countries")
@@ -10,9 +12,9 @@ data class CountriesEntity(
     val countryID: Int,
 
     @ColumnInfo(name = "countries_list")
-    val countriesList : List<CountryDetailModel>,
+    val countriesList: List<CountryDetailModel>,
 
     @ColumnInfo(name = "flags_list")
-    val flagList : List<String>
+    val flagList: List<String>
 
 )

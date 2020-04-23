@@ -19,7 +19,7 @@ interface CountriesDao {
 
 
     @Query("DELETE FROM tbl_countries")
-    suspend fun deleteAllCountires()
+    suspend fun deleteAllCountries()
 
 
 }

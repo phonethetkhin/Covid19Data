@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 
-<androidx.appcompat.widget.Toolbar android:id="@+id/tlbToolbar"
-android:background="@color/colorPrimary"
+<androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/tlbToolbar"
     android:layout_width="match_parent"
     android:layout_height="?attr/actionBarSize"
-app:titleTextAppearance="@style/TextSize"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto" />
+    android:background="@color/colorPrimary"
+    app:titleTextAppearance="@style/TextSize" />

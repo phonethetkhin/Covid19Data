@@ -20,9 +20,7 @@ data class SummaryModel(
 
     @SerializedName("lastUpdate")
     @Expose
-    val lastestUpdate : String
-
-
+    val lastestUpdate: String
 
 
 )

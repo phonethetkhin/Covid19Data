@@ -4,12 +4,10 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
-import com.example.covid19data.interfaces.FragmentToActivity
 import com.example.covid19data.fragments.CountriesFragment
 import com.example.covid19data.fragments.HomeFragment
 import com.example.covid19data.fragments.NewsFragment
-import com.example.covid19data.models.CountryDetailModel
-import com.example.covid19data.models.CountryModel
+import com.example.covid19data.interfaces.FragmentToActivity
 
 fun fragmentAttach(
     fragment: Fragment,
@@ -18,16 +16,14 @@ fun fragmentAttach(
     when (fragment) {
 
         is HomeFragment -> {
-            fragment.setonFragmentActivitycommunication(fragmentActivityCommunication)
+            fragment.setHomeFragmentToActivityCommunication(fragmentActivityCommunication)
 
         }
-        is CountriesFragment ->
-        {
-            fragment.setfragmenttoactivity(fragmentActivityCommunication)
+        is CountriesFragment -> {
+            fragment.setCountryFragmentToActivityCommunication(fragmentActivityCommunication)
         }
-        is NewsFragment ->
-        {
-            fragment.setfragmenttoactivity(fragmentActivityCommunication)
+        is NewsFragment -> {
+            fragment.setNewsFragmentToActivityCommunication(fragmentActivityCommunication)
         }
 
     }
@@ -36,14 +32,14 @@ fun fragmentAttach(
 fun setFragment(
     fragmentManager: FragmentManager,
     fragment: Fragment,
-    backstack: Boolean,
+    backStack: Boolean,
     container: Int
 ) {
 
     val transaction: FragmentTransaction =
         fragmentManager.beginTransaction()
 
-    if (!backstack) {
+    if (!backStack) {
         transaction.replace(container, fragment).commit()
     } else {
         transaction.replace(container, fragment).addToBackStack(null).commit()
@@ -54,7 +50,7 @@ fun setFragmentByBundle(
 
     fragmentManager: FragmentManager,
     fragment: Fragment,
-    backstack: Boolean,
+    backStack: Boolean,
     container: Int,
     bundle: Bundle
 
@@ -68,7 +64,7 @@ fun setFragmentByBundle(
 
 
 
-    if (!backstack) {
+    if (!backStack) {
 
         transaction.replace(container, fragment).commit()
 
@@ -78,8 +74,5 @@ fun setFragmentByBundle(
 
     }
 
-
-
-
-
 }
+

@@ -7,10 +7,10 @@ import kotlinx.coroutines.launch
 
 
 class CountryDetailViewModel : ViewModel() {
-    val countryDetailRepo = CountryDetailRepo()
+    private val countryDetailRepo = CountryDetailRepo()
     val countryDetailLiveData = countryDetailRepo.countryDetailLiveData
 
-    fun getCountryDetail(name:String) = viewModelScope.launch {
+    fun getCountryDetail(name: String) = viewModelScope.launch {
         countryDetailRepo.getSummaryFromAPI(name)
     }
 }

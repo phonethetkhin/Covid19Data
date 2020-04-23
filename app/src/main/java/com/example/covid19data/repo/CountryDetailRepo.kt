@@ -7,14 +7,12 @@ import com.example.covid19data.utils.CovidDataBaseURL
 
 
 class CountryDetailRepo {
-    val apiservice = RetrofitObj(CovidDataBaseURL).apiservice
-    val countryDetailLiveData = MutableLiveData<SummaryModel> ()
+    private val apiService = RetrofitObj(CovidDataBaseURL).apiService
+    val countryDetailLiveData = MutableLiveData<SummaryModel>()
 
-    suspend fun getSummaryFromAPI(name:String)
-    {
-        val response = apiservice.getCountyData("api/countries/$name")
-        if(response.isSuccessful)
-        {
+    suspend fun getSummaryFromAPI(name: String) {
+        val response = apiService.getCountyData("api/countries/$name")
+        if (response.isSuccessful) {
             countryDetailLiveData.postValue(response.body())
         }
     }

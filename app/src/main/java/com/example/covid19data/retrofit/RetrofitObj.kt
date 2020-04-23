@@ -6,12 +6,12 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class RetrofitObj(BaseURl: String) {
 
-    val apiservice: Apiservice
+    val apiService: ApiService
 
     init {
         val client = OkHttpClient.Builder().build()
 
-        apiservice = Retrofit.Builder().baseUrl(BaseURl)
+        apiService = Retrofit.Builder().baseUrl(BaseURl)
 
             .addConverterFactory(GsonConverterFactory.create())
 
@@ -19,7 +19,7 @@ class RetrofitObj(BaseURl: String) {
 
             .build()
 
-            .create(Apiservice::class.java)
+            .create(ApiService::class.java)
 
     }
 

@@ -6,5 +6,5 @@ import com.google.gson.annotations.SerializedName
 data class ConfirmedModel(
     @SerializedName("value")
     @Expose
-    val totalCases : Int
+    val totalCases: Int
 )
