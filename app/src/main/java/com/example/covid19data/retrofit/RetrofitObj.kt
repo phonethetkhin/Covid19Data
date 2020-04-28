@@ -4,24 +4,15 @@ import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
+
 class RetrofitObj(BaseURl: String) {
+    val apiService: ApiService = Retrofit.Builder().baseUrl(BaseURl)
 
-    val apiService: ApiService
+        .addConverterFactory(GsonConverterFactory.create())
 
-    init {
-        val client = OkHttpClient.Builder().build()
+        .client(OkHttpClient.Builder().build())
 
-        apiService = Retrofit.Builder().baseUrl(BaseURl)
+        .build()
 
-            .addConverterFactory(GsonConverterFactory.create())
-
-            .client(client)
-
-            .build()
-
-            .create(ApiService::class.java)
-
-    }
-
-
+        .create(ApiService::class.java)
 }

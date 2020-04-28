@@ -28,11 +28,7 @@
                     android:icon="@drawable/ic_assignment_black_24dp"
                     android:title="@string/latest_covid_19_news"
                     app:showAsAction="always" />
-                <item
-                    android:id="@+id/nav_tutorial"
-                    android:icon="@drawable/ic_lesson"
-                    android:title="@string/tutorial_videos"
-                    app:showAsAction="always" />
+
             </group>
         </menu>
     </item>

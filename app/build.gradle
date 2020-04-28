@@ -83,5 +83,9 @@ dependencies {
     //lottieAlertDialog
     implementation 'com.github.mayuce:LottieAlertDialog:1.1'
 
+    //gms
+    implementation 'com.google.android.gms:play-services-auth:18.0.0'
+
+
 
 }

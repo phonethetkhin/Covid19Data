@@ -1,7 +1,6 @@
 package com.example.covid19data.ui
 
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Process
@@ -77,19 +76,12 @@ class MainActivity : AppCompatActivity(),
                     )
 
                     GlobalScope.launch {
-
-
                         delay(2000L)
-
                         alertDialog.dismiss()
-
-
                     }
                 }
                 R.id.nav_news -> {
                     showProgressLottieDialog(this)
-
-
                     closeDrawer(drlHome)
                     setFragment(
                         supportFragmentManager,
@@ -98,21 +90,11 @@ class MainActivity : AppCompatActivity(),
                         R.id.fmlHomeContainer
                     )
                     GlobalScope.launch {
-
-
                         delay(2000L)
-
                         alertDialog.dismiss()
-
-
                     }
                 }
-                R.id.nav_tutorial -> {
-                    closeDrawer(drlHome)
-                    startActivity(Intent(this, TutorialVideosActivity::class.java))
-                }
             }
-
             false
         }
     }
@@ -126,6 +108,7 @@ class MainActivity : AppCompatActivity(),
         alertDialog.setCancelable(false)
         alertDialog.show()
     }
+
 
     private fun closeDrawer(drlHome: DrawerLayout) {
 
@@ -150,9 +133,18 @@ class MainActivity : AppCompatActivity(),
         val f: Fragment? =
             supportFragmentManager.findFragmentById(R.id.fmlHomeContainer)
         if (f is HomeFragment) {
-            doubleTapToExit()
+            if (drlHome.isDrawerOpen(GravityCompat.START)) {
+                drlHome.closeDrawer(GravityCompat.START)
+            } else {
+                doubleTapToExit()
+
+            }
         } else {
-            setFragment(supportFragmentManager, HomeFragment(), false, R.id.fmlHomeContainer)
+            if (drlHome.isDrawerOpen(GravityCompat.START)) {
+                drlHome.closeDrawer(GravityCompat.START)
+            } else {
+                setFragment(supportFragmentManager, HomeFragment(), false, R.id.fmlHomeContainer)
+            }
         }
     }
 
