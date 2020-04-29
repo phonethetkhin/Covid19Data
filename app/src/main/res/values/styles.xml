@@ -1,15 +1,33 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="RedTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:textColor">@color/white</item>
-        <item name="toolbarStyle">@style/Widget.MaterialComponents.Toolbar</item>
 
     </style>
+
+    <style name="BlueTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/blue</item>
+        <item name="colorPrimaryDark">@color/bluedark</item>
+        <item name="colorAccent">@color/blue</item>
+        <item name="android:textColor">@color/white</item>
+
+    </style>
+
+    <style name="GreenTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/green</item>
+        <item name="colorPrimaryDark">@color/greendark</item>
+        <item name="colorAccent">@color/green</item>
+        <item name="android:textColor">@color/white</item>
+
+    </style>
+
 
     <style name="TextSize" parent="TextAppearance.AppCompat.Title">
         <item name="android:textSize">20sp</item>

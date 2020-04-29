@@ -1,6 +1,7 @@
 package com.example.covid19data.ui
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Process
@@ -26,6 +27,8 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import com.example.covid19data.utils.*
+
 
 
 @Suppress("DEPRECATION")
@@ -41,6 +44,12 @@ class MainActivity : AppCompatActivity(),
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        when (getTheme(this)) {
+            "Green" -> setTheme(R.style.GreenTheme)
+            "Blue" -> setTheme(R.style.BlueTheme)
+            "Red" -> setTheme(R.style.RedTheme)
+            else -> setTheme(R.style.GreenTheme)
+        }
         setContentView(R.layout.activity_main)
         val tlbToolbar = findViewById<Toolbar>(R.id.tlbToolbar)
         setSupportActionBar(tlbToolbar)
@@ -94,10 +103,23 @@ class MainActivity : AppCompatActivity(),
                         alertDialog.dismiss()
                     }
                 }
+                
+                //-------------------other links----------------------
+
+                R.id.nav_Setting ->
+                {
+                    startActivity(Intent(this,SettingActivity::class.java))
+                }
+                R.id.nav_about ->
+                {
+                    startActivity(Intent(this,AboutActivity::class.java))
+                }
             }
             false
         }
+
     }
+
 
     private fun showProgressLottieDialog(context: Context) {
         alertDialog = LottieAlertDialog.Builder(context, DialogTypes.TYPE_LOADING)

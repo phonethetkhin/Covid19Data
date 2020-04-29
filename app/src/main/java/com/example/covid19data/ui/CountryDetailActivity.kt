@@ -15,12 +15,20 @@ import com.example.covid19data.utils.setToolbarTitleAndBackArrow
 import com.example.covid19data.vModel.CountryDetailViewModel
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_country_detail.*
+import com.example.covid19data.utils.*
+
 
 
 class CountryDetailActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        when (getTheme(this)) {
+            "Green" -> setTheme(R.style.GreenTheme)
+            "Blue" -> setTheme(R.style.BlueTheme)
+            "Red" -> setTheme(R.style.RedTheme)
+            else -> setTheme(R.style.GreenTheme)
+        }
         setContentView(R.layout.activity_country_detail)
         val toolbar = tlbToolbar2 as Toolbar
 

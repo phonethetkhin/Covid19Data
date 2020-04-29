@@ -1,5 +1,6 @@
 package com.example.covid19data.adapters
 
+import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
@@ -11,7 +12,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.covid19data.R
 import com.example.covid19data.models.NewsDetailModel
 import com.example.covid19data.ui.NewsDetailActivity
+import com.labters.lottiealertdialoglibrary.DialogTypes
+import com.labters.lottiealertdialoglibrary.LottieAlertDialog
 import com.squareup.picasso.Picasso
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class NewsAdapter(private val newsList: List<NewsDetailModel>) :
     RecyclerView.Adapter<NewsAdapter.ViewHolder>() {
@@ -40,12 +46,17 @@ class NewsAdapter(private val newsList: List<NewsDetailModel>) :
         Picasso.get().load(newsList[position].ImageURl).into(holder.imgNewsPhoto)
         holder.txtContent.text = newsList[position].content
         holder.crvNews.setOnClickListener {
-            val intent = Intent(it.context, NewsDetailActivity::class.java)
-            intent.putExtra("url", newsList[position].URL)
-            it.context.startActivity(intent)
+
+                val intent = Intent(it.context, NewsDetailActivity::class.java)
+                intent.putExtra("url", newsList[position].URL)
+                it.context.startActivity(intent)
+
+
         }
 
 
     }
+
+
 
 }

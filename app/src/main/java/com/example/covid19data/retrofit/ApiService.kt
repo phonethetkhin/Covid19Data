@@ -23,6 +23,8 @@ interface ApiService {
     @GET("everything")
     suspend fun getAllCovidNews(
         @Query("q") keyword: String,
+        @Query("from") from: String,
         @Query("apiKey") apiKey: String
-    ): Response<NewsModel>
+
+        ): Response<NewsModel>
 }

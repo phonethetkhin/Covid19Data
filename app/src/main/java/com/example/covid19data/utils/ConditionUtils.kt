@@ -1,9 +1,12 @@
 package com.example.covid19data.utils
 
+import android.content.Context
 import android.os.Bundle
+import android.widget.ImageButton
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
+import com.example.covid19data.R
 import com.example.covid19data.fragments.CountriesFragment
 import com.example.covid19data.fragments.HomeFragment
 import com.example.covid19data.fragments.NewsFragment
@@ -16,6 +19,7 @@ fun fragmentAttach(
     when (fragment) {
 
         is HomeFragment -> {
+
             fragment.setHomeFragmentToActivityCommunication(fragmentActivityCommunication)
 
         }
@@ -74,5 +78,37 @@ fun setFragmentByBundle(
 
     }
 
+}
+
+fun setCheckedtoSelectedColor(
+    context: Context,
+    theme: String?,
+    green: ImageButton,
+    blue: ImageButton,
+    red: ImageButton
+) {
+    when (theme) {
+        "Green" -> {
+            blue.setImageDrawable(null)
+            red.setImageDrawable(null)
+            green.setImageDrawable(context.resources.getDrawable(R.drawable.ic_check_circle_black_24dp))
+        }
+        "Blue" -> {
+            blue.setImageDrawable(null)
+            red.setImageDrawable(null)
+            blue.setImageDrawable(context.resources.getDrawable(R.drawable.ic_check_circle_black_24dp))
+        }
+        "Red" -> {
+            blue.setImageDrawable(null)
+            red.setImageDrawable(null)
+            red.setImageDrawable(context.resources.getDrawable(R.drawable.ic_check_circle_black_24dp))
+        }
+        else -> {
+            blue.setImageDrawable(null)
+            red.setImageDrawable(null)
+            red.setImageDrawable(context.resources.getDrawable(R.drawable.ic_check_circle_black_24dp))
+        }
+
+    }
 }
 
