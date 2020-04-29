@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:text="@string/last_updated_at"
-        android:textSize="30sp"
+        android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -46,7 +46,7 @@
         android:text="@string/worldwide"
 
 
-        android:textSize="60sp"
+        android:textSize="40sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtLastUpdated" />
@@ -62,7 +62,7 @@
         android:padding="8dp"
 
         android:text="@string/total_cases"
-        android:textSize="25sp"
+        android:textSize="20sp"
 
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtCountryName" />
@@ -78,7 +78,7 @@
         android:background="#0077D6"
         android:padding="8dp"
 
-        android:textSize="25sp"
+        android:textSize="20sp"
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/txtTotalCasesLabel"
@@ -95,7 +95,7 @@
 
 
         android:text="@string/deaths"
-        android:textSize="25sp"
+        android:textSize="20sp"
 
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtTotalCasesLabel" />
@@ -110,7 +110,7 @@
         android:background="#F9032D"
 
         android:padding="8dp"
-        android:textSize="25sp"
+        android:textSize="20sp"
 
 
         app:layout_constraintEnd_toEndOf="parent"
@@ -128,7 +128,7 @@
         android:padding="8dp"
 
         android:text="@string/recovered"
-        android:textSize="25sp"
+        android:textSize="20sp"
 
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtDeathsLabel" />
@@ -145,7 +145,7 @@
 
         android:padding="8dp"
 
-        android:textSize="25sp"
+        android:textSize="20sp"
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/txtRecoveredLabel"

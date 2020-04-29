@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Covid 19 Data</string>
+    //drawer status
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+
+    //drawer menu
+    <string name="main_links">"အဓိက စာမျက်နှာများ"</string>
+    <string name="home">ပင်မစာမျက်နှာ</string>
+    <string name="countries">နိုင်ငံများ</string>
+    <string name="latest_covid_19_news">"နောက်ဆုံးရ ကိုဗစ်၁၉ သတင်းများ"</string>
+    <string name="other_links">"တခြား စာမျက်နှာများ"</string>
+    <string name="setting">အပြင်အဆင်များ</string>
+    <string name="about_this_app">"ယခု App အကြောင်း"</string>
+
+    //country detail + homefragment
+    <string name="last_updated_at">"နောက်ဆုံးရယူထားသောအချိန် :"</string>
+    <string name="worldwide">ကမ္ဘာလုံးဆိုင်ရာ</string>
+    <string name="total_cases">"အတည်ပြုလူနာ :"</string>
+    <string name="deaths">"သေဆုံးသူ :"</string>
+    <string name="recovered">"ပြန်သက်သာ :"</string>
+
+    //settingactivity
+    <string name="change_system_color">"System ၏အရောင်ပြောင်းခြင်း"</string>
+    <string name="english">အင်္ဂလိပ်</string>
+    <string name="myanmar_unicode">"မြန်မာ(ယူနီကုဒ်)"</string>
+    <string name="myanmar_zawgyi">"မြန်မာ(‌ဇော်ဂျီ)"</string>
+    <string name="change_system_language">"System ၏ ဘာသာစကားပြောင်းလဲခြင်း"</string>
+</resources>
