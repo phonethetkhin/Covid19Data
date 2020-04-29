@@ -5,6 +5,8 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Filter
+import android.widget.Filterable
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
@@ -13,12 +15,12 @@ import com.example.covid19data.R
 import com.example.covid19data.models.CountryDetailModel
 import com.example.covid19data.ui.CountryDetailActivity
 import com.squareup.picasso.Picasso
+import java.util.*
 
 
-class CountriesAdapter(
-    private val countriesList: List<CountryDetailModel>,
-    private val flagList: List<String>
-) : RecyclerView.Adapter<CountriesAdapter.ViewHolder>() {
+class CountriesAdapter(var countriesList: List<CountryDetailModel>,val filterCountrylist:List<CountryDetailModel>,val flagList: List<String>) : RecyclerView.Adapter<CountriesAdapter.ViewHolder>(),Filterable {
+    private var valueFilter: ValueFilter? = null
+
     inner class ViewHolder(v: View) : RecyclerView.ViewHolder(v) {
         val crvCountriesList: CardView = v.findViewById(R.id.crvCountriesList)
         val imgCountryFlag: ImageView = v.findViewById(R.id.imgCountryFlag)
@@ -57,5 +59,51 @@ class CountriesAdapter(
             it.context.startActivity(intent)
         }
 
+
     }
+    @Suppress("UNCHECKED_CAST")
+    inner class ValueFilter : Filter() {
+
+        override fun performFiltering(constraint: CharSequence): FilterResults {
+            val results = FilterResults()
+            if (constraint.isNotEmpty()) {
+                val filterList: MutableList<CountryDetailModel> =
+                    ArrayList<CountryDetailModel>()
+                for (i in filterCountrylist.indices) {
+                    if (filterCountrylist[i].name
+                            .toUpperCase(Locale.ROOT).contains(constraint.toString().toUpperCase(
+                                Locale.ROOT
+                            )
+                            )
+                    ) {
+                        filterList.add(filterCountrylist[i])
+                    }
+                }
+                results.count = filterList.size
+                results.values = filterList
+            } else {
+                results.count = filterCountrylist.size
+                results.values = filterCountrylist
+            }
+            return results
+        }
+
+        override fun publishResults(
+            constraint: CharSequence,
+            results: FilterResults
+        ) {
+
+            countriesList = results.values as List<CountryDetailModel>
+            notifyDataSetChanged()
+        }
+    }
+
+    override fun getFilter(): Filter {
+        if (valueFilter == null) {
+            valueFilter = ValueFilter()
+        }
+        return valueFilter as ValueFilter
+    }
+
+
 }

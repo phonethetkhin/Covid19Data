@@ -26,4 +26,5 @@
     <string name="myanmar_unicode">"Myanmar(Unicode)"</string>
     <string name="myanmar_zawgyi">"Myanmar(Zawgyi)"</string>
     <string name="change_system_language">"Change System Language"</string>
+    <string name="search">Search</string>
 </resources>

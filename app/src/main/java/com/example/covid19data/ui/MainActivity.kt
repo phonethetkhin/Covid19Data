@@ -18,17 +18,13 @@ import com.example.covid19data.fragments.CountriesFragment
 import com.example.covid19data.fragments.HomeFragment
 import com.example.covid19data.fragments.NewsFragment
 import com.example.covid19data.interfaces.FragmentToActivity
-import com.example.covid19data.utils.fragmentAttach
-import com.example.covid19data.utils.setFragment
-import com.example.covid19data.utils.setToast
+import com.example.covid19data.utils.*
 import com.labters.lottiealertdialoglibrary.DialogTypes
 import com.labters.lottiealertdialoglibrary.LottieAlertDialog
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import com.example.covid19data.utils.*
-
 
 
 @Suppress("DEPRECATION")
@@ -36,7 +32,9 @@ class MainActivity : AppCompatActivity(),
     FragmentToActivity {
     private lateinit var toggle: ActionBarDrawerToggle
     private lateinit var alertDialog: LottieAlertDialog
+
     private var isSecond: Boolean = false
+
 
     override fun onAttachFragment(fragment: Fragment) {
         fragmentAttach(fragment, this)
@@ -44,13 +42,17 @@ class MainActivity : AppCompatActivity(),
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setBooleanPref(this, "islocation", "location", false)
+
         when (getTheme(this)) {
+
             "Green" -> setTheme(R.style.GreenTheme)
             "Blue" -> setTheme(R.style.BlueTheme)
             "Red" -> setTheme(R.style.RedTheme)
             else -> setTheme(R.style.GreenTheme)
         }
         setContentView(R.layout.activity_main)
+
         val tlbToolbar = findViewById<Toolbar>(R.id.tlbToolbar)
         setSupportActionBar(tlbToolbar)
         ngvHome.setCheckedItem(R.id.nav_home)
@@ -103,16 +105,14 @@ class MainActivity : AppCompatActivity(),
                         alertDialog.dismiss()
                     }
                 }
-                
+
                 //-------------------other links----------------------
 
-                R.id.nav_Setting ->
-                {
-                    startActivity(Intent(this,SettingActivity::class.java))
+                R.id.nav_Setting -> {
+                    startActivity(Intent(this, SettingActivity::class.java))
                 }
-                R.id.nav_about ->
-                {
-                    startActivity(Intent(this,AboutActivity::class.java))
+                R.id.nav_about -> {
+                    startActivity(Intent(this, AboutActivity::class.java))
                 }
             }
             false
@@ -148,6 +148,10 @@ class MainActivity : AppCompatActivity(),
 
     override fun setCheckListener(checkId: Int) {
         ngvHome.setCheckedItem(checkId)
+    }
+
+    override fun LocationListener(isLocation: Boolean) {
+        setBooleanPref(this, "islocation", "location", isLocation)
     }
 
 

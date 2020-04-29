@@ -28,6 +28,8 @@ class NewsFragment : Fragment() {
     ): View? {
         fragmentToActivity.setTitleListener("Covid 19 News")
         fragmentToActivity.setCheckListener(R.id.nav_news)
+        fragmentToActivity.LocationListener(false)
+
         val v = inflater.inflate(R.layout.fragment_news, container, false)
         setLayoutManagerRecyclerview(
             activity!!, v.rcvNews, RecyclerView.VERTICAL, true,

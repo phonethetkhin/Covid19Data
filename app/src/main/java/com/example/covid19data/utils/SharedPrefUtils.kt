@@ -21,3 +21,15 @@ fun getStringPref(context: Context, name: String, key: String, defaultvalue: Str
     val pref = context.getSharedPreferences(name, Context.MODE_PRIVATE)
     return pref.getString(key, defaultvalue)
 }
+
+fun setBooleanPref(context: Context, name: String, key: String, value: Boolean) {
+    val pref = context.getSharedPreferences(name, Context.MODE_PRIVATE)
+    val editor = pref.edit()
+    editor.putBoolean(key, value)
+    editor.apply()
+}
+
+fun getBooleanPref(context: Context, name: String, key: String, defaultvalue: Boolean): Boolean? {
+    val pref = context.getSharedPreferences(name, Context.MODE_PRIVATE)
+    return pref.getBoolean(key, defaultvalue)
+}
