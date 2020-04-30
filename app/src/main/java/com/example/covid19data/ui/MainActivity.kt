@@ -150,9 +150,17 @@ class MainActivity : AppCompatActivity(),
         ngvHome.setCheckedItem(checkId)
     }
 
-    override fun LocationListener(isLocation: Boolean) {
-        setBooleanPref(this, "islocation", "location", isLocation)
+    override fun searchViewClickListener(click: Boolean) {
+        if(click)
+        {
+           if(drlHome.isDrawerOpen(GravityCompat.START))
+            {
+                drlHome.closeDrawer(GravityCompat.START)
+            }
+        }
     }
+
+
 
 
     override fun onBackPressed() {

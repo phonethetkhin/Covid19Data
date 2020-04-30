@@ -28,7 +28,8 @@ class SplashActivity : AppCompatActivity() {
             else -> setTheme(R.style.GreenTheme)
         }
         setContentView(R.layout.activity_splash)
-
+        val lang = getStringPref(this,"lang","lang","en")
+        setApplicationLanguage(lang,this)
 
         val vModel = ViewModelProviders.of(this@SplashActivity).get(CountryViewModel::class.java)
         vModel.getCountryAPILiveData()

@@ -10,14 +10,20 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.covid19data.R
 import com.example.covid19data.adapters.CountriesAdapter
 import com.example.covid19data.interfaces.FragmentToActivity
+import com.example.covid19data.models.CountryDetailModel
+import com.example.covid19data.models.CountryandFlagModel
 import com.example.covid19data.utils.getBooleanPref
 import com.example.covid19data.utils.setLayoutManagerRecyclerview
 import com.example.covid19data.vModel.CountryViewModel
 import kotlinx.android.synthetic.main.fragment_countries.view.*
+import java.util.ArrayList
 
 class CountriesFragment : Fragment() {
     private lateinit var fragmentToActivity: FragmentToActivity
     lateinit var adapter: CountriesAdapter
+    val filterList: MutableList<CountryandFlagModel> =
+        arrayListOf<CountryandFlagModel>()
+
 
     fun setCountryFragmentToActivityCommunication(listener: FragmentToActivity) {
         this.fragmentToActivity = listener
@@ -34,7 +40,7 @@ class CountriesFragment : Fragment() {
     ): View? {
         fragmentToActivity.setTitleListener("By Countries")
         fragmentToActivity.setCheckListener(R.id.nav_countries)
-        fragmentToActivity.LocationListener(true)
+
 
         val v = inflater.inflate(R.layout.fragment_countries, container, false)
         setLayoutManagerRecyclerview(
@@ -46,18 +52,22 @@ class CountriesFragment : Fragment() {
 
         vModel.countryDBLiveData.observe(activity!!, Observer {
             it?.let {
-                adapter = CountriesAdapter(it.countriesList,it.countriesList,it.flagList)
+                for (i in it.countriesList.indices) {
+                    val countryandFlagModel = CountryandFlagModel(it.countriesList[i].name,it.countriesList[i].iso2,it.flagList[i])
+                    filterList.add(countryandFlagModel)
+                }
+                }
+                adapter = CountriesAdapter(filterList,filterList)
 
                 v.rcvCountriesList.adapter = adapter
-            }
+
         })
 
         return v
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        val isLocationFragment = getBooleanPref(activity!!, "islocation", "location", false)
-        if (isLocationFragment!!) {
+
             activity!!.menuInflater.inflate(R.menu.homemenu, menu)
             val searchView =
                 menu.findItem(R.id.mimSearch).actionView as SearchView
@@ -67,11 +77,12 @@ class CountriesFragment : Fragment() {
                 }
 
                 override fun onQueryTextChange(newText: String?): Boolean {
+                    fragmentToActivity.searchViewClickListener(true)
                     adapter.filter.filter(newText)
                     return false
                 }
             })
-        }
+
 
     }
 

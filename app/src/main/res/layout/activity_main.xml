@@ -41,6 +41,8 @@
             android:layout_marginTop="20dp"
             android:background="@color/white"
             android:fitsSystemWindows="true"
+
+            app:itemMaxLines="3"
             app:itemIconTint="?attr/colorPrimary"
             app:itemTextColor="?attr/colorPrimary"
             app:menu="@menu/drawermenu" />

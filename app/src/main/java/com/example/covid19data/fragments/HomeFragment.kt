@@ -29,7 +29,7 @@ class HomeFragment : Fragment() {
     ): View? {
         fragmentToActivity.setTitleListener("WorldWide")
         fragmentToActivity.setCheckListener(R.id.nav_home)
-        fragmentToActivity.LocationListener(false)
+
         val v = inflater.inflate(R.layout.fragment_home, container, false)
 
         val vModel = ViewModelProviders.of(activity!!).get(SummaryViewModel::class.java)

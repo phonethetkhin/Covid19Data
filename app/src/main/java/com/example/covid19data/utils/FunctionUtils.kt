@@ -17,6 +17,32 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 
+ fun setApplicationLanguage(newLanguage: String?,context:Context)  {
+
+    val activityRes = context.resources
+
+    val activityConf = activityRes.configuration
+
+    val newLocale = Locale(newLanguage)
+
+    activityConf.setLocale(newLocale)
+
+    activityRes.updateConfiguration(activityConf, activityRes.displayMetrics)
+
+
+
+    val applicationRes = context.applicationContext.resources
+
+    val applicationConf = applicationRes.configuration
+
+    applicationConf.setLocale(newLocale)
+
+    applicationRes.updateConfiguration(applicationConf,
+
+        applicationRes.displayMetrics)
+
+}
+
 fun setToolbarTitleAndBackArrow(
     context: Context,
     toolbar: Toolbar,

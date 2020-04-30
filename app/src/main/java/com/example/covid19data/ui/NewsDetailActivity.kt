@@ -35,6 +35,12 @@ class NewsDetailActivity : AppCompatActivity() {
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        when (getTheme(this)) {
+            "Green" -> setTheme(R.style.GreenTheme)
+            "Blue" -> setTheme(R.style.BlueTheme)
+            "Red" -> setTheme(R.style.RedTheme)
+            else -> setTheme(R.style.GreenTheme)
+        }
         setContentView(R.layout.activity_news_detail)
         wbvNews = findViewById(R.id.wbvNews)
 

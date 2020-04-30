@@ -9,7 +9,9 @@
     <string name="main_links">"အဓိက စာမ်က္ႏွာမ်ား"</string>
     <string name="home">ပင္မစာမ်က္ႏွာ</string>
     <string name="countries">နိုင္ငံမ်ား</string>
-    <string name="latest_covid_19_news">"ေနာက္ဆုံးရ ကိုဗစ္၁၉ သတင္းမ်ား"</string>
+    <string name="latest_covid_19_news">"ေနာက္ဆုံးရ ကိုဗစ္၁၉ သတင္းမ်ား
+
+        "</string>
     <string name="other_links">"တျခား စာမ်က္ႏွာမ်ား"</string>
     <string name="setting">အျပင္အဆင္မ်ား</string>
     <string name="about_this_app">"ယခု App အေၾကာင္း"</string>

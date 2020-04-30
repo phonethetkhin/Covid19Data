@@ -13,12 +13,13 @@ import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.covid19data.R
 import com.example.covid19data.models.CountryDetailModel
+import com.example.covid19data.models.CountryandFlagModel
 import com.example.covid19data.ui.CountryDetailActivity
 import com.squareup.picasso.Picasso
 import java.util.*
 
 
-class CountriesAdapter(var countriesList: List<CountryDetailModel>,val filterCountrylist:List<CountryDetailModel>,val flagList: List<String>) : RecyclerView.Adapter<CountriesAdapter.ViewHolder>(),Filterable {
+class CountriesAdapter(var countriesList: List<CountryandFlagModel>,val filterCountrylist:List<CountryandFlagModel>) : RecyclerView.Adapter<CountriesAdapter.ViewHolder>(),Filterable {
     private var valueFilter: ValueFilter? = null
 
     inner class ViewHolder(v: View) : RecyclerView.ViewHolder(v) {
@@ -50,12 +51,12 @@ class CountriesAdapter(var countriesList: List<CountryDetailModel>,val filterCou
         }
         holder.txtCountryName.text =
             countriesList[position].name + " " + space
-        Picasso.get().load(flagList[position]).into(holder.imgCountryFlag)
+        Picasso.get().load(countriesList[position].flag).into(holder.imgCountryFlag)
         holder.crvCountriesList.setOnClickListener {
 
             val intent = Intent(it.context, CountryDetailActivity::class.java)
             intent.putExtra("name", countriesList[position].name)
-            intent.putExtra("flag", flagList[position])
+            intent.putExtra("flag", countriesList[position].flag)
             it.context.startActivity(intent)
         }
 
@@ -67,8 +68,8 @@ class CountriesAdapter(var countriesList: List<CountryDetailModel>,val filterCou
         override fun performFiltering(constraint: CharSequence): FilterResults {
             val results = FilterResults()
             if (constraint.isNotEmpty()) {
-                val filterList: MutableList<CountryDetailModel> =
-                    ArrayList<CountryDetailModel>()
+                val filterList: MutableList<CountryandFlagModel> =
+                    ArrayList<CountryandFlagModel>()
                 for (i in filterCountrylist.indices) {
                     if (filterCountrylist[i].name
                             .toUpperCase(Locale.ROOT).contains(constraint.toString().toUpperCase(
@@ -93,7 +94,7 @@ class CountriesAdapter(var countriesList: List<CountryDetailModel>,val filterCou
             results: FilterResults
         ) {
 
-            countriesList = results.values as List<CountryDetailModel>
+            countriesList = results.values as List<CountryandFlagModel>
             notifyDataSetChanged()
         }
     }
