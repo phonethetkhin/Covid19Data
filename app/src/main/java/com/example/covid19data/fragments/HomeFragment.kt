@@ -1,3 +1,5 @@
+@file:Suppress("DEPRECATION")
+
 package com.example.covid19data.fragments
 
 import android.annotation.SuppressLint

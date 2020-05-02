@@ -7,18 +7,15 @@ import com.example.covid19data.retrofit.RetrofitObj
 import com.example.covid19data.room.Covid19DataDatabase
 import com.example.covid19data.room.entities.CountriesEntity
 import com.example.covid19data.utils.CovidDataBaseURL
+import com.example.covid19data.utils.getCountryModel
 
 class CountryRepo(context: Context) {
     private val countryDao = Covid19DataDatabase.getCovid19DB(context)!!.countriesDao()
-    private val apiService = RetrofitObj(CovidDataBaseURL).apiService
-    val countryAPILiveData = MutableLiveData<CountryModel>()
+    val countryUtilsLiveData = MutableLiveData<List<CountryModel>>()
     val countryDBLiveData = MutableLiveData<CountriesEntity>()
 
-    suspend fun getCountriesFromAPI() {
-        val response = apiService.getAllCountries()
-        if (response.isSuccessful) {
-            countryAPILiveData.postValue(response.body())
-        }
+    suspend fun getCountriesFromUtils() {
+        countryUtilsLiveData.postValue(getCountryModel())
     }
 
     suspend fun getCountriesFromDatabase() {

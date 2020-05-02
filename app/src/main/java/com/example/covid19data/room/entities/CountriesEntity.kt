@@ -3,7 +3,7 @@ package com.example.covid19data.room.entities
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.example.covid19data.models.CountryDetailModel
+import com.example.covid19data.models.CountryModel
 
 @Entity(tableName = "tbl_countries")
 data class CountriesEntity(
@@ -12,9 +12,7 @@ data class CountriesEntity(
     val countryID: Int,
 
     @ColumnInfo(name = "countries_list")
-    val countriesList: List<CountryDetailModel>,
+    val countriesList: List<CountryModel>
 
-    @ColumnInfo(name = "flags_list")
-    val flagList: List<String>
 
 )

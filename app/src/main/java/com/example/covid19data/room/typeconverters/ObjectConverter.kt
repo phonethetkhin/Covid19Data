@@ -1,7 +1,7 @@
 package com.example.covid19data.room.typeconverters
 
 import androidx.room.TypeConverter
-import com.example.covid19data.models.CountryDetailModel
+import com.example.covid19data.models.CountryModel
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import java.lang.reflect.Type
@@ -9,24 +9,24 @@ import java.lang.reflect.Type
 
 class ObjectConverter {
     @TypeConverter
-    fun fromCountryLangList(countryLang: List<CountryDetailModel?>?): String? {
+    fun fromCountryLangList(countryLang: List<CountryModel?>?): String? {
         if (countryLang == null) {
             return null
         }
         val gSon = Gson()
         val type: Type =
-            object : TypeToken<List<CountryDetailModel?>?>() {}.type
+            object : TypeToken<List<CountryModel?>?>() {}.type
         return gSon.toJson(countryLang, type)
     }
 
     @TypeConverter
-    fun toCountryLangList(countryLangString: String?): List<CountryDetailModel>? {
+    fun toCountryLangList(countryLangString: String?): List<CountryModel>? {
         if (countryLangString == null) {
             return null
         }
         val gSon = Gson()
         val type: Type =
-            object : TypeToken<List<CountryDetailModel?>?>() {}.type
+            object : TypeToken<List<CountryModel?>?>() {}.type
         return gSon.fromJson(countryLangString, type)
     }
 

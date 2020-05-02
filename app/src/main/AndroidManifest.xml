@@ -16,7 +16,9 @@
         android:theme="@style/RedTheme">
         <activity android:name=".ui.AboutActivity"
             android:screenOrientation="portrait"
-            tools:ignore="LockedOrientationActivity"> </activity>
+            tools:ignore="LockedOrientationActivity">
+
+        </activity>
         <activity android:name=".ui.SettingActivity"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity"> </activity>

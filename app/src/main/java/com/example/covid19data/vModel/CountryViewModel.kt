@@ -9,12 +9,11 @@ import kotlinx.coroutines.launch
 
 class CountryViewModel(application: Application) : AndroidViewModel(application) {
     private val countryRepo = CountryRepo(application)
-    val countryAPILiveData = countryRepo.countryAPILiveData
+    val countryUtilsLiveData = countryRepo.countryUtilsLiveData
     val countryDBLiveData = countryRepo.countryDBLiveData
 
-    fun getCountryAPILiveData() = viewModelScope.launch {
-        countryRepo.getCountriesFromAPI()
-
+    fun getCountryUtilsLiveData() = viewModelScope.launch {
+countryRepo.getCountriesFromUtils()
     }
 
     fun getCountryDBLiveData() = viewModelScope.launch {

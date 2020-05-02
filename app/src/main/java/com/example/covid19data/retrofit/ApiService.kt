@@ -12,8 +12,7 @@ interface ApiService {
     @GET("api")
     suspend fun getSummary(): Response<SummaryModel>
 
-    @GET("api/countries")
-    suspend fun getAllCountries(): Response<CountryModel>
+
 
     @GET
     suspend fun getCountyData(@Url url: String): Response<SummaryModel>

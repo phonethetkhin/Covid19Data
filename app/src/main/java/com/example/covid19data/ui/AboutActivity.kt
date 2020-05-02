@@ -1,9 +1,12 @@
 package com.example.covid19data.ui
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.example.covid19data.R
-import com.example.covid19data.utils.*
+import com.example.covid19data.utils.getTheme
+import kotlinx.android.synthetic.main.activity_about.*
 
 class AboutActivity : AppCompatActivity() {
 
@@ -16,5 +19,13 @@ class AboutActivity : AppCompatActivity() {
             else -> setTheme(R.style.GreenTheme)
         }
         setContentView(R.layout.activity_about)
+        txtDeveloperName.setOnClickListener {
+            val url = "https://www.facebook.com/snow.cat.9212"
+            val i = Intent(
+                Intent.ACTION_VIEW,
+                Uri.parse(url)
+            )
+            startActivity(i)
+        }
     }
 }

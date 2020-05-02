@@ -7,7 +7,6 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.covid19data.R
 import com.example.covid19data.room.entities.CountriesEntity
-import com.example.covid19data.utils.getFlags
 import com.example.covid19data.vModel.CountryViewModel
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
@@ -32,19 +31,11 @@ class SplashActivity : AppCompatActivity() {
         setApplicationLanguage(lang,this)
 
         val vModel = ViewModelProviders.of(this@SplashActivity).get(CountryViewModel::class.java)
-        vModel.getCountryAPILiveData()
-        vModel.countryAPILiveData.observe(this@SplashActivity, Observer {
-            it?.let {
-                val countryEntity =
-                    CountriesEntity(
-                        0,
-                        it.countryList
-                        , getFlags()
-                    )
-                vModel.insertCountries(countryEntity)
-            }
-        }
-        )
+        vModel.getCountryUtilsLiveData()
+        vModel.countryUtilsLiveData.observe(this, Observer {
+            vModel.insertCountries(CountriesEntity(0,it))
+        })
+
         GlobalScope.launch {
 
             delay(7000L)
