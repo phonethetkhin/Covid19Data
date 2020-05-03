@@ -35,11 +35,9 @@
 
     <style name="NavigationDrawerStyle">
 
-    <item name="android:textSize">50sp</item><!-- text size in menu-->
+    <item name="android:textSize">20sp</item><!-- text size in menu-->
 
     <!-- item size in menu-->
-    <item name="android:listPreferredItemHeightSmall">40dp</item>
-    <item name="listPreferredItemHeightSmall">40dp</item>
 
     </style>
 </resources>

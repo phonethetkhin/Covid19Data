@@ -27,7 +27,7 @@ class CountryDetailActivity : AppCompatActivity() {
             "Green" -> setTheme(R.style.GreenTheme)
             "Blue" -> setTheme(R.style.BlueTheme)
             "Red" -> setTheme(R.style.RedTheme)
-            else -> setTheme(R.style.GreenTheme)
+            else -> setTheme(R.style.RedTheme)
         }
         setContentView(R.layout.activity_country_detail)
         val toolbar = tlbToolbar2 as Toolbar

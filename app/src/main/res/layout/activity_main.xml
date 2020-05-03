@@ -42,6 +42,7 @@
             android:background="@color/white"
             android:fitsSystemWindows="true"
 
+            app:itemTextAppearance="@style/NavigationDrawerStyle"
             app:itemMaxLines="3"
             app:itemIconTint="?attr/colorPrimary"
             app:itemTextColor="?attr/colorPrimary"

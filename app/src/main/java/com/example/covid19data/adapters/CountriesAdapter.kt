@@ -18,7 +18,8 @@ import com.squareup.picasso.Picasso
 import java.util.*
 
 
-class CountriesAdapter(var countriesList: List<CountryModel>,val filterCountrylist:List<CountryModel>) : RecyclerView.Adapter<CountriesAdapter.ViewHolder>(),Filterable {
+@Suppress("UNCHECKED_CAST")
+class CountriesAdapter(var countriesList: List<CountryModel>, val filterCountrylist:List<CountryModel>) : RecyclerView.Adapter<CountriesAdapter.ViewHolder>(),Filterable {
     private var valueFilter: ValueFilter? = null
 
     inner class ViewHolder(v: View) : RecyclerView.ViewHolder(v) {
@@ -63,22 +64,18 @@ class CountriesAdapter(var countriesList: List<CountryModel>,val filterCountryli
 
 
     }
-    @Suppress("UNCHECKED_CAST")
-    inner class ValueFilter : Filter() {
 
+    inner class ValueFilter : Filter() {
         override fun performFiltering(constraint: CharSequence): FilterResults {
             val results = FilterResults()
-            if (constraint.isNotEmpty() && constraint == "") {
+            if (constraint.isNotEmpty()) {
                 val filterList: MutableList<CountryModel> =
                     ArrayList<CountryModel>()
                 for (i in filterCountrylist.indices) {
                     if (filterCountrylist[i].name
-                            .toUpperCase().contains(constraint.toString().toUpperCase()
-
-
-                            )
+                            .toUpperCase().contains(constraint.toString().toUpperCase())
                     ) {
-                        filterList.add(filterCountrylist[i])
+                        filterList.add(filterCountrylist.get(i))
                     }
                 }
                 results.count = filterList.size
@@ -94,7 +91,6 @@ class CountriesAdapter(var countriesList: List<CountryModel>,val filterCountryli
             constraint: CharSequence,
             results: FilterResults
         ) {
-
             countriesList = results.values as List<CountryModel>
             notifyDataSetChanged()
         }
@@ -106,6 +102,6 @@ class CountriesAdapter(var countriesList: List<CountryModel>,val filterCountryli
         }
         return valueFilter as ValueFilter
     }
+    }
 
 
-}

@@ -39,7 +39,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:text="@string/last_updated_at"
-        android:textSize="25sp"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tlbToolbar2" />
 
@@ -169,8 +169,8 @@
 
     <ImageView
         android:id="@+id/imgCountryFlag"
-        android:layout_width="250dp"
-        android:layout_height="150dp"
+        android:layout_width="200dp"
+        android:layout_height="100dp"
         android:layout_marginTop="16dp"
         android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"

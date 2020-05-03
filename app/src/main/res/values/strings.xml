@@ -650,5 +650,10 @@ https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Flag_of_Zambia.svg/120
 //zimbabwe
 https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Flag_of_Zimbabwe.svg/1920px-Flag_of_Zimbabwe.svg.png
 "</string>
+    <string name="tested_deviceslabel">Tested Devices</string>
+    <string name="tested_devices">"1. Nexus S (4", 480x800 resolution, hdpi density)\n\n
+2. Galaxy Nexus (4.65", 720x1280 resolution, xhdpi density)\n\n3. Pixel 2 (5", 1080x1920 resolution, 420dpi density)\n\n4. Pixel XL(5.5", 1440x2560 resolution, 560dpi density)\n\n5. Pixel 3a XL(6", 1080x2160 resolution, 400 dpi density)\n\n6. Pixel 3XL(6.3", 1440x2960 resolution, 560 dpi density)\n\n7. Nexus 7(2012) (7", 1200x1920 resolution, tvdpi density)\n\n8. Nexus 9 (8.86", 2048x1536 resolution, xhdpi density)\n\n9. Nexus 10 (10.055", 2560x1600 resolution, xhdpi density)"
+</string>
+    <string name="tested_android_versionlabel">Tested Android Version</string>
 
 </resources>

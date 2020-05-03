@@ -86,7 +86,7 @@ fun getTimeZone(oldDate: String): String {
 
     @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS") val formatted: Date = df.parse(date)
     val print =
-        SimpleDateFormat("MMM d, yyyy hh:mm:ss a z")
+        SimpleDateFormat("MMMMM.dd, yyyy hh:mm:ss a z")
     print.timeZone = TimeZone.getTimeZone("Asia/Rangoon")
 
     val formattedDate = print.format(formatted)
