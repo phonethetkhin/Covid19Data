@@ -158,7 +158,7 @@ android:id="@+id/crvDeveloperName"
                 app:layout_constraintEnd_toEndOf="parent"
 
                 android:textColor="@color/black"
-                android:text="@string/tested_devices"
+                android:text="@string/tested_android_version"
                 app:layout_constraintStart_toStartOf="@+id/txtTestedAndroidVersionLabel"
                 app:layout_constraintTop_toBottomOf="@+id/txtTestedAndroidVersionLabel" />
         </androidx.constraintlayout.widget.ConstraintLayout>

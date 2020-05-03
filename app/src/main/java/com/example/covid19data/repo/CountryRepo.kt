@@ -3,10 +3,8 @@ package com.example.covid19data.repo
 import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import com.example.covid19data.models.CountryModel
-import com.example.covid19data.retrofit.RetrofitObj
 import com.example.covid19data.room.Covid19DataDatabase
 import com.example.covid19data.room.entities.CountriesEntity
-import com.example.covid19data.utils.CovidDataBaseURL
 import com.example.covid19data.utils.getCountryModel
 
 class CountryRepo(context: Context) {

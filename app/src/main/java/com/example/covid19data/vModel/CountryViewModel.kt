@@ -13,7 +13,7 @@ class CountryViewModel(application: Application) : AndroidViewModel(application)
     val countryDBLiveData = countryRepo.countryDBLiveData
 
     fun getCountryUtilsLiveData() = viewModelScope.launch {
-countryRepo.getCountriesFromUtils()
+        countryRepo.getCountriesFromUtils()
     }
 
     fun getCountryDBLiveData() = viewModelScope.launch {

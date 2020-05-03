@@ -6,7 +6,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-tools:showIn="@layout/activity_main"
     >
 
     <pl.droidsonroids.gif.GifImageView
@@ -45,7 +44,7 @@ tools:showIn="@layout/activity_main"
         android:id="@+id/txtCountryName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="256dp"
+        android:layout_marginTop="128dp"
         android:text="@string/worldwide"
 
 
@@ -60,7 +59,7 @@ tools:showIn="@layout/activity_main"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
 
-        android:layout_marginTop="128dp"
+        android:layout_marginTop="64dp"
         android:background="#0077D6"
         android:padding="8dp"
 
@@ -76,7 +75,7 @@ tools:showIn="@layout/activity_main"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
 
-        android:layout_marginTop="128dp"
+        android:layout_marginTop="64dp"
         android:layout_marginEnd="8dp"
         android:background="#0077D6"
         android:padding="8dp"
