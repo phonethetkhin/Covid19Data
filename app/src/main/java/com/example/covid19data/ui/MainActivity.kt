@@ -13,12 +13,15 @@ import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProviders
 import com.example.covid19data.R
 import com.example.covid19data.fragments.CountriesFragment
 import com.example.covid19data.fragments.HomeFragment
 import com.example.covid19data.fragments.NewsFragment
 import com.example.covid19data.interfaces.FragmentToActivity
+import com.example.covid19data.room.entities.CountriesEntity
 import com.example.covid19data.utils.*
+import com.example.covid19data.vModel.CountryViewModel
 import com.labters.lottiealertdialoglibrary.DialogTypes
 import com.labters.lottiealertdialoglibrary.LottieAlertDialog
 import kotlinx.android.synthetic.main.activity_main.*
@@ -39,6 +42,7 @@ class MainActivity : AppCompatActivity(),
     override fun onAttachFragment(fragment: Fragment) {
         fragmentAttach(fragment, this)
     }
+    
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -96,7 +100,7 @@ class MainActivity : AppCompatActivity(),
                     closeDrawer(drlHome)
                     setFragment(
                         supportFragmentManager,
-                        NewsFragment(),
+                        NewsFragment(this),
                         false,
                         R.id.fmlHomeContainer
                     )
@@ -151,16 +155,12 @@ class MainActivity : AppCompatActivity(),
     }
 
     override fun searchViewClickListener(click: Boolean) {
-        if(click)
-        {
-           if(drlHome.isDrawerOpen(GravityCompat.START))
-            {
+        if (click) {
+            if (drlHome.isDrawerOpen(GravityCompat.START)) {
                 drlHome.closeDrawer(GravityCompat.START)
             }
         }
     }
-
-
 
 
     override fun onBackPressed() {
@@ -177,7 +177,12 @@ class MainActivity : AppCompatActivity(),
             if (drlHome.isDrawerOpen(GravityCompat.START)) {
                 drlHome.closeDrawer(GravityCompat.START)
             } else {
-                setFragment(supportFragmentManager, HomeFragment(this), false, R.id.fmlHomeContainer)
+                setFragment(
+                    supportFragmentManager,
+                    HomeFragment(this),
+                    false,
+                    R.id.fmlHomeContainer
+                )
             }
         }
     }

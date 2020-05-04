@@ -10,7 +10,7 @@ class NewsViewModel : ViewModel() {
     private val newsRepo = NewsRepo()
     val newsLiveData = newsRepo.newsLiveData
 
-    fun getNewsLiveDataVM() = viewModelScope.launch {
-        newsRepo.getApiNewsLiveData()
+    fun getNewsLiveDataVM(context: Context) = viewModelScope.launch {
+        newsRepo.getApiNewsLiveData(context)
     }
 }

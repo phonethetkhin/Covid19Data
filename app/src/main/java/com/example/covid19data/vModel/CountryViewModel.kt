@@ -1,6 +1,7 @@
 package com.example.covid19data.vModel
 
 import android.app.Application
+import android.content.Context
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.covid19data.repo.CountryRepo
@@ -12,8 +13,8 @@ class CountryViewModel(application: Application) : AndroidViewModel(application)
     val countryUtilsLiveData = countryRepo.countryUtilsLiveData
     val countryDBLiveData = countryRepo.countryDBLiveData
 
-    fun getCountryUtilsLiveData() = viewModelScope.launch {
-        countryRepo.getCountriesFromUtils()
+    fun getCountryUtilsLiveData(context:Context) = viewModelScope.launch {
+        countryRepo.getCountriesFromUtils(context)
     }
 
     fun getCountryDBLiveData() = viewModelScope.launch {

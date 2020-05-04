@@ -4,6 +4,8 @@ import android.graphics.PorterDuff
 import android.os.Bundle
 import android.text.Html
 import android.view.MenuItem
+import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.Observer
@@ -40,11 +42,26 @@ class CountryDetailActivity : AppCompatActivity() {
 
 
 setToolbarTitleAndBackArrow(this,toolbar,name,supportActionBar!!)
+        if(isNetworkActive(this))
+        {
+            cslCountryDetail.visibility = View.VISIBLE
+            noInternetLayout.visibility = View.GONE
+            mainFunction(name)
+        }
+        else
+        {
+            cslCountryDetail.visibility = View.GONE
+            noInternetLayout.visibility = View.VISIBLE
+            setToast(this,"Network is slow or cannot reach, Please check you connection !!!",
+                Toast.LENGTH_SHORT)
 
+        }
 
-
+    }
+    private fun mainFunction(name:String)
+    {
         val vModel = ViewModelProviders.of(this).get(CountryDetailViewModel::class.java)
-        vModel.getCountryDetail(name)
+        vModel.getCountryDetail(this,name)
         vModel.countryDetailLiveData.observe(this, Observer {
 
             txtTotalCases.text = it.confirmedModel.totalCases.toString()

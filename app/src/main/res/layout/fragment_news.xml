@@ -5,6 +5,10 @@
     android:layout_height="match_parent"
     tools:context=".fragments.NewsFragment">
 
+    <include
+        android:id="@+id/noInternetLayout"
+        layout="@layout/nonetworklayout"
+        android:visibility="gone" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rcvNews"

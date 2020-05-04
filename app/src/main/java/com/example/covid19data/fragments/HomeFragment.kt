@@ -3,8 +3,6 @@
 package com.example.covid19data.fragments
 
 import android.annotation.SuppressLint
-import android.content.Context
-import android.net.ConnectivityManager
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -44,22 +42,30 @@ class HomeFragment(val activity: AppCompatActivity) : Fragment() {
 
         return v
     }
-    fun checkConnection(activity: AppCompatActivity, v:View)
+    private fun checkConnection(activity: AppCompatActivity, v:View)
     {
         if(isNetworkActive(activity))
         {
+            v.cslHome.visibility = View.VISIBLE
+            v.noInternetLayout.visibility = View.GONE
             mainFunction(v)
         }
         else
         {
-            setToast(activity,"No Network",Toast.LENGTH_SHORT)
+            v.cslHome.visibility = View.GONE
+            v.noInternetLayout.visibility = View.VISIBLE
+            setToast(
+                activity,
+                "Network is slow or cannot reach, Please check you connection !!!",
+                Toast.LENGTH_SHORT
+            )
         }
     }
-    fun mainFunction(v :View)
+    private fun mainFunction(v :View)
     {
-        val vModel = ViewModelProviders.of(activity!!).get(SummaryViewModel::class.java)
-        vModel.getSummaryViewModel()
-        vModel.summaryLiveData.observe(activity!!, Observer {
+        val vModel = ViewModelProviders.of(activity).get(SummaryViewModel::class.java)
+        vModel.getSummaryViewModel(activity)
+        vModel.summaryLiveData.observe(activity, Observer {
             it?.let {
                 v.txtTotalCases.text = it.confirmedModel.totalCases.toString()
                 v.txtDeaths.text = it.deathsModel.totalDeaths.toString()

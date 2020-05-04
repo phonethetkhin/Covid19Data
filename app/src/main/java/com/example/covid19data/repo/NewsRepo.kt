@@ -14,7 +14,7 @@ class NewsRepo {
     private val apiService = RetrofitObj(NewsBaseURl).apiService
     val newsLiveData = MutableLiveData<NewsModel>()
 
-    suspend fun getApiNewsLiveData() {
+    suspend fun getApiNewsLiveData(context: Context) {
         val c = Calendar.getInstance(Locale.getDefault())
 
 
@@ -24,9 +24,15 @@ class NewsRepo {
 
         val result =df.format(c.time)
 
-        val response = apiService.getAllCovidNews("Covid 19", result,"e6efa7af141a41238111e8a74f730a0c")
-        if (response.isSuccessful) {
-            newsLiveData.postValue(response.body())
+        try {
+            val response =
+                apiService.getAllCovidNews("Covid 19", result, "e6efa7af141a41238111e8a74f730a0c")
+            if (response.isSuccessful) {
+                newsLiveData.postValue(response.body())
+            }
+        } catch (e: Exception) {
+            setToast(context,"Error Occurred !!!", Toast.LENGTH_SHORT)
+
         }
     }
 }
