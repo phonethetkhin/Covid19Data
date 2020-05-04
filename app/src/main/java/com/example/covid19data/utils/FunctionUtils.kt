@@ -5,6 +5,7 @@ package com.example.covid19data.utils
 import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.PorterDuff
+import android.net.ConnectivityManager
 import android.text.Html
 import android.widget.Toast
 import androidx.appcompat.app.ActionBar
@@ -44,7 +45,11 @@ fun setApplicationLanguage(newLanguage: String?, context: Context) {
     )
 
 }
-
+fun isNetworkActive(activity: AppCompatActivity):Boolean{
+    val connectivityManager=activity.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+    val networkInfo=connectivityManager.activeNetworkInfo
+    return  networkInfo!=null && networkInfo.isConnected
+}
 fun setToolbarTitleAndBackArrow(
     context: Context,
     toolbar: Toolbar,
@@ -99,6 +104,7 @@ fun setToast(context: Context, text: String?, length: Int) {
 
     Toast.makeText(context, text, length).show()
 }
+
 
 
 suspend fun getCountryModel(): List<CountryModel> {

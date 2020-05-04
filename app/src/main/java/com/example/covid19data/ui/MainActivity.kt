@@ -65,7 +65,7 @@ class MainActivity : AppCompatActivity(),
         toggle.drawerArrowDrawable.color = resources.getColor(R.color.white)
         drlHome.setDrawerListener(toggle)
         toggle.syncState()
-        setFragment(supportFragmentManager, HomeFragment(), false, R.id.fmlHomeContainer)
+        setFragment(supportFragmentManager, HomeFragment(this), false, R.id.fmlHomeContainer)
 
         ngvHome.setNavigationItemSelectedListener {
             when (it.itemId) {
@@ -73,7 +73,7 @@ class MainActivity : AppCompatActivity(),
                     closeDrawer(drlHome)
                     setFragment(
                         supportFragmentManager,
-                        HomeFragment(),
+                        HomeFragment(this),
                         false,
                         R.id.fmlHomeContainer
                     )
@@ -177,7 +177,7 @@ class MainActivity : AppCompatActivity(),
             if (drlHome.isDrawerOpen(GravityCompat.START)) {
                 drlHome.closeDrawer(GravityCompat.START)
             } else {
-                setFragment(supportFragmentManager, HomeFragment(), false, R.id.fmlHomeContainer)
+                setFragment(supportFragmentManager, HomeFragment(this), false, R.id.fmlHomeContainer)
             }
         }
     }

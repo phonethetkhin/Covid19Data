@@ -33,6 +33,41 @@
 
     <string name="about_description" translatable="false">The purpose of this app is to view the updated information of Covid 19 around the world.</string>
     <string name="suggestion" translatable="false">If you found bugs or any suggestions, contact me by email (phonethetkhine2967@gmail.com) or by clicking my name from above.</string>
+    <string name="tested_deviceslabel" translatable="false">Tested Devices</string>
+    <string name="tested_devices" translatable="false">"1. Nexus S (4", 480x800 resolution, hdpi density)\n\n
+2. Galaxy Nexus (4.65", 720x1280 resolution, xhdpi density)\n\n3. Pixel 2 (5", 1080x1920 resolution, 420dpi density)\n\n4. Pixel XL(5.5", 1440x2560 resolution, 560dpi density)\n\n5. Pixel 3a XL(6", 1080x2160 resolution, 400 dpi density)\n\n6. Pixel 3XL(6.3", 1440x2960 resolution, 560 dpi density)\n\n7. Nexus 7(2012) (7", 1200x1920 resolution, tvdpi density)\n\n8. Nexus 9 (8.86", 2048x1536 resolution, xhdpi density)\n\n9. Nexus 10 (10.055", 2560x1600 resolution, xhdpi density)"
+</string>
+
+    <string name="tested_android_versionlabel" translatable="false">Tested Android Version</string>
+    <string name="tested_android_version" translatable="false">
+"1. Lollipop API 21 (Android Version 5.0)
+   -x86, -x86/64 without google APIs.
+   -x86, -x86/64// with google APIs.
+
+2. Lollipop API 22(Android Version 5.1)
+   -x86, with google APIs.
+
+3. MarshMallow API 23(Android Version 6.0)
+   -x86, without google APIs.
+
+4. Nougat API 24(Android Version 7.0)
+   -x86, without google APIs.
+
+5. Nougat API 25(Android Version 7.1.1)
+   -x86, without google APIs.
+
+6. Oreo API 26(Android Version 8.0)
+   -x86, without google APIs.
+
+7. Oreo API 27(Android Version 8.1)
+   -x86, without google APIs.
+
+8. Pie API 28(Android Version 9.0)
+   -x86, without google APIs.
+
+9. R API R(Android Version 30)
+   -x86, without google APIs."
+</string>
 
     <string name="credits" translatable="false">Credits :</string>
 
@@ -88,7 +123,7 @@ SOFTWARE."</string>
     <string name="icon_used" translatable="false">1. <b>App Icon by ndresponse.gov</b> ->\nhttps://ndresponse.gov/sites/www/files/documents/icons/virus.png</string>
 
     <string name="gif_usedlabel" translatable="false">GIF Used :</string>
-    <string name="gif_used" translatable="false">1. <b>Splash Loading Gif by CDC</b> ->\nhttps://www.cdc.gov/handwashing/images/campaign2018/GHD-UVLight-1080x1080.gif\n\n2.<b>Background Particles GIF by gfycat.com</b> ->\nhttps://thumbs.gfycat.com/QuickDamagedHoneyeater-size_restricted.gif
+    <string name="gif_used" translatable="false">1. <b>Splash Loading Gif by CDC</b> ->\nhttps://www.cdc.gov/handwashing/images/campaign2018/GHD-UVLight-1080x1080.gif\n\n2.<b>Background Particles GIF by gfycat.com</b> ->\nhttps://thumbs.gfycat.com/QuickDamagedHoneyeater-size_restricted.gif\n\n3.<b>No Internet Gif by Dribble.com</b> ->\nhttps://cdn.dribbble.com/users/1078347/screenshots/3066592/nointernetconnection_emptystate_2.gif
     </string>
     <string name="flags_usedlabel" translatable="false">Flags Used :</string>
     <string name="flag_used" translatable="false">"//flag references
@@ -650,40 +685,6 @@ https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Flag_of_Zambia.svg/120
 //zimbabwe
 https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Flag_of_Zimbabwe.svg/1920px-Flag_of_Zimbabwe.svg.png
 "</string>
-    <string name="tested_deviceslabel" translatable="false">Tested Devices</string>
-    <string name="tested_devices" translatable="false">"1. Nexus S (4", 480x800 resolution, hdpi density)\n\n
-2. Galaxy Nexus (4.65", 720x1280 resolution, xhdpi density)\n\n3. Pixel 2 (5", 1080x1920 resolution, 420dpi density)\n\n4. Pixel XL(5.5", 1440x2560 resolution, 560dpi density)\n\n5. Pixel 3a XL(6", 1080x2160 resolution, 400 dpi density)\n\n6. Pixel 3XL(6.3", 1440x2960 resolution, 560 dpi density)\n\n7. Nexus 7(2012) (7", 1200x1920 resolution, tvdpi density)\n\n8. Nexus 9 (8.86", 2048x1536 resolution, xhdpi density)\n\n9. Nexus 10 (10.055", 2560x1600 resolution, xhdpi density)"
-</string>
 
-    <string name="tested_android_versionlabel" translatable="false">Tested Android Version</string>
-    <string name="tested_android_version" translatable="false">
-"1. Lollipop API 21 (Android Version 5.0)
-   -x86, -x86/64 without google APIs.
-   -x86, -x86/64// with google APIs.
-
-2. Lollipop API 22(Android Version 5.1)
-   -x86, with google APIs.
-
-3. MarshMallow API 23(Android Version 6.0)
-   -x86, without google APIs.
-
-4. Nougat API 24(Android Version 7.0)
-   -x86, without google APIs.
-
-5. Nougat API 25(Android Version 7.1.1)
-   -x86, without google APIs.
-
-6. Oreo API 26(Android Version 8.0)
-   -x86, without google APIs.
-
-7. Oreo API 27(Android Version 8.1)
-   -x86, without google APIs.
-
-8. Pie API 28(Android Version 9.0)
-   -x86, without google APIs.
-
-9. R API R(Android Version 30)
-   -x86, without google APIs."
-</string>
 
 </resources>
