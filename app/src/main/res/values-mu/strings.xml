@@ -27,4 +27,10 @@
     <string name="myanmar_unicode">"မြန်မာ(ယူနီကုဒ်)"</string>
     <string name="myanmar_zawgyi">"မြန်မာ(‌ဇော်ဂျီ)"</string>
     <string name="change_system_language">"System ၏ ဘာသာစကားပြောင်းလဲခြင်း"</string>
+
+    //--------------Content Descriptions for Accessibility--------------------------------
+    <string name="country_flags_photo">နိုင်ငံများ၏အလံ</string>
+    <string name="red_color_button">အနီရောင်ခလုတ်</string>
+    <string name="blue_color_button">အပြာရောင်ခလုတ်</string>
+    <string name="green_color_button">အစိမ်းရောင်ခလုတ်</string>
 </resources>

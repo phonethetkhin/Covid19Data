@@ -184,6 +184,8 @@
                 android:layout_width="300dp"
                 android:layout_height="150dp"
                 android:layout_marginTop="32dp"
+                android:contentDescription="@string/country_flags_photo"
+
                 android:scaleType="centerCrop"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

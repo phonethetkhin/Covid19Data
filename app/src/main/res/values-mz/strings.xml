@@ -29,4 +29,10 @@
     <string name="myanmar_unicode">"ျမန္မာ(ယူနီကုဒ္)"</string>
     <string name="myanmar_zawgyi">"ျမန္မာ(‌ေဇာ္ဂ်ီ)"</string>
     <string name="change_system_language">"System ၏ ဘာသာစကားေျပာင္းလဲျခင္း"</string>
+
+    //--------------Content Descriptions for Accessibility--------------------------------
+    <string name="country_flags_photo">နိုင္ငံမ်ား၏အလံ</string>
+    <string name="red_color_button">အနီေရာင္ခလုတ္</string>
+    <string name="blue_color_button">အျပာေရာင္ခလုတ္</string>
+    <string name="green_color_button">အစိမ္းေရာင္ခလုတ္</string>
 </resources>

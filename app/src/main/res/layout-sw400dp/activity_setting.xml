@@ -49,7 +49,7 @@
                 android:layout_height="80dp"
                 android:layout_margin="16dp"
                 android:background="@color/colorPrimary"
-                tools:ignore="ContentDescription"
+                android:contentDescription="@string/red_color_button"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txtChangeSystemColor" />
 
@@ -59,7 +59,7 @@
                 android:layout_height="80dp"
                 android:layout_marginStart="16dp"
                 android:background="@color/blue"
-                tools:ignore="ContentDescription"
+                android:contentDescription="@string/blue_color_button"
                 app:layout_constraintStart_toEndOf="@+id/ibtRed"
                 app:layout_constraintTop_toTopOf="@+id/ibtRed" />
 
@@ -68,8 +68,8 @@
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:layout_marginStart="16dp"
-                tools:ignore="ContentDescription"
                 android:background="@color/green"
+                android:contentDescription="@string/green_color_button"
                 app:layout_constraintStart_toEndOf="@+id/ibtBlue"
                 app:layout_constraintTop_toTopOf="@+id/ibtBlue" />
         </androidx.constraintlayout.widget.ConstraintLayout>

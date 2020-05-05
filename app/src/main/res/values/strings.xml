@@ -27,6 +27,22 @@
     <string name="myanmar_zawgyi">"Myanmar(Zawgyi)"</string>
     <string name="change_system_language">"Change System Language"</string>
 
+    //--------------Content Descriptions for Accessibility--------------------------------
+    <string name="country_flags_photo">CountryFlagsPhoto</string>
+    <string name="red_color_button">Red Color Button</string>
+    <string name="blue_color_button">Blue Color Button</string>
+    <string name="green_color_button">Green Color Button</string>
+
+
+
+
+
+
+
+
+
+    //---------------------------------Non-Translatable--------------------------------------
+    //About Activity
     <string name="search" translatable="false">Search</string>
     <string name="this_app_is_developed_by" translatable="false">This app is developed by</string>
     <string name="phone_thet_khine" translatable="false">Phone Thet Khine</string>
