@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.covid19data">
+    package="com.ptk.covid19data">
 <supports-screens android:anyDensity="true" android:smallScreens="true" android:normalScreens="true" android:largeScreens="true" android:xlargeScreens="true"/>
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -14,24 +14,24 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/RedTheme">
-        <activity android:name=".ui.AboutActivity"
+        <activity android:name="com.ptk.covid19data.ui.AboutActivity"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity">
 
         </activity>
-        <activity android:name=".ui.SettingActivity"
+        <activity android:name="com.ptk.covid19data.ui.SettingActivity"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity"> </activity>
-        <activity android:name=".ui.NewsDetailActivity"
+        <activity android:name="com.ptk.covid19data.ui.NewsDetailActivity"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity"> </activity>
 
         <activity
-            android:name=".ui.CountryDetailActivity"
+            android:name="com.ptk.covid19data.ui.CountryDetailActivity"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".ui.SplashActivity"
+            android:name="com.ptk.covid19data.ui.SplashActivity"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity">
             <intent-filter>
@@ -41,7 +41,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.MainActivity"
+            android:name="com.ptk.covid19data.ui.MainActivity"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
     </application>
