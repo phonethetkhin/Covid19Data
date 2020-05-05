@@ -19,7 +19,10 @@ import java.util.*
 
 
 @Suppress("UNCHECKED_CAST")
-class CountriesAdapter(var countriesList: List<CountryModel>, val filterCountrylist:List<CountryModel>) : RecyclerView.Adapter<CountriesAdapter.ViewHolder>(),Filterable {
+class CountriesAdapter(
+    var countriesList: List<CountryModel>,
+    val filterCountryList: List<CountryModel>
+) : RecyclerView.Adapter<CountriesAdapter.ViewHolder>(), Filterable {
     private var valueFilter: ValueFilter? = null
 
     inner class ViewHolder(v: View) : RecyclerView.ViewHolder(v) {
@@ -52,7 +55,7 @@ class CountriesAdapter(var countriesList: List<CountryModel>, val filterCountryl
         holder.txtCountryName.text =
             countriesList[position].name + " " + space
 
-            Picasso.get().load(countriesList[position].flag).into(holder.imgCountryFlag)
+        Picasso.get().load(countriesList[position].flag).into(holder.imgCountryFlag)
 
         holder.crvCountriesList.setOnClickListener {
 
@@ -62,7 +65,6 @@ class CountriesAdapter(var countriesList: List<CountryModel>, val filterCountryl
             it.context.startActivity(intent)
         }
 
-
     }
 
     inner class ValueFilter : Filter() {
@@ -71,18 +73,22 @@ class CountriesAdapter(var countriesList: List<CountryModel>, val filterCountryl
             if (constraint.isNotEmpty()) {
                 val filterList: MutableList<CountryModel> =
                     ArrayList<CountryModel>()
-                for (i in filterCountrylist.indices) {
-                    if (filterCountrylist[i].name
-                            .toUpperCase().contains(constraint.toString().toUpperCase())
+                for (i in filterCountryList.indices) {
+                    if (filterCountryList[i].name
+                            .toUpperCase(Locale.ROOT).contains(
+                                constraint.toString().toUpperCase(
+                                    Locale.ROOT
+                                )
+                            )
                     ) {
-                        filterList.add(filterCountrylist.get(i))
+                        filterList.add(filterCountryList.get(i))
                     }
                 }
                 results.count = filterList.size
                 results.values = filterList
             } else {
-                results.count = filterCountrylist.size
-                results.values = filterCountrylist
+                results.count = filterCountryList.size
+                results.values = filterCountryList
             }
             return results
         }
@@ -102,6 +108,6 @@ class CountriesAdapter(var countriesList: List<CountryModel>, val filterCountryl
         }
         return valueFilter as ValueFilter
     }
-    }
+}
 
 

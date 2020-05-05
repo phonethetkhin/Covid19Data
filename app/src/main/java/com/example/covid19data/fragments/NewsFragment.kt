@@ -1,3 +1,5 @@
+@file:Suppress("DEPRECATION")
+
 package com.example.covid19data.fragments
 
 import android.os.Bundle
@@ -20,7 +22,7 @@ import com.example.covid19data.vModel.NewsViewModel
 import kotlinx.android.synthetic.main.fragment_news.view.*
 
 
-class NewsFragment(val activity: AppCompatActivity) : Fragment() {
+class NewsFragment(private val activity: AppCompatActivity) : Fragment() {
     private lateinit var fragmentToActivity: FragmentToActivity
     fun setNewsFragmentToActivityCommunication(listener: FragmentToActivity) {
         this.fragmentToActivity = listener
@@ -35,7 +37,7 @@ class NewsFragment(val activity: AppCompatActivity) : Fragment() {
 
 
         val v = inflater.inflate(R.layout.fragment_news, container, false)
-            checkConnection(v)
+        checkConnection(v)
         v.srlNews.setOnRefreshListener {
             v.srlNews.isRefreshing = true
             checkConnection(v)
@@ -44,8 +46,7 @@ class NewsFragment(val activity: AppCompatActivity) : Fragment() {
         return v
     }
 
-    private fun checkConnection(v:View)
-    {
+    private fun checkConnection(v: View) {
         if (isNetworkActive(activity)) {
             v.rcvNews.visibility = View.VISIBLE
             v.noInternetLayout.visibility = View.GONE
@@ -55,7 +56,8 @@ class NewsFragment(val activity: AppCompatActivity) : Fragment() {
             v.noInternetLayout.visibility = View.VISIBLE
 
             setToast(
-                activity, "Network is slow or cannot reach, Please check you connection !!!",
+                activity,
+                "Network is slow or cannot reach, Please check you connection and Swipe to Reload !!!",
                 Toast.LENGTH_SHORT
             )
 

@@ -22,7 +22,7 @@ class CountriesFragment : Fragment() {
     private lateinit var fragmentToActivity: FragmentToActivity
     lateinit var adapter: CountriesAdapter
     var filterList: List<CountryModel> =
-        arrayListOf<CountryModel>()
+        arrayListOf()
 
 
     fun setCountryFragmentToActivityCommunication(listener: FragmentToActivity) {
@@ -43,6 +43,12 @@ class CountriesFragment : Fragment() {
 
 
         val v = inflater.inflate(R.layout.fragment_countries, container, false)
+        mainFunction(v)
+
+        return v
+    }
+
+    private fun mainFunction(v: View) {
         setLayoutManagerRecyclerview(
             activity!!, v.rcvCountriesList, RecyclerView.VERTICAL, true,
             reverseLayout = false
@@ -60,8 +66,6 @@ class CountriesFragment : Fragment() {
 
 
         })
-
-        return v
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

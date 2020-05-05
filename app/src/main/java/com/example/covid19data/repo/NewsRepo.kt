@@ -1,5 +1,6 @@
 package com.example.covid19data.repo
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
@@ -14,15 +15,15 @@ class NewsRepo {
     private val apiService = RetrofitObj(NewsBaseURl).apiService
     val newsLiveData = MutableLiveData<NewsModel>()
 
+    @SuppressLint("SimpleDateFormat")
     suspend fun getApiNewsLiveData(context: Context) {
         val c = Calendar.getInstance(Locale.getDefault())
-
 
 
         val df = SimpleDateFormat("yyyy-MM-dd")
 
 
-        val result =df.format(c.time)
+        val result = df.format(c.time)
 
         try {
             val response =
@@ -31,7 +32,7 @@ class NewsRepo {
                 newsLiveData.postValue(response.body())
             }
         } catch (e: Exception) {
-            setToast(context,"Error Occurred !!!", Toast.LENGTH_SHORT)
+            setToast(context, "Error Occurred !!!", Toast.LENGTH_SHORT)
 
         }
     }

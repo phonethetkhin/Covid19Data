@@ -1,6 +1,5 @@
 package com.example.covid19data.retrofit
 
-import com.example.covid19data.models.CountryModel
 import com.example.covid19data.models.NewsModel
 import com.example.covid19data.models.SummaryModel
 import retrofit2.Response
@@ -11,7 +10,6 @@ import retrofit2.http.Url
 interface ApiService {
     @GET("api")
     suspend fun getSummary(): Response<SummaryModel>
-
 
 
     @GET
@@ -25,5 +23,5 @@ interface ApiService {
         @Query("from") from: String,
         @Query("apiKey") apiKey: String
 
-        ): Response<NewsModel>
+    ): Response<NewsModel>
 }

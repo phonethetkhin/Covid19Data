@@ -3,13 +3,13 @@ package com.example.covid19data.utils
 import android.content.Context
 
 
-
 fun getTheme(context: Context): String? {
 
     val pref = context.getSharedPreferences("theme", Context.MODE_PRIVATE)
 
     return pref.getString("color_name", "")
 }
+
 fun setStringPref(context: Context, name: String, key: String, value: String) {
     val pref = context.getSharedPreferences(name, Context.MODE_PRIVATE)
     val editor = pref.edit()
@@ -17,9 +17,9 @@ fun setStringPref(context: Context, name: String, key: String, value: String) {
     editor.apply()
 }
 
-fun getStringPref(context: Context, name: String, key: String, defaultvalue: String): String? {
+fun getStringPref(context: Context, name: String, key: String, defaultValue: String): String? {
     val pref = context.getSharedPreferences(name, Context.MODE_PRIVATE)
-    return pref.getString(key, defaultvalue)
+    return pref.getString(key, defaultValue)
 }
 
 fun setBooleanPref(context: Context, name: String, key: String, value: Boolean) {
@@ -29,7 +29,7 @@ fun setBooleanPref(context: Context, name: String, key: String, value: Boolean) 
     editor.apply()
 }
 
-fun getBooleanPref(context: Context, name: String, key: String, defaultvalue: Boolean): Boolean? {
+fun getBooleanPref(context: Context, name: String, key: String, defaultValue: Boolean): Boolean? {
     val pref = context.getSharedPreferences(name, Context.MODE_PRIVATE)
-    return pref.getBoolean(key, defaultvalue)
+    return pref.getBoolean(key, defaultValue)
 }

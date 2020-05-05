@@ -1,8 +1,8 @@
+@file:Suppress("DEPRECATION")
+
 package com.example.covid19data.ui
 
-import android.graphics.PorterDuff
 import android.os.Bundle
-import android.text.Html
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
@@ -11,14 +11,10 @@ import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.covid19data.R
-import com.example.covid19data.utils.getStringExtra
-import com.example.covid19data.utils.getTimeZone
-import com.example.covid19data.utils.setToolbarTitleAndBackArrow
+import com.example.covid19data.utils.*
 import com.example.covid19data.vModel.CountryDetailViewModel
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_country_detail.*
-import com.example.covid19data.utils.*
-
 
 
 class CountryDetailActivity : AppCompatActivity() {
@@ -36,12 +32,12 @@ class CountryDetailActivity : AppCompatActivity() {
 
         setSupportActionBar(toolbar)
 
-        val name = getStringExtra(this,"name")
-        val flag = getStringExtra(this,"flag")
+        val name = getStringExtra(this, "name")
+        val flag = getStringExtra(this, "flag")
         Picasso.get().load(flag).into(imgCountryFlag)
 
 
-setToolbarTitleAndBackArrow(this,toolbar,name,supportActionBar!!)
+        setToolbarTitleAndBackArrow(this, toolbar, name, supportActionBar!!)
         checkConnection(name)
 
         srlCountryDetail.setOnRefreshListener {
@@ -52,27 +48,26 @@ setToolbarTitleAndBackArrow(this,toolbar,name,supportActionBar!!)
 
     }
 
-    private fun checkConnection(name:String)
-    {
-        if(isNetworkActive(this))
-        {
+    private fun checkConnection(name: String) {
+        if (isNetworkActive(this)) {
             cslCountryDetail.visibility = View.VISIBLE
             noInternetLayout.visibility = View.GONE
             mainFunction(name)
-        }
-        else
-        {
+        } else {
             cslCountryDetail.visibility = View.GONE
             noInternetLayout.visibility = View.VISIBLE
-            setToast(this,"Network is slow or cannot reach, Please check you connection !!!",
-                Toast.LENGTH_SHORT)
+            setToast(
+                this,
+                "Network is slow or cannot reach, Please check you connection and Swipe to Reload !!!",
+                Toast.LENGTH_SHORT
+            )
 
         }
     }
-    private fun mainFunction(name:String)
-    {
+
+    private fun mainFunction(name: String) {
         val vModel = ViewModelProviders.of(this).get(CountryDetailViewModel::class.java)
-        vModel.getCountryDetail(this,name)
+        vModel.getCountryDetail(this, name)
         vModel.countryDetailLiveData.observe(this, Observer {
 
             txtTotalCases.text = it.confirmedModel.totalCases.toString()

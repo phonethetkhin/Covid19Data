@@ -35,8 +35,7 @@
 
     <style name="NavigationDrawerStyle">
 
-    <item name="android:textSize">25sp</item><!-- text size in menu-->
-
+        <item name="android:textSize">25sp</item><!-- text size in menu-->
 
 
     </style>

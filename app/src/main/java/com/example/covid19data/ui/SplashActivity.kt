@@ -41,9 +41,8 @@ class SplashActivity : AppCompatActivity() {
 
         if (isNetworkActive(this)) {
             mainFunction()
-        }
-        else {
-        showDialog()
+        } else {
+            showDialog()
 
         }
     }
@@ -83,9 +82,7 @@ class SplashActivity : AppCompatActivity() {
 
                     if (isNetworkActive(this@SplashActivity)) {
                         mainFunction()
-                    }
-                    else
-                    {
+                    } else {
                         alertDialog.show()
                     }
                 }

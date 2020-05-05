@@ -10,7 +10,7 @@ class SummaryViewModel : ViewModel() {
     private val summaryRepo = SummaryRepo()
     val summaryLiveData = summaryRepo.summaryLiveData
 
-    fun getSummaryViewModel(context:Context) = viewModelScope.launch {
+    fun getSummaryViewModel(context: Context) = viewModelScope.launch {
         summaryRepo.getSummaryFromAPI(context)
     }
 }

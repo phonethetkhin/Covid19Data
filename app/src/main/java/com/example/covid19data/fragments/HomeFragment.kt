@@ -12,16 +12,13 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.covid19data.R
 import com.example.covid19data.interfaces.FragmentToActivity
 import com.example.covid19data.utils.getTimeZone
 import com.example.covid19data.utils.isNetworkActive
 import com.example.covid19data.utils.setToast
 import com.example.covid19data.vModel.SummaryViewModel
-import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_home.view.*
-import kotlinx.android.synthetic.main.fragment_home.view.srlHome
 
 @SuppressLint("SimpleDateFormat")
 
@@ -43,8 +40,8 @@ class HomeFragment(private val activity: AppCompatActivity) : Fragment() {
 
         checkConnection(v)
 
-       v.srlHome.setOnRefreshListener {
-           v.srlHome.isRefreshing = true
+        v.srlHome.setOnRefreshListener {
+            v.srlHome.isRefreshing = true
             checkConnection(v)
             v.srlHome.isRefreshing = false
 
@@ -53,7 +50,7 @@ class HomeFragment(private val activity: AppCompatActivity) : Fragment() {
         return v
     }
 
-    private fun checkConnection( v: View) {
+    private fun checkConnection(v: View) {
         if (isNetworkActive(activity)) {
             v.cslHome.visibility = View.VISIBLE
             v.noInternetLayout.visibility = View.GONE
@@ -63,7 +60,7 @@ class HomeFragment(private val activity: AppCompatActivity) : Fragment() {
             v.noInternetLayout.visibility = View.VISIBLE
             setToast(
                 activity,
-                "Network is slow or cannot reach, Please check you connection !!!",
+                "Network is slow or cannot reach, Please check you connection and Swipe to Reload !!!",
                 Toast.LENGTH_SHORT
             )
         }

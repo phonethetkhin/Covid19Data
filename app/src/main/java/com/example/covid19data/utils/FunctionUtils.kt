@@ -47,11 +47,14 @@ fun setApplicationLanguage(newLanguage: String?, context: Context) {
     )
 
 }
-fun isNetworkActive(activity: AppCompatActivity):Boolean{
-    val connectivityManager=activity.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-    val networkInfo=connectivityManager.activeNetworkInfo
-    return  networkInfo!=null && networkInfo.isConnected
+
+fun isNetworkActive(activity: AppCompatActivity): Boolean {
+    val connectivityManager =
+        activity.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+    val networkInfo = connectivityManager.activeNetworkInfo
+    return networkInfo != null && networkInfo.isConnected
 }
+
 fun setToolbarTitleAndBackArrow(
     context: Context,
     toolbar: Toolbar,
@@ -108,11 +111,10 @@ fun setToast(context: Context, text: String?, length: Int) {
 }
 
 
-
 suspend fun getCountryModel(): List<CountryModel> {
     return withContext(Dispatchers.IO)
     {
-        var flagList = arrayListOf<CountryModel>()
+        val flagList = arrayListOf<CountryModel>()
 
         flagList.add(
             CountryModel(

@@ -12,7 +12,6 @@ import com.example.covid19data.utils.getStringExtra
 import com.example.covid19data.utils.getTheme
 import com.labters.lottiealertdialoglibrary.DialogTypes
 import com.labters.lottiealertdialoglibrary.LottieAlertDialog
-import kotlinx.android.synthetic.main.activity_news_detail.*
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch

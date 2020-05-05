@@ -13,15 +13,12 @@ import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProviders
 import com.example.covid19data.R
 import com.example.covid19data.fragments.CountriesFragment
 import com.example.covid19data.fragments.HomeFragment
 import com.example.covid19data.fragments.NewsFragment
 import com.example.covid19data.interfaces.FragmentToActivity
-import com.example.covid19data.room.entities.CountriesEntity
 import com.example.covid19data.utils.*
-import com.example.covid19data.vModel.CountryViewModel
 import com.labters.lottiealertdialoglibrary.DialogTypes
 import com.labters.lottiealertdialoglibrary.LottieAlertDialog
 import kotlinx.android.synthetic.main.activity_main.*
@@ -42,7 +39,7 @@ class MainActivity : AppCompatActivity(),
     override fun onAttachFragment(fragment: Fragment) {
         fragmentAttach(fragment, this)
     }
-    
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -70,6 +67,8 @@ class MainActivity : AppCompatActivity(),
         drlHome.setDrawerListener(toggle)
         toggle.syncState()
         setFragment(supportFragmentManager, HomeFragment(this), false, R.id.fmlHomeContainer)
+
+        //default drawer finished here
 
         ngvHome.setNavigationItemSelectedListener {
             when (it.itemId) {
@@ -146,7 +145,7 @@ class MainActivity : AppCompatActivity(),
     }
 
     override fun setTitleListener(title: String) {
-        supportActionBar!!.title = Html.fromHtml("<font color='#FFFFFF'>$title </font>");
+        supportActionBar!!.title = Html.fromHtml("<font color='#FFFFFF'>$title </font>")
 
     }
 

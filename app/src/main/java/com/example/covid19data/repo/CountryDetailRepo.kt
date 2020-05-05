@@ -20,7 +20,7 @@ class CountryDetailRepo {
                 countryDetailLiveData.postValue(response.body())
             }
         } catch (e: Exception) {
-            setToast(context,"Error Occurred !!!", Toast.LENGTH_SHORT)
+            setToast(context, "Error Occurred !!!", Toast.LENGTH_SHORT)
 
         }
     }

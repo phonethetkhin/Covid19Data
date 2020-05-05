@@ -76,7 +76,7 @@
     </string>
 
     <string name="libraries_usedlabel" translatable="false">3rd Party Libraries Used : </string>
-    <string name="library_used" tools:ignore="TypographyOther" translatable="false">"1. <b>Retrofit by Square</b> -> for networking\n\n2. <b>Picasso by Square</b> -> for showing flags\n\nLicense :\nCopyright 2013 Square, Inc.
+    <string name="library_used" translatable="false" tools:ignore="TypographyOther">"1. <b>Retrofit by Square</b> -> for networking\n\n2. <b>Picasso by Square</b> -> for showing flags\n\nLicense :\nCopyright 2013 Square, Inc.
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0

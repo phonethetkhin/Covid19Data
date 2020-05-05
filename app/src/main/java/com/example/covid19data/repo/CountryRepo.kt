@@ -18,7 +18,7 @@ class CountryRepo(context: Context) {
         try {
             countryUtilsLiveData.postValue(getCountryModel())
         } catch (e: Exception) {
-            setToast(context,"Error Occurred !!!", Toast.LENGTH_SHORT)
+            setToast(context, "Error Occurred !!!", Toast.LENGTH_SHORT)
         }
     }
 

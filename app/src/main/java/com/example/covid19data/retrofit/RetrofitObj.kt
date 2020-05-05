@@ -21,7 +21,7 @@ class RetrofitObj(BaseURl: String) {
 fun getOkHTTPClient(): OkHttpClient {
     val client = OkHttpClient()
     val clientBuilder = client.newBuilder()
-    clientBuilder.callTimeout(60,TimeUnit.SECONDS)
+    clientBuilder.callTimeout(60, TimeUnit.SECONDS)
     clientBuilder.connectTimeout(10, TimeUnit.SECONDS)
     clientBuilder.readTimeout(10, TimeUnit.SECONDS)
     clientBuilder.writeTimeout(10, TimeUnit.SECONDS)
