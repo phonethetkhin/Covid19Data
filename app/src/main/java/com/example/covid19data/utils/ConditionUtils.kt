@@ -1,3 +1,5 @@
+@file:Suppress("DEPRECATION")
+
 package com.example.covid19data.utils
 
 import android.content.Context

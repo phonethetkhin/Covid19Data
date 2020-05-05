@@ -10,6 +10,7 @@ import com.example.covid19data.utils.NewsBaseURl
 import com.example.covid19data.utils.setToast
 import java.text.SimpleDateFormat
 import java.util.*
+import java.util.concurrent.TimeoutException
 
 class NewsRepo {
     private val apiService = RetrofitObj(NewsBaseURl).apiService
@@ -32,6 +33,14 @@ class NewsRepo {
                 newsLiveData.postValue(response.body())
             }
         } catch (e: Exception) {
+            if (e is TimeoutException) {
+                setToast(
+                    context,
+                    "Connection Timeout, Check your connection !!!",
+                    Toast.LENGTH_SHORT
+                )
+
+            }
             setToast(context, "Error Occurred !!!", Toast.LENGTH_SHORT)
 
         }
