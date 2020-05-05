@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
 
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:showIn="@layout/activity_main"
 
     >
-
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+    android:id="@+id/srlHome"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cslHome"
 
@@ -32,7 +36,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             android:text="@string/last_updated_at"
-            android:textSize="95sp"
+            android:textSize="25sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -160,7 +164,7 @@
             app:layout_constraintStart_toEndOf="@+id/txtRecoveredLabel"
             app:layout_constraintTop_toBottomOf="@+id/txtDeaths" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
     <include
         android:id="@+id/noInternetLayout"
         layout="@layout/nonetworklayout"

@@ -2,28 +2,26 @@ package com.example.covid19data.ui
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.os.Build
 import android.os.Bundle
-import android.view.View
-import android.webkit.WebSettings
+import android.webkit.WebChromeClient
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import androidx.appcompat.app.AppCompatActivity
 import com.example.covid19data.R
 import com.example.covid19data.utils.getStringExtra
-import com.example.covid19data.utils.*
+import com.example.covid19data.utils.getTheme
 import com.labters.lottiealertdialoglibrary.DialogTypes
 import com.labters.lottiealertdialoglibrary.LottieAlertDialog
+import kotlinx.android.synthetic.main.activity_news_detail.*
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class NewsDetailActivity : AppCompatActivity() {
-    lateinit var alertDialog:LottieAlertDialog
+    lateinit var alertDialog: LottieAlertDialog
 
     lateinit var wbvNews: WebView
 
-    @SuppressLint("SetJavaScriptEnabled")
     override fun onStart() {
         super.onStart()
         showProgressLottieDialog(this)
@@ -33,6 +31,7 @@ class NewsDetailActivity : AppCompatActivity() {
         }
 
     }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         when (getTheme(this)) {
@@ -45,16 +44,24 @@ class NewsDetailActivity : AppCompatActivity() {
         wbvNews = findViewById(R.id.wbvNews)
 
         val url = getStringExtra(this, "url")
-        wbvNews.settings.javaScriptEnabled = true;
 
+        mainFunction(url)
+
+    }
+
+    @SuppressLint("SetJavaScriptEnabled")
+    private fun mainFunction(url: String) {
+        wbvNews.settings.javaScriptEnabled = true
+        wbvNews.settings.javaScriptCanOpenWindowsAutomatically = true
+        wbvNews.webChromeClient = WebChromeClient()
         wbvNews.webViewClient = MyWebViewClient()
 
 
         wbvNews.loadUrl(url)
-
     }
 
     private class MyWebViewClient : WebViewClient() {
+
         override fun shouldOverrideUrlLoading(view: WebView, url: String?): Boolean {
             view.loadUrl(url)
             return true
@@ -68,6 +75,7 @@ class NewsDetailActivity : AppCompatActivity() {
             super.onBackPressed()
         }
     }
+
     private fun showProgressLottieDialog(context: Context) {
         alertDialog = LottieAlertDialog.Builder(context, DialogTypes.TYPE_LOADING)
 

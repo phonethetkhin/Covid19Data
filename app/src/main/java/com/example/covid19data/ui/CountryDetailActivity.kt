@@ -42,6 +42,18 @@ class CountryDetailActivity : AppCompatActivity() {
 
 
 setToolbarTitleAndBackArrow(this,toolbar,name,supportActionBar!!)
+        checkConnection(name)
+
+        srlCountryDetail.setOnRefreshListener {
+            srlCountryDetail.isRefreshing = true
+            checkConnection(name)
+            srlCountryDetail.isRefreshing = false
+        }
+
+    }
+
+    private fun checkConnection(name:String)
+    {
         if(isNetworkActive(this))
         {
             cslCountryDetail.visibility = View.VISIBLE
@@ -56,7 +68,6 @@ setToolbarTitleAndBackArrow(this,toolbar,name,supportActionBar!!)
                 Toast.LENGTH_SHORT)
 
         }
-
     }
     private fun mainFunction(name:String)
     {

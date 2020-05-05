@@ -35,6 +35,17 @@ class NewsFragment(val activity: AppCompatActivity) : Fragment() {
 
 
         val v = inflater.inflate(R.layout.fragment_news, container, false)
+            checkConnection(v)
+        v.srlNews.setOnRefreshListener {
+            v.srlNews.isRefreshing = true
+            checkConnection(v)
+            v.srlNews.isRefreshing = false
+        }
+        return v
+    }
+
+    private fun checkConnection(v:View)
+    {
         if (isNetworkActive(activity)) {
             v.rcvNews.visibility = View.VISIBLE
             v.noInternetLayout.visibility = View.GONE
@@ -49,9 +60,7 @@ class NewsFragment(val activity: AppCompatActivity) : Fragment() {
             )
 
         }
-        return v
     }
-
 
     private fun mainFunction(v: View) {
         setLayoutManagerRecyclerview(

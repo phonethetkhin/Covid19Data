@@ -12,17 +12,20 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.covid19data.R
 import com.example.covid19data.interfaces.FragmentToActivity
 import com.example.covid19data.utils.getTimeZone
 import com.example.covid19data.utils.isNetworkActive
 import com.example.covid19data.utils.setToast
 import com.example.covid19data.vModel.SummaryViewModel
+import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_home.view.*
+import kotlinx.android.synthetic.main.fragment_home.view.srlHome
 
 @SuppressLint("SimpleDateFormat")
 
-class HomeFragment(val activity: AppCompatActivity) : Fragment() {
+class HomeFragment(private val activity: AppCompatActivity) : Fragment() {
     private lateinit var fragmentToActivity: FragmentToActivity
     fun setHomeFragmentToActivityCommunication(listener: FragmentToActivity) {
 
@@ -38,20 +41,24 @@ class HomeFragment(val activity: AppCompatActivity) : Fragment() {
 
         val v = inflater.inflate(R.layout.fragment_home, container, false)
 
-        checkConnection(activity,v)
+        checkConnection(v)
+
+       v.srlHome.setOnRefreshListener {
+           v.srlHome.isRefreshing = true
+            checkConnection(v)
+            v.srlHome.isRefreshing = false
+
+        }
 
         return v
     }
-    private fun checkConnection(activity: AppCompatActivity, v:View)
-    {
-        if(isNetworkActive(activity))
-        {
+
+    private fun checkConnection( v: View) {
+        if (isNetworkActive(activity)) {
             v.cslHome.visibility = View.VISIBLE
             v.noInternetLayout.visibility = View.GONE
             mainFunction(v)
-        }
-        else
-        {
+        } else {
             v.cslHome.visibility = View.GONE
             v.noInternetLayout.visibility = View.VISIBLE
             setToast(
@@ -61,8 +68,8 @@ class HomeFragment(val activity: AppCompatActivity) : Fragment() {
             )
         }
     }
-    private fun mainFunction(v :View)
-    {
+
+    private fun mainFunction(v: View) {
         val vModel = ViewModelProviders.of(activity).get(SummaryViewModel::class.java)
         vModel.getSummaryViewModel(activity)
         vModel.summaryLiveData.observe(activity, Observer {
