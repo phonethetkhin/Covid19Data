@@ -3,11 +3,19 @@
 package com.ptk.covid19data.ui
 
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
+import android.graphics.drawable.InsetDrawable
 import android.os.Bundle
 import android.os.Process
+import android.view.Window
+import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import com.labters.lottiealertdialoglibrary.ClickListener
+import com.labters.lottiealertdialoglibrary.DialogTypes
+import com.labters.lottiealertdialoglibrary.LottieAlertDialog
 import com.ptk.covid19data.R
 import com.ptk.covid19data.room.entities.CountriesEntity
 import com.ptk.covid19data.utils.getStringPref
@@ -15,9 +23,6 @@ import com.ptk.covid19data.utils.getTheme
 import com.ptk.covid19data.utils.isNetworkActive
 import com.ptk.covid19data.utils.setApplicationLanguage
 import com.ptk.covid19data.vModel.CountryViewModel
-import com.labters.lottiealertdialoglibrary.ClickListener
-import com.labters.lottiealertdialoglibrary.DialogTypes
-import com.labters.lottiealertdialoglibrary.LottieAlertDialog
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -26,6 +31,8 @@ import kotlinx.coroutines.launch
 @Suppress("DEPRECATED_IDENTITY_EQUALS")
 class SplashActivity : AppCompatActivity() {
     lateinit var alertDialog: LottieAlertDialog
+    private val customDialog = CustomDialogClass(this)
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,13 +45,15 @@ class SplashActivity : AppCompatActivity() {
             else -> setTheme(R.style.RedTheme)
         }
         setContentView(R.layout.activity_splash)
+setCustomSpinnerDialog()
 
-        if (isNetworkActive(this)) {
-            mainFunction()
-        } else {
-            showDialog()
+        /*  if (isNetworkActive(this)) {
+              mainFunction()
+          } else {
+              showDialog()
 
-        }
+          }*/
+
     }
 
     private fun mainFunction() {
@@ -55,6 +64,7 @@ class SplashActivity : AppCompatActivity() {
             ViewModelProviders.of(this@SplashActivity).get(CountryViewModel::class.java)
         vModel.getCountryUtilsLiveData(this)
         vModel.countryUtilsLiveData.observe(this, Observer {
+
             vModel.insertCountries(CountriesEntity(0, it))
         })
 
@@ -68,6 +78,12 @@ class SplashActivity : AppCompatActivity() {
             finish()
 
         }
+    }
+    private fun setCustomSpinnerDialog()
+    {
+        val window: Window? = customDialog.window
+        customDialog.show()
+        window!!.setLayout(WindowManager.LayoutParams.FILL_PARENT, WindowManager.LayoutParams.WRAP_CONTENT)
     }
 
 

@@ -39,15 +39,15 @@
                 android:layout_margin="16dp"
                 android:text="@string/change_system_color"
                 android:textColor="@color/black"
-                android:textSize="40sp"
+                android:textSize="30sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageButton
                 android:id="@+id/ibtRed"
-                android:layout_width="160dp"
-                android:layout_height="160dp"
-                android:layout_margin="32dp"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_margin="16dp"
                 android:background="@color/colorPrimary"
                 android:contentDescription="@string/red_color_button"
                 app:layout_constraintStart_toStartOf="parent"
@@ -55,8 +55,8 @@
 
             <ImageButton
                 android:id="@+id/ibtBlue"
-                android:layout_width="160dp"
-                android:layout_height="160dp"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:layout_marginStart="16dp"
                 android:background="@color/blue"
                 android:contentDescription="@string/blue_color_button"
@@ -65,8 +65,8 @@
 
             <ImageButton
                 android:id="@+id/ibtGreen"
-                android:layout_width="160dp"
-                android:layout_height="160dp"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:layout_marginStart="16dp"
                 android:background="@color/green"
                 android:contentDescription="@string/green_color_button"
@@ -79,7 +79,7 @@
         android:id="@+id/divider"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="16dp"
         android:background="?android:attr/listDivider"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -108,53 +108,56 @@
                 android:id="@+id/txtChangeSystemLanguage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="32dp"
+                android:layout_margin="16dp"
 
                 android:text="@string/change_system_language"
                 android:textColor="@color/black"
-                android:textSize="40sp"
+                android:textSize="30sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <Button
                 android:id="@+id/btnEnglish"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="32dp"
+                android:layout_height="0dp"
                 android:background="?attr/colorPrimary"
-                android:padding="16dp"
+                android:padding="8dp"
+                android:textSize="25sp"
+                android:layout_marginStart="16dp"
                 android:text="@string/english"
-                android:textSize="30sp"
+                app:layout_constraintBottom_toBottomOf="@+id/btnMyanmarUni"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtChangeSystemLanguage" />
+                app:layout_constraintTop_toTopOf="@+id/btnMyanmarUni" />
 
             <Button
                 android:id="@+id/btnMyanmarUni"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginStart="16dp"
+                android:textSize="25sp"
+
                 android:background="?attr/colorPrimary"
                 android:padding="16dp"
 
                 android:text="@string/myanmar_unicode"
-
-                android:textSize="30sp"
-                app:layout_constraintStart_toStartOf="@+id/btnEnglish"
-                app:layout_constraintTop_toBottomOf="@+id/btnEnglish" />
+                app:layout_constraintBottom_toBottomOf="@+id/btnMyanmarZaw"
+                app:layout_constraintStart_toEndOf="@+id/btnEnglish"
+                app:layout_constraintTop_toTopOf="@+id/btnMyanmarZaw" />
 
             <Button
                 android:id="@+id/btnMyanmarZaw"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginStart="16dp"
                 android:background="?attr/colorPrimary"
                 android:padding="16dp"
+                android:textSize="25sp"
+
+                android:layout_marginTop="32dp"
                 android:text="@string/myanmar_zawgyi"
+                app:layout_constraintStart_toEndOf="@+id/btnMyanmarUni"
+                app:layout_constraintTop_toBottomOf="@+id/txtChangeSystemLanguage" />
 
-
-                android:textSize="30sp"
-                app:layout_constraintStart_toStartOf="@+id/btnMyanmarUni"
-                app:layout_constraintTop_toBottomOf="@+id/btnMyanmarUni" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

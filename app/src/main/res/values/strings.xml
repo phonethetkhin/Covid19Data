@@ -23,8 +23,8 @@
     //settingactivity
     <string name="change_system_color">"Change System Color"</string>
     <string name="english">English</string>
-    <string name="myanmar_unicode">"Myanmar(Unicode)"</string>
-    <string name="myanmar_zawgyi">"Myanmar(Zawgyi)"</string>
+    <string name="myanmar_unicode">"Myanmar\n(Unicode)"</string>
+    <string name="myanmar_zawgyi">"Myanmar\n(Zawgyi)"</string>
     <string name="change_system_language">"Change System Language"</string>
 
     //--------------Content Descriptions for Accessibility--------------------------------

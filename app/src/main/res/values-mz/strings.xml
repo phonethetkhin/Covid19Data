@@ -26,8 +26,8 @@
     //settingactivity
     <string name="change_system_color">"System ၏အေရာင္ေျပာင္းျခင္း"</string>
     <string name="english">အဂၤလိပ္</string>
-    <string name="myanmar_unicode">"ျမန္မာ(ယူနီကုဒ္)"</string>
-    <string name="myanmar_zawgyi">"ျမန္မာ(‌ေဇာ္ဂ်ီ)"</string>
+    <string name="myanmar_unicode">"ျမန္မာ\n(ယူနီကုဒ္)"</string>
+    <string name="myanmar_zawgyi">"ျမန္မာ\n(‌ေဇာ္ဂ်ီ)"</string>
     <string name="change_system_language">"System ၏ ဘာသာစကားေျပာင္းလဲျခင္း"</string>
 
     //--------------Content Descriptions for Accessibility--------------------------------

@@ -83,5 +83,8 @@ dependencies {
     //lottieAlertDialog
     implementation 'com.github.mayuce:LottieAlertDialog:1.1'
 
+    implementation 'com.github.chivorns.androidx:smartmaterialspinner:1.2.1'
+
+
 
 }

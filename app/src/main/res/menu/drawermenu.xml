@@ -4,12 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
-    <item
 
-        android:id="@+id/mitemMainLinks"
-
-        android:title="@string/main_links">
-        <menu>
             <group
 
                 android:checkableBehavior="single">
@@ -33,15 +28,6 @@
                     android:icon="@drawable/ic_assignment_black_24dp"
                     android:title="@string/latest_covid_19_news"
                     app:showAsAction="always" />
-
-            </group>
-        </menu>
-    </item>
-    <item
-        android:id="@+id/mimOtherLinks"
-        android:title="@string/other_links">
-        <menu>
-            <group android:checkableBehavior="single">
                 <item
                     android:id="@+id/nav_Setting"
                     android:icon="@drawable/ic_settings_black_24dp"
@@ -53,10 +39,6 @@
                     android:title="@string/about_this_app"
                     app:showAsAction="always" />
 
-
             </group>
-
-        </menu>
-    </item>
 
 </menu>

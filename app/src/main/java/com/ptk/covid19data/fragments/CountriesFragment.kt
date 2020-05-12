@@ -13,6 +13,7 @@ import com.ptk.covid19data.R
 import com.ptk.covid19data.adapters.CountriesAdapter
 import com.ptk.covid19data.interfaces.FragmentToActivity
 import com.ptk.covid19data.models.CountryModel
+import com.ptk.covid19data.models.SummaryModel
 import com.ptk.covid19data.utils.setLayoutManagerRecyclerview
 import com.ptk.covid19data.vModel.CountryViewModel
 import kotlinx.android.synthetic.main.fragment_countries.view.*
@@ -58,6 +59,7 @@ class CountriesFragment : Fragment() {
 
         vModel.countryDBLiveData.observe(activity!!, Observer {
             it?.let {
+
                 filterList = it.countriesList
                 adapter = CountriesAdapter(filterList, filterList)
 
