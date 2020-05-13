@@ -2,47 +2,122 @@ package com.ptk.covid19data.ui
 
 import android.app.Dialog
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.view.Window
 import android.widget.AdapterView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import com.chivorn.smartmaterialspinner.SmartMaterialSpinner
 import com.ptk.covid19data.R
+import com.ptk.covid19data.interfaces.DialogToActivity
+import com.ptk.covid19data.interfaces.FragmentToActivity
+import com.ptk.covid19data.models.CountryModel
+import com.ptk.covid19data.room.entities.CountriesEntity
+import com.ptk.covid19data.utils.getStringPref
+import com.ptk.covid19data.utils.setApplicationLanguage
+import com.ptk.covid19data.utils.setStringPref
+import com.ptk.covid19data.utils.setToast
+import com.ptk.covid19data.vModel.CountryViewModel
+import kotlinx.android.synthetic.main.customdialog.*
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
-class CustomDialogClass(context:Context) :Dialog(context) {
+class CustomDialogClass(val appCompatActivity: AppCompatActivity, context: Context) :
+    Dialog(context) {
     private var spProvince: SmartMaterialSpinner<String>? = null
-    private var provinceList: MutableList<String>? = null
+    private lateinit var dialogToActivity: DialogToActivity
+
     init {
         setCancelable(false)
     }
-
+ fun setDialogToActivity(listener : DialogToActivity)
+ {
+this.dialogToActivity = listener
+ }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         requestWindowFeature(Window.FEATURE_NO_TITLE)
         setContentView(R.layout.customdialog)
-initSpinner()
+        initSpinner()
 
     }
+
     private fun initSpinner() {
         spProvince = findViewById(R.id.spnCountries)
-        provinceList = ArrayList()
+        val countriesList: MutableList<String> = ArrayList<String>()
+        val vModel = ViewModelProviders.of(appCompatActivity).get(CountryViewModel::class.java)
+        vModel.getCountryUtilsLiveData(context)
+        vModel.countryUtilsLiveData.observe(appCompatActivity, Observer {
+            it?.let {
+                for (i in it.indices) {
+                    countriesList.add(it[i].name)
+                }
+            }
+        })
 
-        provinceList!!.add("Kampong Thom")
-        provinceList!!.add("Kampong Cham")
-        provinceList!!.add("Kampong Chhnang")
-        provinceList!!.add("Phnom Penh")
-        provinceList!!.add("Kandal")
-        provinceList!!.add("Kampot")
-
-        spProvince!!.item = provinceList!!
+        spProvince!!.item = countriesList
 
         spProvince!!.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(adapterView: AdapterView<*>, view: View, position: Int, id: Long) {
-                Toast.makeText(context, provinceList!![position], Toast.LENGTH_SHORT).show()
+            override fun onItemSelected(
+                adapterView: AdapterView<*>,
+                view: View,
+                position: Int,
+                id: Long
+            ) {
+                setToast(context, countriesList[position], Toast.LENGTH_SHORT)
             }
 
             override fun onNothingSelected(adapterView: AdapterView<*>) {}
         }
+        btnChoose.setOnClickListener {
+            if(spnCountries.selectedItem == null) {
+                setToast(context,"You must choose a country",Toast.LENGTH_SHORT)
+            }
+            else
+            {
+                val result = spnCountries.selectedItem.toString()
+setStringPref(context,"countryname","countryname",result)
+                dialogToActivity.onClick(true)
+                mainFunction()
+            }
+
+        }
+
+
+        btnSkip.setOnClickListener {
+            setToast(context, "Hello", Toast.LENGTH_SHORT)
+            setStringPref(context,"countryname","countryname","Burma")
+
+            dialogToActivity.onClick(true)
+        }
     }
+    private fun mainFunction() {
+        val lang = getStringPref(context, "lang", "lang", "en")
+        setApplicationLanguage(lang, context)
+
+        val vModel =
+            ViewModelProviders.of(appCompatActivity).get(CountryViewModel::class.java)
+        vModel.getCountryUtilsLiveData(context)
+        vModel.countryUtilsLiveData.observe(appCompatActivity, Observer {
+
+            vModel.insertCountries(CountriesEntity(0, it))
+        })
+
+        GlobalScope.launch {
+
+            delay(7000L)
+            val intent = Intent(context, MainActivity::class.java)
+
+            context.startActivity(intent)
+
+            appCompatActivity.finish()
+
+        }
+    }
+
 }

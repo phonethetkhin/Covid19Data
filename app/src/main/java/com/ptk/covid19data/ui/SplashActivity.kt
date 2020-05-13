@@ -3,13 +3,12 @@
 package com.ptk.covid19data.ui
 
 import android.content.Intent
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
-import android.graphics.drawable.InsetDrawable
 import android.os.Bundle
 import android.os.Process
 import android.view.Window
 import android.view.WindowManager
+import android.widget.Button
+import android.widget.Spinner
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -17,6 +16,7 @@ import com.labters.lottiealertdialoglibrary.ClickListener
 import com.labters.lottiealertdialoglibrary.DialogTypes
 import com.labters.lottiealertdialoglibrary.LottieAlertDialog
 import com.ptk.covid19data.R
+import com.ptk.covid19data.interfaces.DialogToActivity
 import com.ptk.covid19data.room.entities.CountriesEntity
 import com.ptk.covid19data.utils.getStringPref
 import com.ptk.covid19data.utils.getTheme
@@ -29,10 +29,11 @@ import kotlinx.coroutines.launch
 
 
 @Suppress("DEPRECATED_IDENTITY_EQUALS")
-class SplashActivity : AppCompatActivity() {
+class SplashActivity : AppCompatActivity(), DialogToActivity {
     lateinit var alertDialog: LottieAlertDialog
-    private val customDialog = CustomDialogClass(this)
-
+    lateinit var customDialog: CustomDialogClass
+    private lateinit var chooseButton: Button
+    private lateinit var countriesSpinner: Spinner
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -45,14 +46,21 @@ class SplashActivity : AppCompatActivity() {
             else -> setTheme(R.style.RedTheme)
         }
         setContentView(R.layout.activity_splash)
-setCustomSpinnerDialog()
+        val value = getStringPref(this, "countryname", "countryname", "")
 
-        /*  if (isNetworkActive(this)) {
-              mainFunction()
-          } else {
-              showDialog()
+        customDialog = CustomDialogClass(this, this)
+        customDialog.setDialogToActivity(this)
+        if (isNetworkActive(this)) {
+            if (value.isNullOrBlank()) {
+                setCustomSpinnerDialog()
 
-          }*/
+            } else {
+                mainFunction()
+            }
+        } else {
+            showDialog()
+
+        }
 
     }
 
@@ -79,13 +87,18 @@ setCustomSpinnerDialog()
 
         }
     }
-    private fun setCustomSpinnerDialog()
-    {
+
+    private fun setCustomSpinnerDialog() {
+
         val window: Window? = customDialog.window
         customDialog.show()
-        window!!.setLayout(WindowManager.LayoutParams.FILL_PARENT, WindowManager.LayoutParams.WRAP_CONTENT)
-    }
+        window!!.setLayout(
+            WindowManager.LayoutParams.FILL_PARENT,
+            WindowManager.LayoutParams.WRAP_CONTENT
+        )
 
+
+    }
 
     private fun showDialog() {
         alertDialog = LottieAlertDialog.Builder(this, DialogTypes.TYPE_WARNING)
@@ -114,7 +127,14 @@ setCustomSpinnerDialog()
                 }
             })
             .build()
+        alertDialog.setCancelable(false)
         alertDialog.show()
+    }
+
+    override fun onClick(click: Boolean) {
+        if (click) {
+            customDialog.dismiss()
+        }
     }
 
 
