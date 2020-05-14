@@ -13,7 +13,6 @@ import com.ptk.covid19data.R
 import com.ptk.covid19data.adapters.CountriesAdapter
 import com.ptk.covid19data.interfaces.FragmentToActivity
 import com.ptk.covid19data.models.CountryModel
-import com.ptk.covid19data.models.SummaryModel
 import com.ptk.covid19data.utils.setLayoutManagerRecyclerview
 import com.ptk.covid19data.vModel.CountryViewModel
 import kotlinx.android.synthetic.main.fragment_countries.view.*
@@ -39,7 +38,7 @@ class CountriesFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        fragmentToActivity.setTitleListener("By Countries")
+        fragmentToActivity.setTitleListener(activity!!.resources.getString(R.string.bycountries_title))
         fragmentToActivity.setCheckListener(R.id.nav_countries)
 
 
@@ -72,7 +71,7 @@ class CountriesFragment : Fragment() {
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
 
-        activity!!.menuInflater.inflate(R.menu.homemenu, menu)
+        activity!!.menuInflater.inflate(R.menu.countriesmenu, menu)
         val searchView =
             menu.findItem(R.id.mimSearch).actionView as SearchView
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {

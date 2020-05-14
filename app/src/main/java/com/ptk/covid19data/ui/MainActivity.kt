@@ -6,6 +6,10 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Process
 import android.text.Html
+import android.view.Menu
+import android.view.MenuItem
+import android.view.Window
+import android.view.WindowManager
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
@@ -13,14 +17,15 @@ import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
+import com.labters.lottiealertdialoglibrary.DialogTypes
+import com.labters.lottiealertdialoglibrary.LottieAlertDialog
 import com.ptk.covid19data.R
 import com.ptk.covid19data.fragments.CountriesFragment
 import com.ptk.covid19data.fragments.HomeFragment
 import com.ptk.covid19data.fragments.NewsFragment
+import com.ptk.covid19data.interfaces.DialogToActivity
 import com.ptk.covid19data.interfaces.FragmentToActivity
 import com.ptk.covid19data.utils.*
-import com.labters.lottiealertdialoglibrary.DialogTypes
-import com.labters.lottiealertdialoglibrary.LottieAlertDialog
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
@@ -29,9 +34,11 @@ import kotlinx.coroutines.launch
 
 @Suppress("DEPRECATION")
 class MainActivity : AppCompatActivity(),
-    FragmentToActivity {
+    FragmentToActivity,DialogToActivity {
     private lateinit var toggle: ActionBarDrawerToggle
     private lateinit var alertDialog: LottieAlertDialog
+    lateinit var customDialog: CustomDialogClass
+
 
     private var isSecond: Boolean = false
 
@@ -42,6 +49,7 @@ class MainActivity : AppCompatActivity(),
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         setBooleanPref(this, "islocation", "location", false)
 
@@ -53,6 +61,8 @@ class MainActivity : AppCompatActivity(),
             else -> setTheme(R.style.RedTheme)
         }
         setContentView(R.layout.activity_main)
+        customDialog = CustomDialogClass(this, this)
+        customDialog.setDialogToActivity(this)
 
         val tlbToolbar = findViewById<Toolbar>(R.id.tlbToolbar)
         setSupportActionBar(tlbToolbar)
@@ -186,6 +196,26 @@ class MainActivity : AppCompatActivity(),
         }
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        val value = getStringPref(this, "countryname", "countryname", "")
+
+        menuInflater.inflate(R.menu.homemenu, menu)
+        val item = menu!!.findItem(R.id.mimCountries)
+        item.title = value
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.mimCountries -> {
+setCustomSpinnerDialog()
+            }
+
+        }
+
+        return super.onOptionsItemSelected(item)
+    }
+
 
     private fun doubleTapToExit() {
 
@@ -204,6 +234,22 @@ class MainActivity : AppCompatActivity(),
 
     }
 
+    override fun onClick(click: Boolean) {
+        if (click) {
+            customDialog.dismiss()
 
+        }
+    }
+
+    private fun setCustomSpinnerDialog() {
+
+        val window: Window? = customDialog.window
+        customDialog.show()
+        window!!.setLayout(
+            WindowManager.LayoutParams.FILL_PARENT,
+            WindowManager.LayoutParams.WRAP_CONTENT
+        )
+
+    }
 }
 

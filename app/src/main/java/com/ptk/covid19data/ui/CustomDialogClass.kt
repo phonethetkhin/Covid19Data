@@ -27,7 +27,7 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-class CustomDialogClass(val appCompatActivity: AppCompatActivity, context: Context) :
+class CustomDialogClass(private val appCompatActivity: AppCompatActivity, context: Context) :
     Dialog(context) {
     private var spProvince: SmartMaterialSpinner<String>? = null
     private lateinit var dialogToActivity: DialogToActivity
@@ -90,10 +90,11 @@ setStringPref(context,"countryname","countryname",result)
 
 
         btnSkip.setOnClickListener {
-            setToast(context, "Hello", Toast.LENGTH_SHORT)
+            setToast(context, "Default Country is Burma, You can change it later.", Toast.LENGTH_SHORT)
             setStringPref(context,"countryname","countryname","Burma")
 
             dialogToActivity.onClick(true)
+            mainFunction()
         }
     }
     private fun mainFunction() {

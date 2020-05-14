@@ -24,7 +24,7 @@ class SettingActivity : AppCompatActivity() {
         val toolbar = include2 as Toolbar
 
         setSupportActionBar(toolbar)
-        setToolbarTitleAndBackArrow(this, toolbar, "Setting", supportActionBar!!)
+        setToolbarTitleAndBackArrow(this, toolbar, resources.getString(R.string.setting_title), supportActionBar!!)
 
 
         // color

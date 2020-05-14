@@ -5,23 +5,30 @@
     //drawer status
     <string name="open">Open</string>
     <string name="close">Close</string>
+
+    //toolbar titles
+    <string name="worldwide_title">ကမၻာလုံးဆိုင္ရာ</string>
+
+    <string name="bycountries_title">"နိုင္ငံအလိုက္"</string>
+    <string name="latestnews_title">"ေနာက္ဆုံးရသတင္းမ်ား"</string>
+    <string name="setting_title">"ျပင္ဆင္ခ်က္မ်ား"</string>
+
+
     //drawer menu
-    <string name="main_links">"အဓိက စာမ်က္ႏွာမ်ား"</string>
     <string name="home">ပင္မစာမ်က္ႏွာ</string>
     <string name="countries">နိုင္ငံမ်ား</string>
-    <string name="latest_covid_19_news">"ေနာက္ဆုံးရ ကိုဗစ္၁၉ သတင္းမ်ား
+    <string name="latest_covid_19_news">"ေနာက္ဆုံးရသတင္းမ်ား
 
         "</string>
-    <string name="other_links">"တျခား စာမ်က္ႏွာမ်ား"</string>
     <string name="setting">အျပင္အဆင္မ်ား</string>
-    <string name="about_this_app">"ယခု App အေၾကာင္း"</string>
+    <string name="about_this_app">"App အေၾကာင္း"</string>
 
     //country detail + homefragment
     <string name="last_updated_at">"ေနာက္ဆုံးရယူထားေသာအခ်ိန္ :"</string>
     <string name="worldwide">ကမၻာလုံးဆိုင္ရာ</string>
     <string name="total_cases">"အတည္ျပဳလူနာ :"</string>
-    <string name="deaths">"ေသဆုံးသူ :"</string>
-    <string name="recovered">"ျပန္သက္သာ :"</string>
+    <string name="deaths">"ေသဆုံးသူ         :"</string>
+    <string name="recovered">"ျပန္သက္သာ              :"</string>
 
     //settingactivity
     <string name="change_system_color">"System ၏အေရာင္ေျပာင္းျခင္း"</string>

@@ -32,7 +32,7 @@ class NewsFragment(private val activity: AppCompatActivity) : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        fragmentToActivity.setTitleListener("Covid 19 News")
+        fragmentToActivity.setTitleListener(activity.resources.getString(R.string.latestnews_title))
         fragmentToActivity.setCheckListener(R.id.nav_news)
 
 

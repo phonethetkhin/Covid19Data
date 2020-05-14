@@ -14,7 +14,7 @@ class CountryDetailRepo {
     private val apiService = RetrofitObj(CovidDataBaseURL).apiService
     val countryDetailLiveData = MutableLiveData<SummaryModel>()
 
-    suspend fun getSummaryFromAPI(context: Context, name: String) {
+    suspend fun getSummaryFromAPI(context: Context, name: String?) {
         try {
             val response = apiService.getCountyData("api/countries/$name")
             if (response.isSuccessful) {

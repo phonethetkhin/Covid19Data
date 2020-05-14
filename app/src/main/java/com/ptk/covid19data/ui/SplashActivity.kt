@@ -32,8 +32,7 @@ import kotlinx.coroutines.launch
 class SplashActivity : AppCompatActivity(), DialogToActivity {
     lateinit var alertDialog: LottieAlertDialog
     lateinit var customDialog: CustomDialogClass
-    private lateinit var chooseButton: Button
-    private lateinit var countriesSpinner: Spinner
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {

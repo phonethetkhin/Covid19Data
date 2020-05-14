@@ -11,7 +11,7 @@ class CountryDetailViewModel : ViewModel() {
     private val countryDetailRepo = CountryDetailRepo()
     val countryDetailLiveData = countryDetailRepo.countryDetailLiveData
 
-    fun getCountryDetail(context: Context, name: String) = viewModelScope.launch {
+    fun getCountryDetail(context: Context, name: String?) = viewModelScope.launch {
         countryDetailRepo.getSummaryFromAPI(context, name)
     }
 }

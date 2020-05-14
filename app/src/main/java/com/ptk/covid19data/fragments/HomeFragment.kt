@@ -14,11 +14,19 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.ptk.covid19data.R
 import com.ptk.covid19data.interfaces.FragmentToActivity
+import com.ptk.covid19data.utils.getStringPref
 import com.ptk.covid19data.utils.getTimeZone
 import com.ptk.covid19data.utils.isNetworkActive
 import com.ptk.covid19data.utils.setToast
+import com.ptk.covid19data.vModel.CountryDetailViewModel
 import com.ptk.covid19data.vModel.SummaryViewModel
+import kotlinx.android.synthetic.main.activity_country_detail.*
 import kotlinx.android.synthetic.main.fragment_home.view.*
+import kotlinx.android.synthetic.main.fragment_home.view.txtCountryName
+import kotlinx.android.synthetic.main.fragment_home.view.txtDeaths
+import kotlinx.android.synthetic.main.fragment_home.view.txtLastUpdated
+import kotlinx.android.synthetic.main.fragment_home.view.txtRecovered
+import kotlinx.android.synthetic.main.fragment_home.view.txtTotalCases
 
 @SuppressLint("SimpleDateFormat")
 
@@ -33,7 +41,7 @@ class HomeFragment(private val activity: AppCompatActivity) : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        fragmentToActivity.setTitleListener("WorldWide")
+        fragmentToActivity.setTitleListener(activity.resources.getString(R.string.worldwide_title))
         fragmentToActivity.setCheckListener(R.id.nav_home)
 
         val v = inflater.inflate(R.layout.fragment_home, container, false)
@@ -71,11 +79,24 @@ class HomeFragment(private val activity: AppCompatActivity) : Fragment() {
         vModel.getSummaryViewModel(activity)
         vModel.summaryLiveData.observe(activity, Observer {
             it?.let {
-                v.txtTotalCases.text = it.confirmedModel.totalCases.toString()
-                v.txtDeaths.text = it.deathsModel.totalDeaths.toString()
-                v.txtRecovered.text = it.recoveredModel.totalRecovered.toString()
+                v.txtWorldTotalCases.text = it.confirmedModel.totalCases.toString()
+                v.txtWorldDeaths.text = it.deathsModel.totalDeaths.toString()
+                v.txtWorldRecovered.text = it.recoveredModel.totalRecovered.toString()
                 v.txtLastUpdated.text = getTimeZone((it.lastestUpdate))
             }
+        })
+        val value = getStringPref(activity, "countryname", "countryname", "Burma")
+        v.txtCountryName.text = value
+
+
+        val vCountryModel = ViewModelProviders.of(this).get(CountryDetailViewModel::class.java)
+        vCountryModel.getCountryDetail(activity, value)
+        vCountryModel.countryDetailLiveData.observe(activity, Observer {
+
+            v.txtTotalCases.text = it.confirmedModel.totalCases.toString()
+            v.txtRecovered.text = it.recoveredModel.totalRecovered.toString()
+            v.txtDeaths.text = it.deathsModel.totalDeaths.toString()
+
         })
     }
 
