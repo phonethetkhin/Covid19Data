@@ -2,11 +2,8 @@
 
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
+    android:layout_height="match_parent">
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/srlHome"
@@ -54,20 +51,22 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/crvWorld"
-                android:background="@color/transparent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp"
+                app:cardBackgroundColor="@color/transparent"
                 app:cardCornerRadius="8dp"
                 app:cardElevation="8dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp"
-                app:layout_constraintTop_toBottomOf="@+id/txtLastUpdated"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtLastUpdated">
+
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
+
                     <TextView
                         android:id="@+id/txtWorld"
                         android:layout_width="wrap_content"
@@ -86,32 +85,38 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
-
                         android:layout_marginTop="8dp"
                         android:padding="8dp"
-
                         android:text="@string/total_cases"
                         android:textSize="20sp"
-
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/txtWorld" />
+
+                    <TextView
+                        android:id="@+id/txtWorldTotalCasesDivider"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:padding="8dp"
+                        android:text="@string/divider"
+                        android:textSize="20sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/txtWorldTotalCasesLabel"
+                        app:layout_constraintStart_toEndOf="@+id/txtWorldTotalCasesLabel"
+                        app:layout_constraintTop_toTopOf="@+id/txtWorldTotalCasesLabel" />
 
                     <TextView
                         android:id="@+id/txtWorldTotalCases"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
-                        android:textAlignment="center"
-
-                        android:layout_marginTop="8dp"
                         android:layout_marginEnd="8dp"
                         android:padding="8dp"
-
+                        android:textAlignment="center"
                         android:textSize="20sp"
-
+                        app:layout_constraintBottom_toBottomOf="@+id/txtWorldTotalCasesDivider"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/txtWorldTotalCasesLabel"
-                        app:layout_constraintTop_toBottomOf="@+id/txtWorld" />
+                        app:layout_constraintStart_toEndOf="@+id/txtWorldTotalCasesDivider"
+                        app:layout_constraintTop_toTopOf="@+id/txtWorldTotalCasesDivider" />
 
                     <TextView
                         android:id="@+id/txtWorldDeathsLabel"
@@ -120,29 +125,34 @@
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="8dp"
                         android:padding="8dp"
-
-
                         android:text="@string/deaths"
                         android:textSize="20sp"
-
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/txtWorldTotalCasesLabel" />
+
+                    <TextView
+                        android:id="@+id/txtWorldDeathsDivider"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:text="@string/divider"
+                        android:textSize="20sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/txtWorldDeathsLabel"
+                        app:layout_constraintEnd_toEndOf="@+id/txtWorldTotalCasesDivider"
+                        app:layout_constraintStart_toStartOf="@+id/txtWorldTotalCasesDivider"
+                        app:layout_constraintTop_toTopOf="@+id/txtWorldDeathsLabel" />
 
                     <TextView
                         android:id="@+id/txtWorldDeaths"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
-                        android:layout_marginTop="8dp"
                         android:layout_marginEnd="8dp"
-                        android:textAlignment="center"
-
                         android:padding="8dp"
+                        android:textAlignment="center"
                         android:textSize="20sp"
-
-
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/txtWorldDeathsLabel"
+                        app:layout_constraintStart_toEndOf="@+id/txtWorldDeathsDivider"
                         app:layout_constraintTop_toBottomOf="@+id/txtWorldTotalCasesLabel" />
 
                     <TextView
@@ -152,60 +162,65 @@
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="8dp"
                         android:layout_marginBottom="8dp"
-
                         android:padding="8dp"
-
                         android:text="@string/recovered"
                         android:textSize="20sp"
-
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/txtWorldDeathsLabel" />
+
+                    <TextView
+                        android:id="@+id/txtWorldRecoveredDivider"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:text="@string/divider"
+                        android:textSize="20sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/txtWorldRecoveredLabel"
+                        app:layout_constraintEnd_toEndOf="@+id/txtWorldTotalCasesDivider"
+                        app:layout_constraintStart_toStartOf="@+id/txtWorldTotalCasesDivider"
+                        app:layout_constraintTop_toTopOf="@+id/txtWorldRecoveredLabel" />
 
                     <TextView
                         android:id="@+id/txtWorldRecovered"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
-                        android:layout_marginTop="8dp"
                         android:layout_marginEnd="8dp"
-                        android:textAlignment="center"
-
-
                         android:padding="8dp"
-
+                        android:textAlignment="center"
                         android:textSize="20sp"
-
+                        app:layout_constraintBottom_toBottomOf="@+id/txtWorldRecoveredDivider"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/txtWorldRecoveredLabel"
-                        app:layout_constraintTop_toBottomOf="@+id/txtWorldDeaths" />
+                        app:layout_constraintStart_toEndOf="@+id/txtWorldRecoveredDivider"
+                        app:layout_constraintTop_toTopOf="@+id/txtWorldRecoveredDivider" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/crvCountry"
-                android:background="@color/transparent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp"
+                app:cardBackgroundColor="@color/transparent"
                 app:cardCornerRadius="8dp"
                 app:cardElevation="8dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_margin="8dp"
-                app:layout_constraintTop_toBottomOf="@+id/crvWorld"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/crvWorld">
+
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
+
                     <TextView
                         android:id="@+id/txtCountryName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
-
-
                         android:textSize="25sp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -216,10 +231,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
-
                         android:layout_marginTop="8dp"
                         android:padding="8dp"
-
                         android:text="@string/total_cases"
                         android:textSize="20sp"
 
@@ -227,21 +240,30 @@
                         app:layout_constraintTop_toBottomOf="@+id/txtCountryName" />
 
                     <TextView
+                        android:id="@+id/txtTotalCasesDivider"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:padding="8dp"
+                        android:text="@string/divider"
+                        android:textSize="20sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/txtTotalCasesLabel"
+                        app:layout_constraintStart_toEndOf="@+id/txtTotalCasesLabel"
+                        app:layout_constraintTop_toTopOf="@+id/txtTotalCasesLabel" />
+
+                    <TextView
                         android:id="@+id/txtTotalCases"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
-                        android:textAlignment="center"
-
-                        android:layout_marginTop="8dp"
                         android:layout_marginEnd="8dp"
                         android:padding="8dp"
-
+                        android:textAlignment="center"
                         android:textSize="20sp"
-
+                        app:layout_constraintBottom_toBottomOf="@+id/txtTotalCasesDivider"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/txtTotalCasesLabel"
-                        app:layout_constraintTop_toBottomOf="@+id/txtCountryName" />
+                        app:layout_constraintStart_toEndOf="@+id/txtTotalCasesDivider"
+                        app:layout_constraintTop_toTopOf="@+id/txtTotalCasesDivider" />
 
                     <TextView
                         android:id="@+id/txtDeathsLabel"
@@ -250,29 +272,34 @@
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="8dp"
                         android:padding="8dp"
-
-
                         android:text="@string/deaths"
                         android:textSize="20sp"
-
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/txtTotalCasesLabel" />
+
+                    <TextView
+                        android:id="@+id/txtDeathsDivider"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:text="@string/divider"
+                        android:textSize="20sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/txtDeathsLabel"
+                        app:layout_constraintEnd_toEndOf="@+id/txtTotalCasesDivider"
+                        app:layout_constraintStart_toStartOf="@+id/txtTotalCasesDivider"
+                        app:layout_constraintTop_toTopOf="@+id/txtDeathsLabel" />
 
                     <TextView
                         android:id="@+id/txtDeaths"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
-                        android:layout_marginTop="8dp"
                         android:layout_marginEnd="8dp"
-                        android:textAlignment="center"
-
                         android:padding="8dp"
+                        android:textAlignment="center"
                         android:textSize="20sp"
-
-
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/txtDeathsLabel"
+                        app:layout_constraintStart_toEndOf="@+id/txtDeathsDivider"
                         app:layout_constraintTop_toBottomOf="@+id/txtTotalCasesLabel" />
 
                     <TextView
@@ -282,33 +309,38 @@
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="8dp"
                         android:layout_marginBottom="8dp"
-
                         android:padding="8dp"
-
                         android:text="@string/recovered"
                         android:textSize="20sp"
-
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/txtDeathsLabel" />
+
+                    <TextView
+                        android:id="@+id/txtRecoveredDivider"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:text="@string/divider"
+                        android:textSize="20sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/txtRecoveredLabel"
+                        app:layout_constraintEnd_toEndOf="@+id/txtTotalCasesDivider"
+                        app:layout_constraintStart_toStartOf="@+id/txtTotalCasesDivider"
+                        app:layout_constraintTop_toTopOf="@+id/txtRecoveredLabel" />
 
                     <TextView
                         android:id="@+id/txtRecovered"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
-                        android:layout_marginTop="8dp"
                         android:layout_marginEnd="8dp"
-                        android:textAlignment="center"
-
-
                         android:padding="8dp"
-
+                        android:textAlignment="center"
                         android:textSize="20sp"
-
+                        app:layout_constraintBottom_toBottomOf="@+id/txtRecoveredDivider"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/txtRecoveredLabel"
-                        app:layout_constraintTop_toBottomOf="@+id/txtDeaths" />
+                        app:layout_constraintStart_toEndOf="@+id/txtRecoveredDivider"
+                        app:layout_constraintTop_toTopOf="@+id/txtRecoveredDivider" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
         </androidx.constraintlayout.widget.ConstraintLayout>
