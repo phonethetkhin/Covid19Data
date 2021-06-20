@@ -27,14 +27,12 @@ import com.ptk.covid19data.interfaces.DialogToActivity
 import com.ptk.covid19data.interfaces.FragmentToActivity
 import com.ptk.covid19data.utils.*
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 
 
 @Suppress("DEPRECATION")
 class MainActivity : AppCompatActivity(),
-    FragmentToActivity,DialogToActivity {
+    FragmentToActivity, DialogToActivity {
     private lateinit var toggle: ActionBarDrawerToggle
     private lateinit var alertDialog: LottieAlertDialog
     lateinit var customDialog: CustomDialogClass
@@ -92,29 +90,32 @@ class MainActivity : AppCompatActivity(),
                     )
                 }
                 R.id.nav_countries -> {
-                    closeDrawer(drlHome)
-                    showProgressLottieDialog(this)
-                    setFragment(
-                        supportFragmentManager, CountriesFragment(), false,
-                        R.id.fmlHomeContainer
-                    )
-
-                    GlobalScope.launch {
-                        delay(2000L)
+                    CoroutineScope(Dispatchers.Main).launch {
+                        closeDrawer(drlHome)
+                        showProgressLottieDialog(this@MainActivity)
+                        withContext(Dispatchers.Main) {
+                            setFragment(
+                                supportFragmentManager, CountriesFragment(), false,
+                                R.id.fmlHomeContainer
+                            )
+                        }
+                        delay(1000L)
                         alertDialog.dismiss()
                     }
                 }
                 R.id.nav_news -> {
-                    showProgressLottieDialog(this)
-                    closeDrawer(drlHome)
-                    setFragment(
-                        supportFragmentManager,
-                        NewsFragment(this),
-                        false,
-                        R.id.fmlHomeContainer
-                    )
-                    GlobalScope.launch {
-                        delay(2000L)
+                    CoroutineScope(Dispatchers.Main).launch {
+                        closeDrawer(drlHome)
+                        showProgressLottieDialog(this@MainActivity)
+                        withContext(Dispatchers.Main) {
+                            setFragment(
+                                supportFragmentManager,
+                                NewsFragment(this@MainActivity),
+                                false,
+                                R.id.fmlHomeContainer
+                            )
+                        }
+                        delay(1000L)
                         alertDialog.dismiss()
                     }
                 }
@@ -208,7 +209,7 @@ class MainActivity : AppCompatActivity(),
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.mimCountries -> {
-setCustomSpinnerDialog()
+                setCustomSpinnerDialog()
             }
 
         }

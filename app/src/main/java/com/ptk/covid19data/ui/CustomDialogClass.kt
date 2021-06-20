@@ -14,8 +14,6 @@ import androidx.lifecycle.ViewModelProviders
 import com.chivorn.smartmaterialspinner.SmartMaterialSpinner
 import com.ptk.covid19data.R
 import com.ptk.covid19data.interfaces.DialogToActivity
-import com.ptk.covid19data.interfaces.FragmentToActivity
-import com.ptk.covid19data.models.CountryModel
 import com.ptk.covid19data.room.entities.CountriesEntity
 import com.ptk.covid19data.utils.getStringPref
 import com.ptk.covid19data.utils.setApplicationLanguage
@@ -35,10 +33,11 @@ class CustomDialogClass(private val appCompatActivity: AppCompatActivity, contex
     init {
         setCancelable(false)
     }
- fun setDialogToActivity(listener : DialogToActivity)
- {
-this.dialogToActivity = listener
- }
+
+    fun setDialogToActivity(listener: DialogToActivity) {
+        this.dialogToActivity = listener
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         requestWindowFeature(Window.FEATURE_NO_TITLE)
@@ -62,41 +61,32 @@ this.dialogToActivity = listener
 
         spProvince!!.item = countriesList
 
-        spProvince!!.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(
-                adapterView: AdapterView<*>,
-                view: View,
-                position: Int,
-                id: Long
-            ) {
-                setToast(context, countriesList[position], Toast.LENGTH_SHORT)
-            }
-
-            override fun onNothingSelected(adapterView: AdapterView<*>) {}
-        }
         btnChoose.setOnClickListener {
-            if(spnCountries.selectedItem == null) {
-                setToast(context,"You must choose a country",Toast.LENGTH_SHORT)
-            }
-            else
-            {
+            if (spnCountries.selectedItem == null) {
+                setToast(context, "You must choose a country", Toast.LENGTH_SHORT)
+            } else {
                 val result = spnCountries.selectedItem.toString()
-setStringPref(context,"countryname","countryname",result)
-                dialogToActivity.onClick(true)
+                setStringPref(context, "countryname", "countryname", result)
                 mainFunction()
             }
+            this.dismiss()
 
         }
 
 
         btnSkip.setOnClickListener {
-            setToast(context, "Default Country is Burma, You can change it later.", Toast.LENGTH_SHORT)
-            setStringPref(context,"countryname","countryname","Burma")
-
-            dialogToActivity.onClick(true)
+            setToast(
+                context,
+                "Default Country is Burma, You can change it later.",
+                Toast.LENGTH_SHORT
+            )
+            setStringPref(context, "countryname", "countryname", "Burma")
             mainFunction()
         }
+        this.dismiss()
+
     }
+
     private fun mainFunction() {
         val lang = getStringPref(context, "lang", "lang", "en")
         setApplicationLanguage(lang, context)
@@ -109,9 +99,6 @@ setStringPref(context,"countryname","countryname",result)
             vModel.insertCountries(CountriesEntity(0, it))
         })
 
-        GlobalScope.launch {
-
-            delay(7000L)
             val intent = Intent(context, MainActivity::class.java)
 
             context.startActivity(intent)
@@ -119,6 +106,5 @@ setStringPref(context,"countryname","countryname",result)
             appCompatActivity.finish()
 
         }
-    }
 
 }

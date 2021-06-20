@@ -3,33 +3,25 @@ package com.ptk.covid19data.ui
 import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
+import android.view.View
 import android.webkit.WebChromeClient
+import android.webkit.WebSettings
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import androidx.appcompat.app.AppCompatActivity
+import com.labters.lottiealertdialoglibrary.DialogTypes
+import com.labters.lottiealertdialoglibrary.LottieAlertDialog
 import com.ptk.covid19data.R
 import com.ptk.covid19data.utils.getStringExtra
 import com.ptk.covid19data.utils.getTheme
-import com.labters.lottiealertdialoglibrary.DialogTypes
-import com.labters.lottiealertdialoglibrary.LottieAlertDialog
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
+
 
 class NewsDetailActivity : AppCompatActivity() {
     lateinit var alertDialog: LottieAlertDialog
 
     lateinit var wbvNews: WebView
-
-    override fun onStart() {
-        super.onStart()
-        showProgressLottieDialog(this)
-        GlobalScope.launch {
-            delay(5000L)
-            alertDialog.dismiss()
-        }
-
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,28 +35,29 @@ class NewsDetailActivity : AppCompatActivity() {
         wbvNews = findViewById(R.id.wbvNews)
 
         val url = getStringExtra(this, "url")
-
-        mainFunction(url)
+        CoroutineScope(Dispatchers.Main).launch {
+            showProgressLottieDialog(this@NewsDetailActivity)
+            withContext(Dispatchers.Main) {
+                mainFunction(url)
+            }
+            delay(1000L)
+            alertDialog.dismiss()
+        }
 
     }
 
     @SuppressLint("SetJavaScriptEnabled")
     private fun mainFunction(url: String) {
-        wbvNews.settings.javaScriptEnabled = true
-        wbvNews.settings.javaScriptCanOpenWindowsAutomatically = true
+        val webSettings: WebSettings = wbvNews.settings
+        webSettings.javaScriptEnabled = true
+        webSettings.domStorageEnabled = true
+        wbvNews.isVerticalScrollBarEnabled = true
+        wbvNews.webViewClient = WebViewClient()
+        wbvNews.settings.loadWithOverviewMode = true
+        wbvNews.settings.useWideViewPort = true
+        wbvNews.setLayerType(View.LAYER_TYPE_SOFTWARE, null)
         wbvNews.webChromeClient = WebChromeClient()
-        wbvNews.webViewClient = MyWebViewClient()
-
-
         wbvNews.loadUrl(url)
-    }
-
-    private class MyWebViewClient : WebViewClient() {
-
-        override fun shouldOverrideUrlLoading(view: WebView, url: String?): Boolean {
-            view.loadUrl(url)
-            return true
-        }
     }
 
     override fun onBackPressed() {
